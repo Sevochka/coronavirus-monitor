@@ -3,3 +3,12 @@
     justify-content: center;
     align-items: center;
 }
+.ant-menu{
+
+}
+.menu-item{
+    
+}
+.menu-item, .menu-item svg{
+    font-size: 20px;
+}

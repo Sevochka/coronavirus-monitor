@@ -1,0 +1,31 @@
+/* Основная статистика */
+.site-card-wrapper{
+    padding: 20px;
+    border: 2px solid #ced4da;
+    border-radius: 10px;
+}
+.stat-item{
+    min-width: fit-content;
+    margin-bottom: 5px;
+}
+.stat-row{
+    justify-content: center;
+    align-items: center;
+}
+.stat-card{
+    width: 300px;
+    text-align: center;
+    border-radius: 10px !important;
+}
+.ant-card-head-title{
+    font-size: 20px;
+    color: #495057;
+    font-weight: 600;
+}
+.ant-card-head{
+    background: #f5f5f5 !important;
+}
+.ant-card-body{
+    font-size: 20px;
+    font-weight: 500;
+}
