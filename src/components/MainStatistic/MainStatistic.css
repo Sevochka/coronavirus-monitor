@@ -1,9 +1,9 @@
 /* Основная статистика */
 .site-card-wrapper{
     padding: 20px;
-    border: 2px solid #ced4da;
+    border: 2px solid rgba(206, 212, 218, 0.6);
     border-radius: 10px;
-    background: snow;
+    background: rgba(255, 250, 250, 0.6);
 }
 .stat-item{
     min-width: fit-content;
@@ -14,10 +14,18 @@
     align-items: center;
 }
 .stat-card{
-    width: 300px;
+    width: 210px;
     text-align: center;
     border-radius: 10px !important;
+    box-sizing: border-box;    
 }
+
+.stat-card:hover{
+    cursor: pointer;
+    opacity: 0.8;  
+    border: solid 1px rgba(5, 78, 156, 0.6);
+}
+
 .ant-card-head-title{
     font-size: 20px;
     color: #495057;
@@ -30,6 +38,9 @@
 .ant-card-body{
     font-size: 20px;
     font-weight: bolder;
+}
+.text-centered{
+    text-align: center;
 }
 
 .colored-red{
