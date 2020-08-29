@@ -5,18 +5,24 @@ import "./MainStatistic.css";
 
 const MainStatistic = (props) => {
 
-    const {total_cases, total_deaths, total_recovered} = props.info;
+    const numberWithCommas = (x) => {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    const { total_cases, total_deaths, total_recovered } = props.info;
     return (
         <>
             <div className="site-card-wrapper">
                 <Row gutter={10} className="stat-row">
                     <Col span={8} className="stat-item">
                         <Card
-                            title="Заболевших"
+                            title="Всего заболевших"
                             bordered={true}
                             className="stat-card"
                         >
-                            {total_cases}
+                            <span className="colored-blue">
+                                {numberWithCommas(total_cases)}
+                            </span>
                         </Card>
                     </Col>
                     <Col span={8} className="stat-item">
@@ -25,7 +31,9 @@ const MainStatistic = (props) => {
                             bordered={true}
                             className="stat-card"
                         >
-                            {total_deaths}
+                            <span className="colored-red">
+                                {numberWithCommas(total_deaths)}
+                            </span>
                         </Card>
                     </Col>
                     <Col span={8} className="stat-item">
@@ -34,13 +42,22 @@ const MainStatistic = (props) => {
                             bordered={true}
                             className="stat-card"
                         >
-                            {total_recovered}
+                            <span className="colored-green">
+                                {numberWithCommas(total_recovered)}
+                            </span>
                         </Card>
                     </Col>
                 </Row>
             </div>
 
-            <br/>
+            <br />
+
+            {/* <Card title="Заболевшие сейчас" style={{ width: 300 }} className="stat-card">
+                <p>
+                    12000
+                </p>
+            </Card> */}
+
         </>
     );
 };

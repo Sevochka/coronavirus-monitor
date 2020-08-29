@@ -2,12 +2,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
-.ant-menu{
-
+    background: #3958e2 !important;
 }
 .menu-item{
-    
+    display: flex !important;
+    align-items: center !important;
+}
+.icon{
+    width: 30px;
+    margin-right: 5px;
 }
 .menu-item, .menu-item svg{
     font-size: 20px;

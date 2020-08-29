@@ -3,6 +3,7 @@
     padding: 20px;
     border: 2px solid #ced4da;
     border-radius: 10px;
+    background: snow;
 }
 .stat-item{
     min-width: fit-content;
@@ -24,8 +25,19 @@
 }
 .ant-card-head{
     background: #f5f5f5 !important;
+    border-radius: 9px 9px 0 0 !important;
 }
 .ant-card-body{
     font-size: 20px;
-    font-weight: 500;
+    font-weight: bolder;
+}
+
+.colored-red{
+    color: rgb(180, 10, 10);
+}
+.colored-green{
+    color: rgb(5, 202, 47);
+}
+.colored-blue{
+    color: rgb(4, 4, 163);
 }
