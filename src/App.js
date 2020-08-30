@@ -1,17 +1,29 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import "./App.css";
 import Navbar from "./components/Navbar";
-import Main from "./pages/Main";
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import routes from './routes';
 
 function App() {
-  return (
-    <div>
-      <Navbar/>
-      <div className="app-container">
-        <Main/>
-      </div>
-    </div>
-  );
+    let routesComponents = routes.map((route) => {
+        return (
+            <Route
+                path={route.url}
+                component={route.component}
+                exact={route.exact}
+                key={route.url}
+            />
+        );
+    });
+    return (
+        <Router>
+            <Navbar />
+
+            <div className="app-container">
+                <Switch>{routesComponents}</Switch>
+            </div>
+        </Router>
+    );
 }
 
 export default App;

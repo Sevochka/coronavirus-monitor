@@ -21,9 +21,9 @@
 }
 
 .stat-card:hover{
-    cursor: pointer;
-    opacity: 0.8;  
+    cursor: pointer; 
     border: solid 1px rgba(5, 78, 156, 0.6);
+    transform: scale(1.05);
 }
 
 .ant-card-head-title{
