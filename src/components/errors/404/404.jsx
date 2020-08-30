@@ -1,17 +1,16 @@
 import React from 'react';
 import { routesMap } from '../../../routes';
 import { Link } from 'react-router-dom';
+import { Alert } from 'antd';
 
-export default function(){
+export default function () {
     return (
         <>
-            <h1>Ошибка 404, страницы не существует</h1>
-            <hr/>
-            <div>
-                <p>
-                    <Link to={routesMap.home}>Вернуться домой</Link>
-                </p>
-            </div>
+            <Alert
+                message="Ошибка 404, страницы не существует"
+                description={<Link to={routesMap.home}>Вернуться домой</Link>}
+                type="error"
+            />
         </>
     );
 }
