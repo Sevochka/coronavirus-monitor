@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import { DatePicker } from 'antd';
 import '../../../node_modules/react-vis/dist/style.css';
 import {
@@ -14,12 +15,10 @@ import {
 import mock_country_timeline from "../../mock-country-timeline";
 
 import "./CountryTimeline.css"
-import { useState } from "react";
 
 const dates = Object.keys(mock_country_timeline);
 const COLORS = ["blue", "red", "green"]
 const ITEMS = ["Total cases", "Total Deaths", "Total recoveries"]
-
 
 const CountryTimeline = () => {
 
@@ -64,7 +63,6 @@ const CountryTimeline = () => {
                 />
                 <DiscreteColorLegend
                     className="color-legend"
-                    height={200}
                     width={300}
                     items={ITEMS}
                     colors={COLORS}

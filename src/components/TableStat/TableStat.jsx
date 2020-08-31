@@ -1,10 +1,12 @@
 import React from 'react';
-
+import { useHistory } from 'react-router-dom';
 import { Table } from 'antd';
 
 import mock_global_stat from '../../mock-global-stat'
 
 const TableStat = () => {
+
+    let history = useHistory();
 
     const columns = [
         {
@@ -54,6 +56,7 @@ const TableStat = () => {
                     return {
                         onClick: () => {
                             console.log(record)
+                            history.push('/country/US')
                         }
                     }
                 }}
