@@ -3,7 +3,7 @@ import { Menu } from 'antd';
 import { useState } from 'react';
 import VirusSvg from "../../assets/virus.svg";
 import StatSvg from "../../assets/statistics.svg";
-import InfoSvg from "../../assets/info.svg"
+import InfoSvg from "../../assets/info.svg";
 import { Link } from 'react-router-dom';
 
 import { routesMap } from "../../routes";
@@ -11,7 +11,7 @@ import './Navbar.css';
 
 const Navbar = () => {
 
-    let [current, setCurrent] = useState('mail');
+    const [current, setCurrent] = useState('mail');
 
     const handleClick = e => {
         setCurrent(e.key);
@@ -40,7 +40,7 @@ const Navbar = () => {
         </Menu>
     );
 
-}
+};
 
 
 export default Navbar;

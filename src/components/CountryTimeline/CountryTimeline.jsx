@@ -9,23 +9,23 @@ import {
     HorizontalGridLines,
     VerticalGridLines,
     LineSeries,
-    DiscreteColorLegend,
+    DiscreteColorLegend
 } from 'react-vis';
 
 import mock_country_timeline from "../../mock-country-timeline";
 
-import "./CountryTimeline.css"
+import "./CountryTimeline.css";
 
 const dates = Object.keys(mock_country_timeline);
-const COLORS = ["blue", "red", "green"]
-const ITEMS = ["Total cases", "Total Deaths", "Total recoveries"]
+const COLORS = ["blue", "red", "green"];
+const ITEMS = ["Total cases", "Total Deaths", "Total recoveries"];
 
 const CountryTimeline = () => {
 
-    const [currentMonth, setCurrenMonth] = useState("")
+    const [currentMonth, setCurrenMonth] = useState("");
 
     function onMonthChange(date) {
-        setCurrenMonth(date ? date.month() : "")
+        setCurrenMonth(date ? date.month() : "");
     }
 
     const total_cases = [];
@@ -35,10 +35,10 @@ const CountryTimeline = () => {
     dates
         .filter(date => !currentMonth || currentMonth === new Date(date).getMonth())
         .forEach(date => {
-            total_cases.push({ x: new Date(date).getTime(), y: mock_country_timeline[date].total_cases })
-            total_deaths.push({ x: new Date(date).getTime(), y: mock_country_timeline[date].total_deaths })
-            total_recoveries.push({ x: new Date(date).getTime(), y: mock_country_timeline[date].total_recoveries })
-        })
+            total_cases.push({ x: new Date(date).getTime(), y: mock_country_timeline[date].total_cases });
+            total_deaths.push({ x: new Date(date).getTime(), y: mock_country_timeline[date].total_deaths });
+            total_recoveries.push({ x: new Date(date).getTime(), y: mock_country_timeline[date].total_recoveries });
+        });
 
     return (
         <>
