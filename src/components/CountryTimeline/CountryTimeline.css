@@ -1,3 +1,16 @@
 .color-legend {
     margin: 0 auto 0 auto
 }
+
+.timeline__panel {
+    display: flex;
+}
+
+.timeline__diagrams {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.timeline__diagrams .diagram {
+   width: 30%;
+}
