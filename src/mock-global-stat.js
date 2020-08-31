@@ -1,4 +1,4 @@
-const mock_data = {
+const mock_global_stat = {
     "1": {
         "ourid": 1,
         "title": "Afghanistan",
@@ -2549,4 +2549,4 @@ const mock_data = {
         },
 }
 
-export default mock_data;
+export default mock_global_stat;

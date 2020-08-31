@@ -6,8 +6,7 @@ const Statistic = () => {
 
     return (
         <>
-            Привет я Статистика
-            <br/>
+            <br />
         </>
     );
 };
