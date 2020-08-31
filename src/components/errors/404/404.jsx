@@ -3,7 +3,7 @@ import { routesMap } from '../../../routes';
 import { Link } from 'react-router-dom';
 import { Alert } from 'antd';
 
-export default function () {
+const E404 = () => {
     return (
         <>
             <Alert
@@ -13,4 +13,6 @@ export default function () {
             />
         </>
     );
-}
+};
+
+export default E404;

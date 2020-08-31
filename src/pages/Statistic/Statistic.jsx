@@ -1,17 +1,14 @@
-import React from "react";
+import React from 'react';
 
-import TableStat from "../../components/TableStat"
+import TableStat from '../../components/TableStat';
 
-import "./Statistic.css";
+import './Statistic.css';
 
-const Statistic = () => {
-
-    return (
-        <>
-            <TableStat/>
-            <br />
-        </>
-    );
-};
+const Statistic = () => (
+    <>
+        <TableStat/>
+        <br />
+    </>
+);
 
 export default Statistic;

@@ -1,24 +1,23 @@
-import React from "react";
-import "./App.css";
-import Navbar from "./components/Navbar";
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import React from 'react';
+import './App.css';
+import Navbar from './components/Navbar';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import routes from './routes';
 
 function App() {
-    let routesComponents = routes.map((route) => {
-        return (
-            <Route
-                path={route.url}
-                component={route.component}
-                exact={route.exact}
-                key={route.url}
-            />
-        );
-    });
+    const routesComponents = routes.map(route => (
+        <Route
+            path={route.url}
+            component={route.component}
+            exact={route.exact}
+            key={route.url}
+        />
+    ));
+
+    
     return (
         <Router>
             <Navbar />
-
             <div className="app-container">
                 <Switch>{routesComponents}</Switch>
             </div>
