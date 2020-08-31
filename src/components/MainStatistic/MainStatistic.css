@@ -5,7 +5,47 @@
     border-radius: 10px;
     background: rgba(255, 250, 250, 0.6);
 } */
-.stat-item{
+
+/* Статистика */
+.main-stat__header{
+    text-align: center;
+    font-size: 40px;
+}
+.stat-cards-wrapper{
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Карточки */
+.card__part{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.card__part .part__number{
+    font-size: 50px;
+    font-weight: 700;
+}
+.card__part  .part__title{
+    font-size: 16px;
+    font-weight: 700;
+}
+.number-infected{
+    color: #1877f2;
+}
+.number-death{
+    color: #fb3938;
+}
+.number-recovered{
+    color: #3aa969;
+}
+.number-serious{
+    color: #9191ac;
+}
+
+
+
+/* .stat-item{
     min-width: fit-content;
     margin-bottom: 5px;
 }
@@ -20,11 +60,11 @@
     box-sizing: border-box;    
 }
 
-.stat-card:hover{
+/* .stat-card:hover{
     cursor: pointer; 
     border: solid 1px rgba(5, 78, 156, 0.6);
     transform: scale(1.05);
-}
+} 
 
 .ant-card-head-title{
     font-size: 20px;
@@ -55,4 +95,4 @@
 
 .ant-col-8{
     flex-basis: 0 !important;
-}
+} */
