@@ -1,5 +1,5 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from 'react';
+
 import { DatePicker } from 'antd';
 import '../../../node_modules/react-vis/dist/style.css';
 import {
@@ -9,13 +9,14 @@ import {
 import mock_country_timeline from "../../mock-country-timeline";
 import TimelineDiagram from "../TimelineDiagram";
 
-import "./CountryTimeline.css";
+import './CountryTimeline.css';
 
 const dates = Object.keys(mock_country_timeline);
-const COLORS = ["blue", "red", "green"];
-const ITEMS = ["Total cases", "Total Deaths", "Total recoveries"];
+const COLORS = ['blue', 'red', 'green'];
+const ITEMS = ['Total cases', 'Total Deaths', 'Total recoveries'];
 
 const CountryTimeline = () => {
+  const [currentMonth, setCurrenMonth] = useState('');
 
     const [currentMonth, setCurrenMonth] = useState(7)
 
@@ -23,17 +24,22 @@ const CountryTimeline = () => {
         setCurrenMonth(date ? date.month() : 0)
     }
 
-    const total_cases = [];
-    const total_deaths = [];
-    const total_recoveries = [];
+  dates
+    .filter((date) => !currentMonth || currentMonth === new Date(date).getMonth())
+    .forEach((date) => {
+      total_cases.push({ x: new Date(date).getTime(), y: mock_country_timeline[date].total_cases });
+      total_deaths.push({ x: new Date(date).getTime(), y: mock_country_timeline[date].total_deaths });
+      total_recoveries.push({ x: new Date(date).getTime(), y: mock_country_timeline[date].total_recoveries });
+    });
 
-    dates
-        .filter(date => !currentMonth || currentMonth === new Date(date).getMonth())
-        .forEach(date => {
-            total_cases.push({ x: new Date(date).getTime(), y: mock_country_timeline[date].total_cases });
-            total_deaths.push({ x: new Date(date).getTime(), y: mock_country_timeline[date].total_deaths });
-            total_recoveries.push({ x: new Date(date).getTime(), y: mock_country_timeline[date].total_recoveries });
-        });
+  return (
+    <>
+      <DatePicker onChange={onMonthChange} picker="month" />
+      <XYPlot xType="time" width={550} height={300} margin={{ left: 60, bottom: 50 }}>
+        <HorizontalGridLines />
+        <VerticalGridLines />
+        <XAxis tickLabelAngle={-45} />
+        <YAxis />
 
     return (
         <>
