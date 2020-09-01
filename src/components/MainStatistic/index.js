@@ -1,3 +1,3 @@
-import MainStatistic from './MainStatistic';
+import MainStatistic from './MainStatistic.jsx';
 
 export default MainStatistic;
