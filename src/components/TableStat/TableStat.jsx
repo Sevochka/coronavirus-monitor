@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Table } from 'antd';
 
-import mock_global_stat from '../../mock-global-stat';
-
 import "./TableStat.css";
+import axios from 'axios';
 
 const TableStat = () => {
 
@@ -82,20 +81,36 @@ const TableStat = () => {
         }
     ];
 
+    const [info, setInfo] = useState({});
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        setIsLoading(true);
+
+        axios.get('https://api.thevirustracker.com/free-api?countryTotals=ALL')
+            .then(res => {
+                setInfo(res.data.countryitems[0]);
+            })
+            .finally(() => {
+                setIsLoading(false);
+            });
+    }, []);
+
     return (
         <>
-            <Table
-                className="table"
-                columns={columns}
-                dataSource={Object.values(mock_global_stat).map(el => ({ ...el, key: el.ourid }))}
-                onRow={record => ({
-                    onClick: () => {
-                        history.push('/country/US');
-                    }
-                })}
-                pagination={{ pageSize: 10, position: ["bottomCenter"], showSizeChanger: false }}
-                size="small"
-            />
+            {!isLoading ?
+                <Table
+                    className="table"
+                    columns={columns}
+                    dataSource={Object.values(info).map(el => ({ ...el, key: el.ourid }))}
+                    onRow={record => ({
+                        onClick: () => {
+                            history.push(`/country/${record.code}`);
+                        }
+                    })}
+                    pagination={{ pageSize: 10, position: ["bottomCenter"], showSizeChanger: false }}
+                    size="small"
+                /> : null}
         </>
     );
 };

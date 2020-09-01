@@ -6,13 +6,12 @@ import './MainStatistic.css';
 
 const MainStatistic = props => {
     const numberWithCommas = x => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-
     const {
-        total_cases, 
-        total_deaths, 
-        total_recovered, 
-        total_new_cases_today, 
-        total_new_deaths_today, 
+        total_cases,
+        total_deaths,
+        total_recovered,
+        total_new_cases_today,
+        total_new_deaths_today,
         total_serious_cases
     } = props.info;
 
@@ -72,10 +71,10 @@ const MainStatistic = props => {
 MainStatistic.propTypes = {
     info: {
         total_cases: PropTypes.number,
-        total_deaths: PropTypes.number, 
-        total_recovered: PropTypes.number, 
-        total_new_cases_today: PropTypes.number, 
-        total_new_deaths_today: PropTypes.number, 
+        total_deaths: PropTypes.number,
+        total_recovered: PropTypes.number,
+        total_new_cases_today: PropTypes.number,
+        total_new_deaths_today: PropTypes.number,
         total_serious_cases: PropTypes.number
     }
 };
