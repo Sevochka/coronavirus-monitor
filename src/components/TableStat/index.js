@@ -1,3 +1,3 @@
-import TableStat from './TableStat';
+import TableStat from './TableStat.jsx';
 
 export default TableStat;

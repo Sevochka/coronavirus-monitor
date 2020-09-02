@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import { useState, useEffect } from "react";
 
 import {
@@ -9,34 +10,33 @@ import {
     VerticalGridLines,
     Hint,
     MarkSeries,
-    VerticalBarSeries,
+    VerticalBarSeries
 } from 'react-vis';
 
-const TimelineDiagram = (props) => {
+const TimelineDiagram = props => {
 
-    const { data, color, month } = props;
+    const { data, color } = props;
 
-    const _forgetValue = () => {
-        console.log("qoehlqhl")
+    const forgetValue = () => {
         setPoint("");
     };
 
     const [point, setPoint] = useState("");
 
-    const _rememberValue = (value, { event }) => {
+    const rememberValue = (value, { event }) => {
         event.stopPropagation();
-        _forgetValue();
+        forgetValue();
         setPoint(value);
     };
 
     useEffect(() => {
-        _forgetValue();
-    }, [month])
+        forgetValue();
+    }, [data]);
 
     return (
         <>
             <XYPlot xType="time" width={400} height={300} margin={{ left: 60, bottom: 50 }}
-                onClick={_forgetValue}>
+                onClick={forgetValue}>
                 <HorizontalGridLines />
                 <VerticalGridLines />
                 <XAxis tickLabelAngle={-45} />
@@ -44,14 +44,14 @@ const TimelineDiagram = (props) => {
                 <VerticalBarSeries
                     color={color}
                     data={data}
-                    onValueClick={_rememberValue}
-                    style={{ "cursor": "pointer" }}
+                    onValueClick={rememberValue}
+                    style={{ cursor: "pointer" }}
                 />
                 {point ?
                     <MarkSeries
                         data={[{ ...point, size: 5 }]}>
-                    </MarkSeries>
-                    : null}
+                    </MarkSeries> :
+                    null}
                 {point ? (
                     <Hint
                         value={point}
@@ -62,8 +62,13 @@ const TimelineDiagram = (props) => {
                 ) : null}
             </XYPlot>
         </>
-    )
+    );
 
-}
+};
+
+TimelineDiagram.propTypes = {
+    data: PropTypes.object,
+    color: PropTypes.string
+};
 
 export default TimelineDiagram;

@@ -1,28 +1,47 @@
-import React, { useState } from 'react';
-
+import React, { useEffect } from "react";
+import { useState } from "react";
 import { DatePicker } from 'antd';
+import axios from "axios";
+import PropTypes from 'prop-types';
+import { useParams } from "react-router-dom";
+import { DiscreteColorLegend } from 'react-vis';
 import '../../../node_modules/react-vis/dist/style.css';
-import {
-    DiscreteColorLegend,
-} from 'react-vis';
 
-import mock_country_timeline from "../../mock-country-timeline";
+import TimelineGraph from "../TimelineGraph";
 import TimelineDiagram from "../TimelineDiagram";
 
-import './CountryTimeline.css';
+import "./CountryTimeline.css";
+import RadialDiagram from "../RadialDiagram";
 
-const dates = Object.keys(mock_country_timeline);
-const COLORS = ['blue', 'red', 'green'];
-const ITEMS = ['Total cases', 'Total Deaths', 'Total recoveries'];
+const COLORS = ["blue", "red", "green"];
+const ITEMS = ["Выявлено заболевших", "Человек умерло", "Человек выздоровело"];
 
-const CountryTimeline = () => {
-  const [currentMonth, setCurrenMonth] = useState('');
+const CountryTimeline = props => {
 
-    const [currentMonth, setCurrenMonth] = useState(7)
+    const [currentMonth, setCurrenMonth] = useState(7);
+    const { info } = props;
+
+    const { id } = useParams();
+
+    const [timeline, setTimeline] = useState({});
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        setIsLoading(true);
+
+        axios.get(`https://api.thevirustracker.com/free-api?countryTimeline=${id}`)
+            .then(res => {
+                setTimeline(res.data.timelineitems[0]);
+            })
+            .finally(() => {
+                setIsLoading(false);
+            });
+    }, [id]);
+
 
     const onMonthChange = date => {
-        setCurrenMonth(date ? date.month() : 0)
-    }
+        setCurrenMonth(date ? date.month() : 0);
+    };
 
   dates
     .filter((date) => !currentMonth || currentMonth === new Date(date).getMonth())
@@ -32,34 +51,50 @@ const CountryTimeline = () => {
       total_recoveries.push({ x: new Date(date).getTime(), y: mock_country_timeline[date].total_recoveries });
     });
 
-  return (
-    <>
-      <DatePicker onChange={onMonthChange} picker="month" />
-      <XYPlot xType="time" width={550} height={300} margin={{ left: 60, bottom: 50 }}>
-        <HorizontalGridLines />
-        <VerticalGridLines />
-        <XAxis tickLabelAngle={-45} />
-        <YAxis />
+    if (!isLoading) {
+        Object.keys(timeline)
+            .filter(date => !currentMonth || currentMonth === new Date(date).getMonth())
+            .forEach(date => {
+                total_cases.push({ x: new Date(date).getTime(), y: timeline[date].total_cases });
+                total_deaths.push({ x: new Date(date).getTime(), y: timeline[date].total_deaths });
+                total_recoveries.push({ x: new Date(date).getTime(), y: timeline[date].total_recoveries });
+            });
+    }
 
     return (
         <>
-            <div className="timeline__panel">
-                <DatePicker onChange={onMonthChange} picker="month" />
-                <DiscreteColorLegend
-                    className="color-legend"
-                    width={300}
-                    items={ITEMS}
-                    colors={COLORS}
-                    orientation="horizontal" />
+            <div className="timeline-stat">
+                <div className="timeline-stat__graph">
+                    {!isLoading ?
+                        <TimelineGraph timeline={timeline} /> : null}
+                </div>
+                <div>
+                    <RadialDiagram info={info} />
+                </div>
             </div>
-            <div className="timeline__diagrams">
-                <TimelineDiagram data={total_cases} color="blue" month={currentMonth} className="diagram" />
-                <TimelineDiagram data={total_deaths} color="red" month={currentMonth} className="diagram" />
-                <TimelineDiagram data={total_recoveries} color="green" month={currentMonth} className="diagram" />
-            </div>
+            {!isLoading ?
+                <div className="timeline-panel">
+                    <DatePicker onChange={onMonthChange} picker="month" className="timeline-panel__date" />
+                    <DiscreteColorLegend
+                        className="timeline-panel__legend"
+                        width={500}
+                        items={ITEMS}
+                        colors={COLORS}
+                        orientation="horizontal" />
+                </div> : null}
+            {!isLoading ?
+                <div className="timeline-diagrams">
+                    <TimelineDiagram data={total_cases} color="blue" className="diagram" />
+                    <TimelineDiagram data={total_deaths} color="red" className="diagram" />
+                    <TimelineDiagram data={total_recoveries} color="green" className="diagram" />
+                </div> : null}
             <br />
         </>
     );
+};
+
+CountryTimeline.propTypes = {
+    info: PropTypes.object
 };
 
 export default CountryTimeline;

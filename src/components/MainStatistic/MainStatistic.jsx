@@ -6,20 +6,16 @@ import './MainStatistic.css';
 const MainStatistic = (props) => {
   const numberWithCommas = (x) => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
-  const { info } = props;
-  const {
-    total_cases: totalCases,
-    total_deaths,
-    total_recovered,
-    total_new_cases_today,
-    total_new_deaths_today,
-    total_serious_cases,
-  } = info;
-
-  return (
-    <>
-      <article className="main-stat">
-        <h2 className="main-stat__header">Статистика за все время</h2>
+const MainStatistic = props => {
+    const numberWithCommas = x => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    const {
+        total_cases,
+        total_deaths,
+        total_recovered,
+        total_new_cases_today,
+        total_new_deaths_today,
+        total_serious_cases
+    } = props.info;
 
         <div className="stat-cards-wrapper">
           <section className="main-stat__card">
@@ -64,14 +60,14 @@ const MainStatistic = (props) => {
 };
 
 MainStatistic.propTypes = {
-  info: {
-    total_cases: PropTypes.number,
-    total_deaths: PropTypes.number,
-    total_recovered: PropTypes.number,
-    total_new_cases_today: PropTypes.number,
-    total_new_deaths_today: PropTypes.number,
-    total_serious_cases: PropTypes.number,
-  },
+    info: {
+        total_cases: PropTypes.number,
+        total_deaths: PropTypes.number,
+        total_recovered: PropTypes.number,
+        total_new_cases_today: PropTypes.number,
+        total_new_deaths_today: PropTypes.number,
+        total_serious_cases: PropTypes.number
+    }
 };
 
 export default MainStatistic;

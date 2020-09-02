@@ -1,16 +1,23 @@
-.color-legend {
-    margin: 0 auto 0 auto
-}
-
-.timeline__panel {
+.timeline-panel {
     display: flex;
+    justify-content: center;
 }
 
-.timeline__diagrams {
+.timeline-panel__legend {
+    margin: 0 0 0 16px;
+}
+
+.timeline-diagrams {
     display: flex;
     justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
-.timeline__diagrams .diagram {
-   width: 30%;
+.timeline-diagrams .diagram {
+    width: 30%;
+}
+
+.timeline-stat {
+    display: flex;
+    justify-content: space-evenly;
 }
