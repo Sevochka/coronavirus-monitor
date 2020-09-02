@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-
 import axios from 'axios';
-import CardMainStat from '../../components/MainStatistic';
+import CardMainStat from 'components/MainStatistic';
 
 const Main = () => {
   const [info, setInfo] = useState({});
@@ -23,7 +22,6 @@ const Main = () => {
   return (
     <>
       {!isLoading ? <CardMainStat info={info} /> : null}
-      <br />
     </>
   );
 };

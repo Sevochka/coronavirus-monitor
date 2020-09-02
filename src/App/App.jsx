@@ -1,8 +1,9 @@
+/* eslint-disable react/jsx-filename-extension */
 import React from 'react';
-import './App.scss';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import routes from './routes';
+import Navbar from 'components/Navbar';
+import routes from 'routes';
+import './App.scss';
 
 const App = () => {
   const routesComponents = routes.map((route) => (

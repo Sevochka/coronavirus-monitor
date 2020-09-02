@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Table } from 'antd';
+import axios from 'axios';
 
 import './TableStat.scss';
-import axios from 'axios';
 
 const TableStat = () => {
   const history = useHistory();

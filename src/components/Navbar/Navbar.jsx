@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import { Menu } from 'antd';
-
+import { Link } from 'react-router-dom';
+import { routesMap } from 'routes';
 import VirusSvg from 'assets/virus.svg';
 import StatSvg from 'assets/statistics.svg';
 import InfoSvg from 'assets/info.svg';
-import { Link } from 'react-router-dom';
-
-import { routesMap } from '../../routes';
 import './Navbar.scss';
 
 const Navbar = () => {

@@ -5,7 +5,7 @@
         "paths": ["src"]
       }
     }
-},
+  },
     "extends": [
       "react-app",
       "prettier",
@@ -16,7 +16,10 @@
         1,
         "prefer-double"
       ],
-      "linebreak-style": ["error", "windows"]
+      "linebreak-style": ["error", "windows"],
+      "import/order": ["error", {
+        "groups": ["builtin", "index", "external", "parent", "sibling"]
+        }]
     },
     "plugins": [
       "prettier"

@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from 'react';
-
 import { DatePicker } from 'antd';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import { DiscreteColorLegend } from 'react-vis';
 import '../../../node_modules/react-vis/dist/style.css';
-
-import TimelineGraph from '../TimelineGraph';
-import TimelineDiagram from '../TimelineDiagram';
-
+import TimelineGraph from 'components/TimelineGraph';
+import TimelineDiagram from 'components/TimelineDiagram';
+import RadialDiagram from 'components/RadialDiagram';
 import './CountryTimeline.scss';
-import RadialDiagram from '../RadialDiagram';
 
 const COLORS = ['blue', 'red', 'green'];
 const ITEMS = ['Выявлено заболевших', 'Человек умерло', 'Человек выздоровело'];

@@ -1,8 +1,8 @@
+import CountryPage from 'pages/CountryPage';
 import Information from 'pages/Information';
 import Statistic from 'pages/Statistic';
 import Main from 'pages/Main';
 import Page404 from 'pages/Error404';
-import CountryPage from '../pages/CountryPage';
 
 const routes = [{
   name: 'home',
