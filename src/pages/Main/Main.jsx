@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
 import CardMainStat from '../../components/MainStatistic';
-import './Main.css';
 import axios from 'axios';
 
 const Main = () => {

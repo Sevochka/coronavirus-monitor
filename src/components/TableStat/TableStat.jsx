@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Table } from 'antd';
 
-import "./TableStat.css";
+import "./TableStat.scss";
 import axios from 'axios';
 
 const TableStat = () => {

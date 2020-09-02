@@ -7,7 +7,7 @@ import InfoSvg from 'assets/info.svg';
 import { Link } from 'react-router-dom';
 
 import { routesMap } from '../../routes';
-import './Navbar.css';
+import './Navbar.scss';
 
 const Navbar = () => {
   const [current, setCurrent] = useState('mail');
@@ -18,21 +18,21 @@ const Navbar = () => {
 
   return (
     <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal" theme="dark" className="nav-menu">
-      <Menu.Item key="coronavirus" className="menu-item">
+      <Menu.Item key="coronavirus" className="nav-menu__item">
         <Link to={routesMap.home}>
-          <img src={VirusSvg} alt="Virus icon" className="icon" />
+          <img src={VirusSvg} alt="Virus icon" className="nav-menu__icon" />
           Коронавирус
         </Link>
       </Menu.Item>
-      <Menu.Item key="stat" className="menu-item">
+      <Menu.Item key="stat" className="nav-menu__item">
         <Link to={routesMap.statistic}>
-          <img src={StatSvg} alt="Stat icon" className="icon" />
+          <img src={StatSvg} alt="Stat icon" className="nav-menu__icon" />
           Статистика
         </Link>
       </Menu.Item>
-      <Menu.Item key="info" className="menu-item">
+      <Menu.Item key="info" className="nav-menu__item">
         <Link to={routesMap.information}>
-          <img src={InfoSvg} alt="Information icon" className="icon" />
+          <img src={InfoSvg} alt="Information icon" className="nav-menu__icon" />
           Информация
         </Link>
       </Menu.Item>

@@ -1,11 +1,12 @@
 .ant-collapse{
 	border-radius: 10px !important;
 	overflow: auto;
-	max-height: 70vh;
-}
-.ant-collapse-header{
-    font-weight: 500;
-    font-size: 15px;
+    max-height: 70vh;
+    
+    &-header{
+        font-weight: 500;
+        font-size: 15px;
+    }
 }
 
 .hr-circle {
@@ -20,4 +21,3 @@
 	box-sizing: border-box;
 	color: orange;
 }
-
