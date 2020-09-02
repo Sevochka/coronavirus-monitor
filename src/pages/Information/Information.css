@@ -1,5 +1,7 @@
 .ant-collapse{
-    border-radius: 10px !important;
+	border-radius: 10px !important;
+	overflow: auto;
+	max-height: 70vh;
 }
 .ant-collapse-header{
     font-weight: 500;
