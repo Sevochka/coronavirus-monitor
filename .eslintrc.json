@@ -1,29 +1,23 @@
 {
-    "env": {
-        "browser": true,
-        "es2020": true
-    },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["src"]
+      }
+    }
+},
     "extends": [
-        "react-app", "airbnb"
-    ],
-    "settings": {
-        "import/resolver": {
-          "node": {
-            "paths": ["src"]
-          }
-        }
-    },
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "ecmaVersion": 2020,
-        "sourceType": "module"
-    },
-    "plugins": [
-        "react"
+      "react-app",
+      "airbnb",
+      "prettier"
     ],
     "rules": {
-        
-    }
-}
+      "jsx-quotes": [
+        1,
+        "prefer-double"
+      ]
+    },
+    "plugins": [
+      "prettier"
+    ]
+  }

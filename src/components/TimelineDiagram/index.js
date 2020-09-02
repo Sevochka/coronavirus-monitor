@@ -1,3 +1,3 @@
-import TimelineDiagram from "./TimelineDiagram.jsx";
+import TimelineDiagram from "./TimelineDiagram";
 
 export default TimelineDiagram;

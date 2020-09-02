@@ -1,11 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-import './MainStatistic.css';
+import './MainStatistic.css'
 
 const MainStatistic = (props) => {
-  const numberWithCommas = (x) => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-  const { info } = props;
+  const numberWithCommas = (x) =>
+    x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+  const { info } = props
   const {
     total_cases: totalCases,
     total_deaths: totalDeaths,
@@ -13,7 +14,7 @@ const MainStatistic = (props) => {
     total_new_cases_today: totalNewCasesToday,
     total_new_deaths_today: totalNewDeathsToday,
     total_serious_cases: totalSeriousCases,
-  } = info;
+  } = info
 
   return (
     <article className="main-stat">
@@ -22,40 +23,52 @@ const MainStatistic = (props) => {
       <div className="stat-cards-wrapper">
         <section className="main-stat__card">
           <div className="card__part">
-            <span className="part__number number-infected">{numberWithCommas(totalCases)}</span>
+            <span className="part__number number-infected">
+              {numberWithCommas(totalCases)}
+            </span>
             <span className="part__title">Выявлено заболевших</span>
           </div>
           <div className="card__part">
-            <span className="part__number number-infected">{numberWithCommas(totalNewCasesToday)}</span>
+            <span className="part__number number-infected">
+              {numberWithCommas(totalNewCasesToday)}
+            </span>
             <span className="part__title">Выявлено заболевшихза сутки</span>
           </div>
         </section>
 
         <section className="main-stat__card">
           <div className="card__part">
-            <span className="part__number number-death">{numberWithCommas(totalDeaths)}</span>
+            <span className="part__number number-death">
+              {numberWithCommas(totalDeaths)}
+            </span>
             <span className="part__title">Человек умерло</span>
           </div>
           <div className="card__part">
-            <span className="part__number number-death">{numberWithCommas(totalNewDeathsToday)}</span>
+            <span className="part__number number-death">
+              {numberWithCommas(totalNewDeathsToday)}
+            </span>
             <span className="part__title">Человека умерло за сутки</span>
           </div>
         </section>
 
         <section className="main-stat__card">
           <div className="card__part">
-            <span className="part__number number-recovered">{numberWithCommas(totalRecovered)}</span>
+            <span className="part__number number-recovered">
+              {numberWithCommas(totalRecovered)}
+            </span>
             <span className="part__title">Человек выздоровело</span>
           </div>
           <div className="card__part">
-            <span className="part__number number-serious">{numberWithCommas(totalSeriousCases)}</span>
+            <span className="part__number number-serious">
+              {numberWithCommas(totalSeriousCases)}
+            </span>
             <span className="part__title">В тяжелом состоянии</span>
           </div>
         </section>
       </div>
     </article>
-  );
-};
+  )
+}
 
 MainStatistic.propTypes = {
   info: {
@@ -66,10 +79,10 @@ MainStatistic.propTypes = {
     total_new_deaths_today: PropTypes.number,
     total_serious_cases: PropTypes.number,
   },
-};
+}
 
 MainStatistic.defaultProps = {
   info: {},
-};
+}
 
-export default MainStatistic;
+export default MainStatistic

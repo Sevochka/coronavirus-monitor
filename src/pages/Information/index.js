@@ -1,3 +1,3 @@
-import Information from './Information.jsx';
+import Information from './Information';
 
 export default Information;

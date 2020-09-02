@@ -1,3 +1,3 @@
-import CountryPage from "./CountryPage.jsx";
+import CountryPage from "./CountryPage";
 
 export default CountryPage;

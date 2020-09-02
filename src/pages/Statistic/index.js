@@ -1,3 +1,3 @@
-import Statistic from './Statistic.jsx';
+import Statistic from './Statistic';
 
 export default Statistic;

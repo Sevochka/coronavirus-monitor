@@ -1,3 +1,3 @@
-import TimelineGraph from './TimelineGraph.jsx';
+import TimelineGraph from './TimelineGraph';
 
 export default TimelineGraph;

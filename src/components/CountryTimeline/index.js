@@ -1,3 +1,3 @@
-import CountryTimeline from "./CountryTimeline.jsx";
+import CountryTimeline from "./CountryTimeline";
 
 export default CountryTimeline;
