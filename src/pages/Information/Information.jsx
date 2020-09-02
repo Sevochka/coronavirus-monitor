@@ -1,7 +1,7 @@
 import React from 'react';
 import { Collapse } from 'antd';
 
-import './Information.css';
+import './Information.scss';
 
 const { Panel } = Collapse;
 
@@ -163,7 +163,6 @@ const Information = () => (
         </Collapse>
       </Panel>
     </Collapse>
-    ,
   </>
 );
 

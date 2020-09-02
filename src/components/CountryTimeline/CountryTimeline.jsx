@@ -10,7 +10,7 @@ import '../../../node_modules/react-vis/dist/style.css';
 import TimelineGraph from '../TimelineGraph';
 import TimelineDiagram from '../TimelineDiagram';
 
-import './CountryTimeline.css';
+import './CountryTimeline.scss';
 import RadialDiagram from '../RadialDiagram';
 
 const COLORS = ['blue', 'red', 'green'];
