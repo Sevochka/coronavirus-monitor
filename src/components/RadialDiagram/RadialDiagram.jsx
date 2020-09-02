@@ -11,9 +11,7 @@ const RadialDiagram = (props) => {
     { angle: info.total_recovered, color: 'green' },
   ];
 
-  return (
-    <RadialChart width={300} height={300} data={data} colorType="literal" radius={120} innerRadius={80} />
-  );
+  return <RadialChart width={300} height={300} data={data} colorType="literal" radius={120} innerRadius={80} />;
 };
 
 RadialDiagram.propTypes = {

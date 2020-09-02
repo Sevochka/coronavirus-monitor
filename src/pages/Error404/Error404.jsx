@@ -1,10 +1,15 @@
 import React from 'react';
 
-import E404 from 'components/errors/404';
+import { Alert } from 'antd';
+import { Link } from 'react-router-dom';
 
 const Error404 = () => (
   <>
-    <E404 />
+    <Alert
+      message="Ошибка 404, страницы не существует"
+      description={<Link to="/">Вернуться домой</Link>}
+      type="error"
+    />
   </>
 );
 

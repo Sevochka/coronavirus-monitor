@@ -1,3 +1,3 @@
-import CountryPage from "./CountryPage";
+import CountryPage from './CountryPage';
 
 export default CountryPage;

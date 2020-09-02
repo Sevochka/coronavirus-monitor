@@ -1,12 +1,11 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import './MainStatistic.scss';
 
 const MainStatistic = (props) => {
-  const numberWithCommas = (x) =>
-    x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-  const { info } = props
+  const numberWithCommas = (x) => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  const { info } = props;
   const {
     total_cases: totalCases,
     total_deaths: totalDeaths,
@@ -14,7 +13,7 @@ const MainStatistic = (props) => {
     total_new_cases_today: totalNewCasesToday,
     total_new_deaths_today: totalNewDeathsToday,
     total_serious_cases: totalSeriousCases,
-  } = info
+  } = info;
 
   return (
     <article className="main-stat">
@@ -55,22 +54,15 @@ const MainStatistic = (props) => {
         </section>
       </div>
     </article>
-  )
-}
+  );
+};
 
 MainStatistic.propTypes = {
-  info: {
-    total_cases: PropTypes.number,
-    total_deaths: PropTypes.number,
-    total_recovered: PropTypes.number,
-    total_new_cases_today: PropTypes.number,
-    total_new_deaths_today: PropTypes.number,
-    total_serious_cases: PropTypes.number,
-  },
-}
+  info: PropTypes.oneOfType([PropTypes.object]),
+};
 
 MainStatistic.defaultProps = {
   info: {},
-}
+};
 
-export default MainStatistic
+export default MainStatistic;

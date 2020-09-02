@@ -6,12 +6,7 @@ import routes from './routes';
 
 const App = () => {
   const routesComponents = routes.map((route) => (
-    <Route
-      path={route.url}
-      component={route.component}
-      exact={route.exact}
-      key={route.url}
-    />
+    <Route path={route.url} component={route.component} exact={route.exact} key={route.url} />
   ));
 
   return (
@@ -22,6 +17,6 @@ const App = () => {
       </div>
     </Router>
   );
-}
+};
 
 export default App;

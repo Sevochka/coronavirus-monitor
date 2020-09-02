@@ -1,3 +1,3 @@
-import RadialDiagram from "./RadialDiagram";
+import RadialDiagram from './RadialDiagram';
 
 export default RadialDiagram;

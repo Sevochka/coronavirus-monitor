@@ -1,74 +1,62 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { useState, useEffect } from "react";
 
 import {
-    XYPlot,
-    XAxis,
-    YAxis,
-    HorizontalGridLines,
-    VerticalGridLines,
-    Hint,
-    MarkSeries,
-    VerticalBarSeries
+  XYPlot,
+  XAxis,
+  YAxis,
+  HorizontalGridLines,
+  VerticalGridLines,
+  Hint,
+  MarkSeries,
+  VerticalBarSeries,
 } from 'react-vis';
 
-const TimelineDiagram = props => {
+const TimelineDiagram = (props) => {
+  const { data, color } = props;
+  const [point, setPoint] = useState('');
 
-    const { data, color } = props;
+  const forgetValue = () => {
+    setPoint('');
+  };
 
-    const forgetValue = () => {
-        setPoint("");
-    };
+  const rememberValue = (value, { event }) => {
+    event.stopPropagation();
+    forgetValue();
+    setPoint(value);
+  };
 
-    const [point, setPoint] = useState("");
+  useEffect(() => {
+    forgetValue();
+  }, [data]);
 
-    const rememberValue = (value, { event }) => {
-        event.stopPropagation();
-        forgetValue();
-        setPoint(value);
-    };
-
-    useEffect(() => {
-        forgetValue();
-    }, [data]);
-
-    return (
-        <>
-            <XYPlot xType="time" width={400} height={300} margin={{ left: 60, bottom: 50 }}
-                onClick={forgetValue}>
-                <HorizontalGridLines />
-                <VerticalGridLines />
-                <XAxis tickLabelAngle={-45} />
-                <YAxis />
-                <VerticalBarSeries
-                    color={color}
-                    data={data}
-                    onValueClick={rememberValue}
-                    style={{ cursor: "pointer" }}
-                />
-                {point ?
-                    <MarkSeries
-                        data={[{ ...point, size: 5 }]}>
-                    </MarkSeries> :
-                    null}
-                {point ? (
-                    <Hint
-                        value={point}
-                        align={{ horizontal: Hint.ALIGN.AUTO, vertical: Hint.ALIGN.AUTO }}
-                    >
-                        <div className="rv-hint__content">{`${new Date(point.x).toDateString()}, ${point.y} чел.`}</div>
-                    </Hint>
-                ) : null}
-            </XYPlot>
-        </>
-    );
-
+  return (
+    <>
+      <XYPlot xType="time" width={400} height={300} margin={{ left: 60, bottom: 50 }} onClick={forgetValue}>
+        <HorizontalGridLines />
+        <VerticalGridLines />
+        <XAxis tickLabelAngle={-45} />
+        <YAxis />
+        <VerticalBarSeries color={color} data={data} onValueClick={rememberValue} style={{ cursor: 'pointer' }} />
+        {point ? <MarkSeries data={[{ ...point, size: 5 }]} /> : null}
+        {point ? (
+          <Hint value={point} align={{ horizontal: Hint.ALIGN.AUTO, vertical: Hint.ALIGN.AUTO }}>
+            <div className="rv-hint__content">{`${new Date(point.x).toDateString()}, ${point.y} чел.`}</div>
+          </Hint>
+        ) : null}
+      </XYPlot>
+    </>
+  );
 };
 
 TimelineDiagram.propTypes = {
-    data: PropTypes.object,
-    color: PropTypes.string
+  data: PropTypes.oneOfType([PropTypes.array]),
+  color: PropTypes.string,
+};
+
+TimelineDiagram.defaultProps = {
+  data: [],
+  color: '',
 };
 
 export default TimelineDiagram;
