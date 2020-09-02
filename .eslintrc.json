@@ -4,9 +4,15 @@
         "es2020": true
     },
     "extends": [
-        "airbnb",
-        "react-app"
+        "react-app", "airbnb"
     ],
+    "settings": {
+        "import/resolver": {
+          "node": {
+            "paths": ["src"]
+          }
+        }
+    },
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true

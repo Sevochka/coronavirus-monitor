@@ -5,10 +5,10 @@ import TableStat from '../../components/TableStat';
 import './Statistic.css';
 
 const Statistic = () => (
-    <>
-        <TableStat/>
-        <br />
-    </>
+  <>
+    <TableStat />
+    <br />
+  </>
 );
 
 export default Statistic;

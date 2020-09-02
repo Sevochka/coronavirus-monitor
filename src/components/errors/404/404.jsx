@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Alert } from 'antd';
-import { routesMap } from '../../../routes';
+import { routesMap } from 'routes';
 
 const E404 = () => (
   <>
