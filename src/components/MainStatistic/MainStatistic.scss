@@ -1,40 +1,46 @@
 
 /* Статистика */
 
-.main-stat{
-    &__header{
-        text-align: center;
-        font-size: 40px;
-    }
-    &__wrapper{
-        display: flex;
-        justify-content: space-around;
-    }
-    .stat-part{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+.main-stat {
+  &__header {
+    font-size: 40px;
+    text-align: center;
+  }
 
-        &__number{
-            font-size: 50px;
-            font-weight: 700;
-        }
-        &__title{
-            font-size: 16px;
-            font-weight: 700;
-        }
+  &__wrapper {
+    display: flex;
+    justify-content: space-around;
+  }
 
-        .number-infected{
-            color: #1877f2;
-        }
-        .number-death{
-            color: #fb3938;
-        }
-        .number-recovered{
-            color: #3aa969;
-        }
-        .number-serious{
-            color: #9191ac;
-        }
+  .stat-part {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+    &__number {
+      font-size: 50px;
+      font-weight: 700;
     }
+
+    &__title {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .number-infected {
+      color: #1877f2;
+    }
+
+    .number-death {
+      color: #fb3938;
+    }
+
+    .number-recovered {
+      color: #3aa969;
+    }
+
+    .number-serious {
+      color: #9191ac;
+    }
+  }
 }

@@ -1,23 +1,22 @@
 .ant-collapse {
-	border-radius: 10px;
-	overflow: auto;
-	max-height: 70vh;
+  border-radius: 10px;
+  max-height: 70vh;
+  overflow: auto;
 
-	&-header {
-		font-weight: 500;
-		font-size: 15px;
-	}
+  &-header {
+    font-size: 15px;
+    font-weight: 500;
+  }
 }
 
 .hr-circle {
-	margin: 20px 0;
-	padding: 0;
-	height: 0;
-	border: none;
-	border-width: 0 0 5px;
-	border-style: solid;
-	border-image: url('../../assets/horizontalRule.svg') 0 0 100% repeat;
-	background-position: 50%;
-	box-sizing: border-box;
-	color: orange;
+  background-position: 50%;
+  border-image: url('../../assets/horizontalRule.svg') 0 0 100% repeat;
+  border-style: solid;
+  border-width: 0 0 5px;
+  box-sizing: border-box;
+  color: 'orange';
+  height: 0;
+  margin: 20px 0;
+  padding: 0;
 }
