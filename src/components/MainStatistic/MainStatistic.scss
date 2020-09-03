@@ -5,10 +5,9 @@
         text-align: center;
         font-size: $large-font;
     }
-
-    &__title {
-      font-size: 16px;
-      font-weight: 700;
+    &__wrapper{
+        display: flex;
+        justify-content: space-around;
     }
     .stat-part{
         display: flex;
@@ -36,13 +35,4 @@
             color: $gray;
         }
     }
-
-    .number-recovered {
-      color: #3aa969;
-    }
-
-    .number-serious {
-      color: #9191ac;
-    }
-  }
 }
