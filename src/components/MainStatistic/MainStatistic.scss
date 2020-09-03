@@ -1,10 +1,9 @@
-
-/* Статистика */
+@import 'shared.scss';
 
 .main-stat{
     &__header{
         text-align: center;
-        font-size: 40px;
+        font-size: $large-font;
     }
     &__wrapper{
         display: flex;
@@ -14,27 +13,26 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        font-weight: $bold;
 
         &__number{
-            font-size: 50px;
-            font-weight: 700;
+            font-size: $x-large-font;
         }
         &__title{
-            font-size: 16px;
-            font-weight: 700;
+            font-size: $tiny-font;
         }
 
         .number-infected{
-            color: #1877f2;
+            color: $blue;
         }
         .number-death{
-            color: #fb3938;
+            color: $red;
         }
         .number-recovered{
-            color: #3aa969;
+            color: $green;
         }
         .number-serious{
-            color: #9191ac;
+            color: $gray;
         }
     }
 }

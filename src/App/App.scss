@@ -1,9 +1,10 @@
+@import 'shared.scss';
+
 .app-container {
-    margin: auto;
-    margin-top: 20px;
-    padding: 20px;
-    border: 2px solid rgba(206, 212, 218, 0.6);
+    margin: $large auto 0;
+    padding: $large;
+    border: 2px solid $content-border-color;
+    background: $content-background-color;
+    width: $content-width;
     border-radius: 10px;
-    background: rgba(255, 250, 250, 0.6);
-    width: 90vw;
 }

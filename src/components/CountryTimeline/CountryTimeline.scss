@@ -1,9 +1,11 @@
+@import 'shared.scss';
+
 .timeline-panel {
     display: flex;
     justify-content: center;
 
     &__legend{
-        margin: 0 0 0 16px;
+        margin: 0 0 0 $medium;
     }
 }
 
