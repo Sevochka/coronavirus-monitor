@@ -62,8 +62,11 @@
     }
   },
   "lint-staged": {
-    "*.{js, jsx}": [
-      "eslint src/**/*.js[x] --max-warnings=0"
+    "src/**/*.{js,jsx}": [
+      "eslint . --max-warnings=0"
+    ],
+    "src/**/*.scss": [
+      "stylelint --max-warnings 0"
     ]
   }
 }

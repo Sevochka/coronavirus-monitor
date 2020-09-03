@@ -1,12 +1,12 @@
-@import 'shared.scss';
+@import 'shared';
 
 .timeline-panel {
   display: flex;
   justify-content: center;
 
-    &__legend{
-        margin: 0 0 0 $medium;
-    }
+  &__legend {
+    margin: 0 0 0 $medium;
+  }
 }
 
 .timeline-diagrams {

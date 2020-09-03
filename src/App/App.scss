@@ -1,10 +1,10 @@
-@import 'shared.scss';
+@import 'shared';
 
 .app-container {
-    margin: $large auto 0;
-    padding: $large;
-    border: 2px solid $content-border-color;
-    background: $content-background-color;
-    width: $content-width;
-    border-radius: 10px;
+  background: $content-background-color;
+  border: 2px solid $content-border-color;
+  border-radius: 10px;
+  margin: $large auto 0;
+  padding: $large;
+  width: $content-width;
 }

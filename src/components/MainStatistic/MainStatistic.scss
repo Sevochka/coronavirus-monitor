@@ -1,38 +1,44 @@
-@import 'shared.scss';
+@import 'shared';
 
-.main-stat{
-    &__header{
-        text-align: center;
-        font-size: $large-font;
-    }
-    &__wrapper{
-        display: flex;
-        justify-content: space-around;
-    }
-    .stat-part{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        font-weight: $bold;
+.main-stat {
+  &__header {
+    font-size: $large-font;
+    text-align: center;
+  }
 
-        &__number{
-            font-size: $x-large-font;
-        }
-        &__title{
-            font-size: $tiny-font;
-        }
+  &__wrapper {
+    display: flex;
+    justify-content: space-around;
+  }
 
-        .number-infected{
-            color: $blue;
-        }
-        .number-death{
-            color: $red;
-        }
-        .number-recovered{
-            color: $green;
-        }
-        .number-serious{
-            color: $gray;
-        }
+  .stat-part {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    font-weight: $bold;
+
+    &__number {
+      font-size: $x-large-font;
     }
+
+    &__title {
+      font-size: $tiny-font;
+    }
+
+    .number-infected {
+      color: $blue;
+    }
+
+    .number-death {
+      color: $red;
+    }
+
+    .number-recovered {
+      color: $green;
+    }
+
+    .number-serious {
+      color: $gray;
+    }
+  }
 }

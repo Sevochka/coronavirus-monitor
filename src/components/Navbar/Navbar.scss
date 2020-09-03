@@ -1,21 +1,22 @@
-@import 'shared.scss';
+@import 'shared';
 
-.nav-menu{
-    display: flex;
-    justify-content: center;
+.nav-menu {
+  align-items: center;
+  background: rgba(0, 123, 255, 0.5);
+  border-bottom: 5px solid rgba(5, 78, 156, 0.6);
+  display: flex;
+  font-size: $medium-font;
+  font-weight: $normal;
+  justify-content: center;
+  line-height: 50px;
+
+  &__item {
     align-items: center;
-    background: rgba(0,123,255, 0.5);
-    border-bottom: 5px solid rgba(5, 78, 156, 0.6);
-    line-height: 50px;
-    font-size: $medium-font;
-    font-weight: $normal;
+    display: flex;
+  }
 
-    &__item{
-        display: flex;
-        align-items: center;
-    }
-    &__icon{
-        width: 30px;
-        margin-right: $tiny;
-    }
+  &__icon {
+    margin-right: $tiny;
+    width: 30px;
+  }
 }
