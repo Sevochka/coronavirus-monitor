@@ -1,8 +1,8 @@
 @import 'shared.scss';
 
 .timeline-panel {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 
     &__legend{
         margin: 0 0 0 $medium;
@@ -10,16 +10,16 @@
 }
 
 .timeline-diagrams {
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 
-    .diagram {
-        width: 30%;
-    }
+  .diagram {
+    width: 30%;
+  }
 }
 
 .timeline-stat {
-    display: flex;
-    justify-content: space-evenly;
+  display: flex;
+  justify-content: space-evenly;
 }
