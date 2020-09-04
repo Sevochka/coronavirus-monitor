@@ -15,7 +15,7 @@ const Navbar = () => {
   };
 
   return (
-    <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal" className="nav-menu">
+    <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal" className="nav-menu" theme="dark">
       <Menu.Item key="coronavirus" className="nav-menu__item">
         <Link to={routesMap.home}>
           <img src={VirusSvg} alt="Virus icon" className="nav-menu__icon" />
