@@ -8,6 +8,8 @@
     "@testing-library/user-event": "^7.2.1",
     "antd": "^4.6.1",
     "axios": "^0.20.0",
+    "mobx": "^5.15.6",
+    "mobx-react": "^6.3.0",
     "node-sass": "^4.14.1",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
@@ -24,8 +26,8 @@
     "precommit": "lint-staged",
     "lint": "eslint src/**/*.js[x]",
     "lint:fix": "eslint src/**/*.js[x] --fix",
-    "stylelint":"stylelint src/**/*.scss",
-    "stylelint:fix":"stylelint src/**/*.scss --fix"
+    "stylelint": "stylelint src/**/*.scss",
+    "stylelint:fix": "stylelint src/**/*.scss --fix"
   },
   "eslintConfig": {
     "extends": "react-app"
