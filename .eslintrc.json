@@ -19,7 +19,8 @@
       "linebreak-style": ["error", "windows"],
       "import/order": ["error", {
         "groups": ["builtin", "index", "external", "parent", "sibling"]
-        }]
+        }],
+      "object-curly-newline": ["error", {"ImportDeclaration": "never"}]
     },
     "plugins": [
       "prettier"

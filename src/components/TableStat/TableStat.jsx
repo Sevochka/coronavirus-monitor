@@ -22,7 +22,7 @@ const TableStat = inject('store')(
           <Table
             className="table"
             columns={columns}
-            dataSource={Object.values(store.allCountryStat).map((el) => ({ ...el, key: el.ourid }))}
+            dataSource={store.tableData}
             onRow={(record) => ({
               onClick: () => {
                 history.push(`/country/${record.code}`);

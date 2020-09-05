@@ -1,4 +1,4 @@
-import { action, decorate, observable } from 'mobx';
+import { action, computed, decorate, observable } from 'mobx';
 import axios from 'axios';
 
 class CountryStore {
@@ -45,6 +45,10 @@ class CountryStore {
       })
       .catch((err) => err);
   };
+
+  get tableData() {
+    return Object.values(this.allCountryStat).map((el) => ({ ...el, key: el.ourid }));
+  }
 }
 
 decorate(CountryStore, {
@@ -52,6 +56,7 @@ decorate(CountryStore, {
   allCountryStat: observable,
   countryTotalStat: observable,
   countryTimelineStat: observable,
+  tableData: computed,
   loadGlobalStat: action,
   loadAllCountryStat: action,
   loadCountryTotalStat: action,
