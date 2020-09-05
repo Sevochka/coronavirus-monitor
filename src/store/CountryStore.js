@@ -6,6 +6,10 @@ class CountryStore {
 
   allCountryStat = null;
 
+  countryTotalStat = null;
+
+  countryTimelineStat = null;
+
   loadGlobalStat = () => {
     axios
       .get('https://api.thevirustracker.com/free-api?global=stats')
@@ -23,13 +27,35 @@ class CountryStore {
       })
       .catch((err) => err);
   };
+
+  loadCountryTotalStat = (id) => {
+    axios
+      .get(`https://api.thevirustracker.com/free-api?countryTotal=${id}`)
+      .then((res) => {
+        [this.countryTotalStat] = res.data.countrydata;
+      })
+      .catch((err) => err);
+  };
+
+  loadCountryTimelineStat = (id) => {
+    axios
+      .get(`https://api.thevirustracker.com/free-api?countryTimeline=${id}`)
+      .then((res) => {
+        [this.countryTimelineStat] = res.data.timelineitems;
+      })
+      .catch((err) => err);
+  };
 }
 
 decorate(CountryStore, {
   globalStat: observable,
   allCountryStat: observable,
+  countryTotalStat: observable,
+  countryTimelineStat: observable,
   loadGlobalStat: action,
   loadAllCountryStat: action,
+  loadCountryTotalStat: action,
+  loadCountryTimelineStat: action,
 });
 
 export default CountryStore;

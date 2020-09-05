@@ -1,39 +1,29 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
 import MainStatistic from 'components/MainStatistic';
 import CountryTimeline from 'components/CountryTimeline';
+import { inject, observer } from 'mobx-react';
 
-const CountryPage = () => {
-  const { id } = useParams();
+const CountryPage = inject('store')(
+  observer(({ store }) => {
+    const { id } = useParams();
 
-  const [info, setInfo] = useState({});
-  const [isLoading, setIsLoading] = useState(true);
+    useEffect(() => {
+      store.loadCountryTotalStat(id);
+    }, [id, store]);
 
-  useEffect(() => {
-    setIsLoading(true);
-
-    axios
-      .get(`https://api.thevirustracker.com/free-api?countryTotal=${id}`)
-      .then((res) => {
-        setInfo(res.data.countrydata[0]);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  }, [id]);
-
-  return (
-    <>
-      <h4>{id}</h4>
-      {!isLoading ? (
-        <>
-          <MainStatistic info={info} />
-          <CountryTimeline info={info} />
-        </>
-      ) : null}
-    </>
-  );
-};
+    return (
+      <>
+        <h4>{id}</h4>
+        {store.countryTotalStat ? (
+          <>
+            <MainStatistic info={store.countryTotalStat} />
+            <CountryTimeline info={store.countryTotalStat} />
+          </>
+        ) : null}
+      </>
+    );
+  }),
+);
 
 export default CountryPage;
