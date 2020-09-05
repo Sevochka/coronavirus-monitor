@@ -1,29 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 import CardMainStat from 'components/MainStatistic';
+import { inject, observer } from 'mobx-react';
 
-const Main = () => {
-  const [info, setInfo] = useState({});
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    setIsLoading(true);
-
-    axios
-      .get('https://api.thevirustracker.com/free-api?global=stats')
-      .then((res) => {
-        setInfo(res.data.results[0]);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  }, []);
-
-  return (
-    <>
-      {!isLoading ? <CardMainStat info={info} /> : null}
-    </>
-  );
-};
+const Main = inject('store')(
+  observer(({ store }) => (
+    <>{store.globalStat ? <CardMainStat info={store.globalStat} /> : null}</>
+  )),
+);
 
 export default Main;

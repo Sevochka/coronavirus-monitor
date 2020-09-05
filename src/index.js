@@ -1,4 +1,5 @@
 /* eslint-disable react/jsx-filename-extension */
+import CountryStore from './store/CountryStore';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
@@ -6,10 +7,17 @@ import 'antd/dist/antd.css';
 import App from 'App/App';
 import * as serviceWorker from 'serviceWorker';
 import './index.scss';
+import { Provider } from 'mobx-react';
+
+const countryStore = new CountryStore();
+
+countryStore.loadGlobalStat();
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={countryStore}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root'),
 );
