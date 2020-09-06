@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { DatePicker } from 'antd';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
@@ -15,48 +15,21 @@ const ITEMS = ['Выявлено заболевших', 'Человек умер
 
 const CountryTimeline = inject('store')(
   observer(({ store, info }) => {
-    const [currentMonth, setCurrenMonth] = useState(7);
     const { id } = useParams();
 
     useEffect(() => {
-      if (!store.countryTimelineStat) {
-        store.loadCountryTimelineStat(id);
-      }
+      store.loadCountryTimelineStat(id);
     }, [id, store]);
 
     const onMonthChange = (date) => {
-      setCurrenMonth(date ? date.month() : 0);
+      store.setCurrentMonth(date ? date.month() : 0);
     };
-    const totalCases = [];
-    const totalDeaths = [];
-    const totalRecoveries = [];
-
-    if (store.countryTimelineStat) {
-      Object.keys(store.countryTimelineStat)
-        .filter((date) => !currentMonth || currentMonth === new Date(date).getMonth())
-        .forEach((date) => {
-          totalCases.push({
-            x: new Date(date).getTime(),
-            y: store.countryTimelineStat[date].total_cases,
-          });
-          totalDeaths.push({
-            x: new Date(date).getTime(),
-            y: store.countryTimelineStat[date].total_deaths,
-          });
-          totalRecoveries.push({
-            x: new Date(date).getTime(),
-            y: store.countryTimelineStat[date].total_recoveries,
-          });
-        });
-    }
 
     return (
       <>
         <div className="timeline-stat">
           <div className="timeline-stat__graph">
-            {store.countryTimelineStat ? (
-              <TimelineGraph timeline={store.countryTimelineStat} />
-            ) : null}
+            {store.countryTimelineStat ? <TimelineGraph /> : null}
           </div>
           <div>
             <RadialDiagram info={info} />
@@ -76,9 +49,14 @@ const CountryTimeline = inject('store')(
         ) : null}
         {store.countryTimelineStat ? (
           <div className="timeline-diagrams">
-            <TimelineDiagram data={totalCases} color="blue" className="diagram" />
-            <TimelineDiagram data={totalDeaths} color="red" className="diagram" />
-            <TimelineDiagram data={totalRecoveries} color="green" className="diagram" />
+            {Object.values(store.countryMonthStat).map((stat, index) => (
+              <TimelineDiagram
+                data={stat}
+                color={COLORS[index]}
+                className="diagram"
+                key={COLORS[index]}
+              />
+            ))}
           </div>
         ) : null}
         <br />

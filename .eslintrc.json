@@ -20,7 +20,7 @@
       "import/order": ["error", {
         "groups": ["builtin", "index", "external", "parent", "sibling"]
         }],
-      "object-curly-newline": ["error", {"ImportDeclaration": "never"}]
+      "object-curly-newline": ["error", {"ImportDeclaration": { "multiline": true }}]
     },
     "plugins": [
       "prettier"

@@ -11,18 +11,20 @@ const RadialDiagram = (props) => {
     { angle: info.total_recovered, color: 'green' },
   ];
 
-  return <RadialChart width={300} height={300} data={data} colorType="literal" radius={120} innerRadius={80} />;
+  return (
+    <RadialChart
+      width={300}
+      height={300}
+      data={data}
+      colorType="literal"
+      radius={120}
+      innerRadius={80}
+    />
+  );
 };
 
 RadialDiagram.propTypes = {
-  info: {
-    total_cases: PropTypes.number,
-    total_deaths: PropTypes.number,
-    total_recovered: PropTypes.number,
-    total_new_cases_today: PropTypes.number,
-    total_new_deaths_today: PropTypes.number,
-    total_serious_cases: PropTypes.number,
-  },
+  info: PropTypes.oneOfType([PropTypes.object]),
 };
 
 RadialDiagram.defaultProps = {

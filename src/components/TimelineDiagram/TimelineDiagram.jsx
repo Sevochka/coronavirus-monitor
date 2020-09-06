@@ -31,16 +31,29 @@ const TimelineDiagram = (props) => {
 
   return (
     <>
-      <XYPlot xType="time" width={400} height={300} margin={{ left: 60, bottom: 50 }} onClick={forgetValue}>
+      <XYPlot
+        xType="time"
+        width={400}
+        height={300}
+        margin={{ left: 60, bottom: 50 }}
+        onClick={forgetValue}
+      >
         <HorizontalGridLines />
         <VerticalGridLines />
         <XAxis tickLabelAngle={-45} />
         <YAxis />
-        <VerticalBarSeries color={color} data={data} onValueClick={rememberValue} style={{ cursor: 'pointer' }} />
+        <VerticalBarSeries
+          color={color}
+          data={data}
+          onValueClick={rememberValue}
+          style={{ cursor: 'pointer' }}
+        />
         {point ? <MarkSeries data={[{ ...point, size: 5 }]} /> : null}
         {point ? (
           <Hint value={point} align={{ horizontal: Hint.ALIGN.AUTO, vertical: Hint.ALIGN.AUTO }}>
-            <div className="rv-hint__content">{`${new Date(point.x).toDateString()}, ${point.y} чел.`}</div>
+            <div className="rv-hint__content">
+              {`${new Date(point.x).toDateString()}, ${point.y} чел.`}
+            </div>
           </Hint>
         ) : null}
       </XYPlot>
