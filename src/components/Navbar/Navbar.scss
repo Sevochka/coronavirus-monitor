@@ -1,12 +1,13 @@
 @import 'shared';
-/*
-  important в данном случае переопределение стилей ant design, 
-  очень большой и некрасивый селектор получается без important :c
-*/
+
+$bg: rgba(0, 123, 255, 0.5);
+$defcolor: #fff;
+
 .nav-menu {
   align-items: center;
-  background: rgba(0, 123, 255, 0.5) !important;
-  border-bottom: 5px solid rgba(5, 78, 156, 0.6) !important;
+  background: $bg;
+  border-bottom: 5px solid darken($bg, 30%);
+  
   display: flex;
   font-size: $medium-font;
   font-weight: $normal;
@@ -15,11 +16,24 @@
 
   &__item {
     align-items: center;
+    color: $defcolor;
     display: flex;
+    padding: 0 10px;
+
+    &:hover {
+      color: darken($defcolor, 20%);
+      opacity: 0.9;
+    }
   }
 
   &__icon {
     margin-right: $tiny;
     width: 30px;
   }
+
+  .nav-menu-item-selected {
+    background: darken($bg, 30%);
+  }
 }
+
+
