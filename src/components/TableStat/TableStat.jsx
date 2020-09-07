@@ -3,8 +3,11 @@ import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Table } from 'antd';
 import { inject, observer } from 'mobx-react';
+import WithLoading from 'hocs/WithLoading';
 
 import './TableStat.scss';
+
+const WithLoadingTable = WithLoading(Table);
 
 const TableStat = inject('store')(
   observer(({ store }) => {
@@ -18,20 +21,19 @@ const TableStat = inject('store')(
 
     return (
       <>
-        {store.allCountryStat ? (
-          <Table
-            className="table"
-            columns={columns}
-            dataSource={store.tableData}
-            onRow={(record) => ({
-              onClick: () => {
-                history.push(`/country/${record.code}`);
-              },
-            })}
-            pagination={{ pageSize: 10, position: ['bottomCenter'], showSizeChanger: false }}
-            size="small"
-          />
-        ) : null}
+        <WithLoadingTable
+          isLoading={!store.allCountryStat}
+          className="table"
+          columns={columns}
+          dataSource={store.allCountryStat ? store.tableData : []}
+          onRow={(record) => ({
+            onClick: () => {
+              history.push(`/country/${record.code}`);
+            },
+          })}
+          pagination={{ pageSize: 10, position: ['bottomCenter'], showSizeChanger: false }}
+          size="small"
+        />
       </>
     );
   }),
