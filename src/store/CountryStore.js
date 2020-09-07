@@ -1,5 +1,5 @@
 import { action, computed, decorate, observable } from 'mobx';
-import axios from 'axios';
+import * as api from 'api/country';
 
 class CountryStore {
   globalStat = null;
@@ -17,37 +17,33 @@ class CountryStore {
   }
 
   loadGlobalStat = () => {
-    axios
-      .get('https://api.thevirustracker.com/free-api?global=stats')
+    api.loadGlobalStat()
       .then((res) => {
-        [this.globalStat] = res.data.results;
+        this.globalStat = res;
       })
       .catch((err) => err);
   };
 
   loadAllCountryStat = () => {
-    axios
-      .get('https://api.thevirustracker.com/free-api?countryTotals=ALL')
+    api.loadAllCountryStat()
       .then((res) => {
-        [this.allCountryStat] = res.data.countryitems;
+        this.allCountryStat = res;
       })
       .catch((err) => err);
   };
 
   loadCountryTotalStat = (id) => {
-    axios
-      .get(`https://api.thevirustracker.com/free-api?countryTotal=${id}`)
+    api.loadCountryTotalStat(id)
       .then((res) => {
-        [this.countryTotalStat] = res.data.countrydata;
+        this.countryTotalStat = res;
       })
       .catch((err) => err);
   };
 
   loadCountryTimelineStat = (id) => {
-    axios
-      .get(`https://api.thevirustracker.com/free-api?countryTimeline=${id}`)
+    api.loadCountryTimelineStat(id)
       .then((res) => {
-        [this.countryTimelineStat] = res.data.timelineitems;
+        this.countryTimelineStat = res;
       })
       .catch((err) => err);
   };
