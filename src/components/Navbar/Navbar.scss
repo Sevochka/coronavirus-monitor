@@ -1,0 +1,39 @@
+@import 'shared';
+
+$bg: rgba(0, 123, 255, 0.5);
+$defcolor: #fff;
+
+.nav-menu {
+  align-items: center;
+  background: $bg;
+  border-bottom: 5px solid darken($bg, 30%);
+  
+  display: flex;
+  font-size: $medium-font;
+  font-weight: $normal;
+  justify-content: center;
+  line-height: 50px;
+
+  &__item {
+    align-items: center;
+    color: $defcolor;
+    display: flex;
+    padding: 0 10px;
+
+    &:hover {
+      color: darken($defcolor, 20%);
+      opacity: 0.9;
+    }
+  }
+
+  &__icon {
+    margin-right: $tiny;
+    width: 30px;
+  }
+
+  .nav-menu-item-selected {
+    background: darken($bg, 30%);
+  }
+}
+
+
