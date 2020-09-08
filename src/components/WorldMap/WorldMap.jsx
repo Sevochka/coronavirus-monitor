@@ -6,7 +6,7 @@ import { inject, observer } from 'mobx-react';
 // Load Highcharts modules
 require('highcharts/modules/map')(Highcharts);
 
-const Highchart = inject('store')(
+const WorldMap = inject('store')(
   observer(({ store }) => {
     const mapOptions = {
       title: {
@@ -49,6 +49,6 @@ const Highchart = inject('store')(
   }),
 );
 
-Highchart.propTypes = {};
+WorldMap.propTypes = {};
 
-export default Highchart;
+export default WorldMap;
