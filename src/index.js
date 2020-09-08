@@ -12,6 +12,7 @@ import { Provider } from 'mobx-react';
 const countryStore = new CountryStore();
 
 countryStore.loadGlobalStat();
+countryStore.loadAllCountryStat();
 
 ReactDOM.render(
   <React.StrictMode>

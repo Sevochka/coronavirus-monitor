@@ -17,7 +17,8 @@ class CountryStore {
   }
 
   loadGlobalStat = () => {
-    api.loadGlobalStat()
+    api
+      .loadGlobalStat()
       .then((res) => {
         this.globalStat = res;
       })
@@ -25,7 +26,8 @@ class CountryStore {
   };
 
   loadAllCountryStat = () => {
-    api.loadAllCountryStat()
+    api
+      .loadAllCountryStat()
       .then((res) => {
         this.allCountryStat = res;
       })
@@ -33,7 +35,8 @@ class CountryStore {
   };
 
   loadCountryTotalStat = (id) => {
-    api.loadCountryTotalStat(id)
+    api
+      .loadCountryTotalStat(id)
       .then((res) => {
         this.countryTotalStat = res;
       })
@@ -41,7 +44,8 @@ class CountryStore {
   };
 
   loadCountryTimelineStat = (id) => {
-    api.loadCountryTimelineStat(id)
+    api
+      .loadCountryTimelineStat(id)
       .then((res) => {
         this.countryTimelineStat = res;
       })
@@ -95,6 +99,17 @@ class CountryStore {
       { totalCases: [], totalDeaths: [], totalRecoveries: [] },
     );
   }
+
+  get countryTotalCases() {
+    return this.allCountryStat
+      ? Object.values(this.allCountryStat).map((country) => {
+          if (country.code) {
+            return [country.code.toLowerCase(), country.total_cases];
+          }
+          return [];
+        })
+      : [];
+  }
 }
 
 decorate(CountryStore, {
@@ -105,6 +120,7 @@ decorate(CountryStore, {
   currentMonth: observable,
   tableData: computed,
   countryMonthStat: computed,
+  countryTotalCases: computed,
   countryFullTimelineStat: computed,
   setCurrentMonth: action,
   loadGlobalStat: action,
