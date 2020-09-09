@@ -60,6 +60,10 @@ module.exports = {
                 exclude: /\.module\.s?css$/,
                 use: getCSSLoader(false)
             },
+            {
+                test: /\.svg$/,
+                loader: 'svg-inline-loader'
+            }
         ]
     },
     plugins: [
@@ -73,13 +77,21 @@ module.exports = {
     devServer: {
         contentBase: buildPath,
         host: 'localhost',
-        port: 4000,
+        port: 3000,
         hot: true
     },
     resolve: {
         extensions: ['.jsx', '.js', '.tsx', '.ts'],
         alias: {
-            components: path.join(srcPath, 'components'),
+            api: path.resolve(srcPath, 'api'),
+            app: path.resolve(srcPath, 'app'),
+            assets: path.resolve(srcPath, 'assets'),
+            components: path.resolve(srcPath, 'components'),
+            hocs: path.resolve(srcPath, 'hocs'),
+            pages: path.resolve(srcPath, 'pages'),
+            routes: path.resolve(srcPath, 'routes'),
+            store: path.resolve(srcPath, 'store'),
+            shared: path.resolve(srcPath, 'shared.scss')
         }
     },
     devtool: isProd ? 'hidden-source-map': 'eval-source-map',

@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { hot } from 'react-hot-loader/root';
-import './index.module.scss';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Navbar from 'components/Navbar';
+import routes from 'routes';
+import './App.module.scss';
 
 type Props = {
     localTitle: string;
@@ -9,10 +12,18 @@ type Props = {
 
 
 const App: React.FC<Props> = ({ globalTitle, localTitle }: Props) => {
-    return <>
-        <div styleName="title">{localTitle}</div>
-        <div className="title">{globalTitle}</div>
-    </>
-}
+    const routesComponents = routes.map((route) => (
+        <Route path={route.url} component={route.component} exact={route.exact} key={route.url} />
+    ));
+
+    return (
+        <Router>
+            <Navbar />
+            <div className="app-container">
+                <Switch>{routesComponents}</Switch>
+            </div>
+        </Router>
+    );
+};
 
 export default hot(App);
