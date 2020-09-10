@@ -1,10 +1,11 @@
 import React from 'react';
+
 import TableStat from 'components/TableStat';
 
-const Statistic = () => (
-  <>
-    <TableStat />
-  </>
+const Statistic: React.FC = () => (
+    <>
+        <TableStat/>
+    </>
 );
 
 export default Statistic;
