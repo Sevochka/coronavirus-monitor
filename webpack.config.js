@@ -91,10 +91,11 @@ module.exports = {
             pages: path.resolve(srcPath, 'pages'),
             routes: path.resolve(srcPath, 'routes'),
             store: path.resolve(srcPath, 'store'),
-            shared: path.resolve(srcPath, 'shared.scss')
+            shared: path.resolve(srcPath, 'shared.scss'),
+            interfaces: path.resolve(srcPath, 'interfaces')
         }
     },
-    devtool: isProd ? 'hidden-source-map': 'eval-source-map',
+    devtool: isProd ? 'hidden-source-map' : 'eval-source-map',
     optimization: {
         minimizer: isProd ? [
             new TerserPlugin({

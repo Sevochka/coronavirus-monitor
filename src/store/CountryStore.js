@@ -21,19 +21,8 @@ class CountryStore {
             .then((res) => {
                 this.globalStat = res;
             })
-            .catch((err) => {
-                console.log(err)
-            });
+            .catch((err) => err);
     };
-
-    @computed get countryTotalCases() {
-        return Object.values(this.allCountryStat).map((country) => {
-            if (country.code) {
-                return [country.code.toLowerCase(), country.total_cases];
-            }
-            return [];
-        });
-    }
 
     @action loadAllCountryStat = () => {
         api.loadAllCountryStat()
@@ -106,7 +95,15 @@ class CountryStore {
             {totalCases: [], totalDeaths: [], totalRecoveries: []},
         );
     }
-}
 
+    @computed get countryTotalCases() {
+        return Object.values(this.allCountryStat).map((country) => {
+            if (country.code) {
+                return [country.code.toLowerCase(), country.total_cases];
+            }
+            return [];
+        });
+    }
+}
 
 export default CountryStore;
