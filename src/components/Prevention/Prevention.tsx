@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Prevention = () => (
+const Prevention: React.FC = () => (
   <>
     <p>
       Чтобы защитить себя и окружающих, пользуйтесь проверенной информацией о болезни и принимайте

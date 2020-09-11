@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Symptoms = () => (
+const Symptoms: React.FC = () => (
   <>
     <p>
       Коронавирусная инфекция COVID-19 воздействует на различные группы людей в разной степени. У

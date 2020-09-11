@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Diagnostics = () => (
+const Diagnostics:React.FC = () => (
   <>
     <p>
       Если чувствуете себя плохо, оставайтесь дома. Если у вас повышенная температура, кашель и

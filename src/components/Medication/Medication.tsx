@@ -3,7 +3,7 @@ import { Collapse } from 'antd';
 
 const { Panel } = Collapse;
 
-const Medication = () => (
+const Medication:React.FC = () => (
   <>
     <Collapse accordion>
       <Panel header="Самостоятельное лечение" key="1">

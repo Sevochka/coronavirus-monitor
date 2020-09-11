@@ -9,10 +9,10 @@ import { routesMap } from 'routes';
 
 import './Navbar.scss';
 
-const Navbar = () => {
-  const [current, setCurrent] = useState('mail');
+const Navbar:React.FC = () => {
+  const [current, setCurrent] = useState<string>('mail');
 
-  const handleClick = (e) => {
+  const handleClick = (e: { key: React.SetStateAction<string>; }) => {
     setCurrent(e.key);
   };
 
