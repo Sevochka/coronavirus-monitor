@@ -44,7 +44,7 @@ const routes:Route[] = [
   },
 ];
 
-const routesMap = routes.reduce((prevRoutes, currentRoute) => ({
+const routesMap:{[name:string]:string} = routes.reduce((prevRoutes, currentRoute) => ({
   ...prevRoutes,
   [`${currentRoute.name}`]: currentRoute.url,
 }), {});

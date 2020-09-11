@@ -12,7 +12,7 @@ import './Navbar.scss';
 const Navbar:React.FC = () => {
   const [current, setCurrent] = useState<string>('mail');
 
-  const handleClick = (e: { key: React.SetStateAction<string>; }) => {
+  const handleClick = (e: any ) => {
     setCurrent(e.key);
   };
 
