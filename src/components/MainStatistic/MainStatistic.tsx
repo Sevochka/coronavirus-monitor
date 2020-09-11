@@ -1,11 +1,11 @@
 import React from 'react';
 
-import {IMainStatistic} from "interfaces/IMainStatistic";
+import {IMainStat} from "interfaces/IMainStat";
 
 import './MainStatistic.scss';
 
 type Props = {
-    info: IMainStatistic
+    info: IMainStat
 }
 
 const MainStatistic: React.FC<Props> = ({info}: Props) => {

@@ -10,8 +10,8 @@ const loadAllCountryStat = async () => {
     return response.countryitems[0];
 };
 
-const loadCountryTotalStat = async (id) => {
-    const response = await makeRequest(`countryTotal=${id}`);
+const loadCountryTotalStat = async (countryCode) => {
+    const response = await makeRequest(`countryTotal=${countryCode}`);
     console.log(response.countrydata[0])
     return response.countrydata[0];
 };

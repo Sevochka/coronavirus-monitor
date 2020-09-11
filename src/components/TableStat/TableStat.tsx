@@ -19,12 +19,6 @@ const TableStat: React.FC = inject('store')(
     observer(({store}: Props) => {
         const history = useHistory();
 
-        useEffect(() => {
-            if (!store.allCountryStat) {
-                store.loadAllCountryStat();
-            }
-        }, [store]);
-
         return (
             <>
                 <WithLoadingTable
