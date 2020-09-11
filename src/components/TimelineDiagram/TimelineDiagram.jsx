@@ -1,75 +1,53 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import {
-  XYPlot,
-  XAxis,
-  YAxis,
-  HorizontalGridLines,
-  VerticalGridLines,
-  Hint,
-  MarkSeries,
-  VerticalBarSeries,
-} from 'react-vis';
+import React from 'react';
+import HighchartsReact from "highcharts-react-official";
+import Highcharts from "highcharts/highstock";
 
-const TimelineDiagram = (props) => {
-  const { data, color } = props;
-  const [point, setPoint] = useState('');
+const TimelineDiagram = ({data, color}) => {
+console.log(data)
+    const options = {
+            chart: {
+                alignTicks: false
+            },
 
-  const forgetValue = () => {
-    setPoint('');
-  };
+            rangeSelector: {
+                selected: 1
+            },
 
-  const rememberValue = (value, { event }) => {
-    event.stopPropagation();
-    forgetValue();
-    setPoint(value);
-  };
+            title: {
+                text: 'AAPL Stock Volume'
+            },
 
-  useEffect(() => {
-    forgetValue();
-  }, [data]);
+            colors: [color],
 
-  return (
-    <>
-      <XYPlot
-        xType="time"
-        width={400}
-        height={300}
-        margin={{ left: 60, bottom: 50 }}
-        onClick={forgetValue}
-        className="diagram"
-      >
-        <HorizontalGridLines />
-        <VerticalGridLines />
-        <XAxis tickLabelAngle={-45} />
-        <YAxis />
-        <VerticalBarSeries
-          color={color}
-          data={data}
-          onValueClick={rememberValue}
-          style={{ cursor: 'pointer' }}
-        />
-        {point ? <MarkSeries data={[{ ...point, size: 5 }]} /> : null}
-        {point ? (
-          <Hint value={point} align={{ horizontal: Hint.ALIGN.AUTO, vertical: Hint.ALIGN.AUTO }}>
-            <div className="rv-hint__content">
-              {`${new Date(point.x).toDateString()}, ${point.y} чел.`}
-            </div>
-          </Hint>
-        ) : null}
-      </XYPlot>
-    </>
-  );
-};
+            series: [{
+                type: 'column',
+                name: 'AAPL Stock Volume',
+                data: data,
+                dataGrouping: {
+                    units: [[
+                        'week', // unit name
+                        [1] // allowed multiples
+                    ], [
+                        'month',
+                        [1, 2, 3, 4, 6]
+                    ]]
+                }
+            }
+            ]
+        }
+    ;
 
-TimelineDiagram.propTypes = {
-  data: PropTypes.oneOfType([PropTypes.array]),
-  color: PropTypes.string,
-};
-
-TimelineDiagram.defaultProps = {
-  data: [],
-  color: '',
+    return (
+        <>
+            <>
+                <HighchartsReact
+                    highcharts={Highcharts}
+                    constructorType={'stockChart'}
+                    options={options}
+                />
+            </>
+        </>
+    );
 };
 
 export default TimelineDiagram;

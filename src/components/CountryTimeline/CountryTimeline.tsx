@@ -10,7 +10,6 @@ import TimelineDiagram from 'components/TimelineDiagram';
 import RadialDiagram from 'components/RadialDiagram';
 import './CountryTimeline.scss';
 import WithLoading from 'hocs/WithLoading';
-import {stat} from "store/CountryStore";
 
 const COLORS = ['blue', 'red', 'green'];
 const ITEMS = [{title: 'Выявлено заболевших', color: 'blue'}, {
@@ -21,7 +20,7 @@ const ITEMS = [{title: 'Выявлено заболевших', color: 'blue'}, 
 const WithLoadingTimelineGraph = WithLoading(TimelineGraph);
 
 type HocProps = {
-    countryMonthStat: { [name: string]: Array<stat> }
+    countryMonthStat: { [name: string]: Array<[number,number]> }
 }
 const WithLoadingDiagrams = WithLoading(({countryMonthStat}: HocProps) => (
     <div className="timeline-diagrams">
@@ -72,7 +71,7 @@ const CountryTimeline: React.FC<Props> = inject('store')(
                 </div>
                 <WithLoadingDiagrams
                     isLoading={!store.countryTimelineStat}
-                    countryMonthStat={store.countryTimelineStat ? store.countryMonthStat : {}}
+                    countryMonthStat={store.countryTimelineStat ? store.countryFullTimelineStat : {}}
                 />
                 <br/>
             </>

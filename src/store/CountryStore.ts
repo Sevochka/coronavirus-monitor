@@ -86,21 +86,23 @@ class CountryStore {
             );
     }
 
-    @computed get countryFullTimelineStat(): { [name: string]: Array<stat> } {
-        return Object.keys(this.countryTimelineStat || {}).reduce<{ [name: string]: Array<stat> }>(
+    @computed get countryFullTimelineStat(): { [name: string]: Array<[number, number]> } {
+        return Object.keys(this.countryTimelineStat || {}).reduce<{ [name: string]: Array<[number, number]> }>(
             (stats, date: string) => {
-                stats.totalCases.push({
-                    x: new Date(date).getTime(),
-                    y: this.countryTimelineStat ? +this.countryTimelineStat[date].total_cases : 0,
-                });
-                stats.totalDeaths.push({
-                    x: new Date(date).getTime(),
-                    y: this.countryTimelineStat ? +this.countryTimelineStat[date].total_deaths : 0,
-                });
-                stats.totalRecoveries.push({
-                    x: new Date(date).getTime(),
-                    y: this.countryTimelineStat ? +this.countryTimelineStat[date].total_recoveries : 0,
-                });
+                if (date !== "stat") {
+                    stats.totalCases.push([
+                        new Date(date).getTime(),
+                        this.countryTimelineStat ? +this.countryTimelineStat[date].total_cases : 0,
+                    ]);
+                    stats.totalDeaths.push([
+                        new Date(date).getTime(),
+                        this.countryTimelineStat ? +this.countryTimelineStat[date].total_deaths : 0,
+                    ]);
+                    stats.totalRecoveries.push([
+                        new Date(date).getTime(),
+                        this.countryTimelineStat ? +this.countryTimelineStat[date].total_recoveries : 0,
+                    ]);
+                }
                 return stats;
             },
             {totalCases: [], totalDeaths: [], totalRecoveries: []},

@@ -1,14 +1,8 @@
 import React from 'react';
-import {
-    XYPlot,
-    XAxis,
-    YAxis,
-    HorizontalGridLines,
-    VerticalGridLines,
-    LineSeries,
-} from 'react-vis';
 import {inject, observer} from 'mobx-react';
 import CountryStore from "../../store/CountryStore";
+import HighchartsReact from "highcharts-react-official";
+import Highcharts from "highcharts/highstock";
 
 type Props = {
     store: CountryStore;
@@ -17,18 +11,35 @@ type Props = {
 const COLORS = ['blue', 'red', 'green'];
 
 const TimelineGraph: React.FC<Props> = inject('store')(
-    observer(({store}: Props) => (
-        <>
-            <XYPlot xType="time" width={600} height={300} margin={{left: 60, bottom: 50}}>
-                <HorizontalGridLines/>
-                <VerticalGridLines/>
-                <XAxis tickLabelAngle={-45}/>
-                <YAxis/>
-                {Object.values(store.countryFullTimelineStat).map((stat, index) => (
-                    <LineSeries color={COLORS[index]} data={stat} key={COLORS[index]}/>
-                ))}
-            </XYPlot>
-        </>
-    )),
+    observer(({store}: Props) => {
+        const options = {
+            series: [
+                {
+                    name: 'Выявлено заболевших',
+                    data: store.countryFullTimelineStat.totalCases,
+                    color: 'blue'
+                },
+                {
+                    name: 'Человек умерло',
+                    data: store.countryFullTimelineStat.totalDeaths,
+                    color: 'red'
+                },
+                {
+                    name: 'Человек выздоровело',
+                    data: store.countryFullTimelineStat.totalRecoveries,
+                    color: 'green'
+                }
+            ]
+        }
+        return (<>
+                <HighchartsReact
+                    highcharts={Highcharts}
+                    constructorType={'stockChart'}
+                    options={options}
+                />
+            </>
+        )
+    }),
 );
 export default TimelineGraph;
+
