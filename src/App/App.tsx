@@ -10,7 +10,6 @@ type Props = {
     globalTitle: string;
 }
 
-
 const App: React.FC<Props> = ({ globalTitle, localTitle }: Props) => {
     const routesComponents = routes.map((route) => (
         <Route path={route.url} component={route.component} exact={route.exact} key={route.url} />

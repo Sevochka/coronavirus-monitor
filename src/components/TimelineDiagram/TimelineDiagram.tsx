@@ -2,8 +2,13 @@ import React from 'react';
 import HighchartsReact from "highcharts-react-official";
 import Highcharts from "highcharts/highstock";
 
-const TimelineDiagram = ({data, color}) => {
-console.log(data)
+type Props = {
+    data: Array<[number, number]>,
+    color: string
+}
+
+const TimelineDiagram: React.FC<Props> = ({data, color}: Props) => {
+    console.log(data)
     const options = {
             chart: {
                 alignTicks: false
