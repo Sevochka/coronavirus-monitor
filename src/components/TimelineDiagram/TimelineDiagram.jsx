@@ -37,6 +37,7 @@ const TimelineDiagram = (props) => {
         height={300}
         margin={{ left: 60, bottom: 50 }}
         onClick={forgetValue}
+        className="diagram"
       >
         <HorizontalGridLines />
         <VerticalGridLines />

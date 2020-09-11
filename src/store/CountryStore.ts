@@ -6,9 +6,9 @@ import {ICountryMainStat} from "../interfaces/ICountryMainStat";
 import {ICountryTotalStat} from "../interfaces/ICountryTotalStat";
 import {ICountryTimelineStat} from "../interfaces/ICountryTimelineStat";
 
-type stat = {
+export type stat = {
     x: number,
-    y: string
+    y: number
 }
 
 class CountryStore {
@@ -50,7 +50,7 @@ class CountryStore {
             .catch((err) => err);
     };
 
-    @action loadCountryTimelineStat = (countryCode: string) => {
+    @action loadCountryTimelineStat = (countryCode: string): void => {
         api.loadCountryTimelineStat(countryCode)
             .then((res) => {
                 this.countryTimelineStat = res;
@@ -58,27 +58,27 @@ class CountryStore {
             .catch((err) => err);
     };
 
-    @computed get tableData() {
+    @computed get tableData(): Array<ICountryMainStat> {
         return Object.values(this.allCountryStat || {}).map((el) => ({...el, key: el.ourid}));
     }
 
 
-    @computed get countryMonthStat() {
+    @computed get countryMonthStat(): { [name: string]: Array<stat> } {
         return Object.keys(this.countryTimelineStat || {})
             .filter((date) => !this.currentMonth || this.currentMonth === new Date(date).getMonth())
             .reduce<{ [name: string]: Array<stat> }>(
                 (stats, date: string) => {
                     stats.totalCases.push({
                         x: new Date(date).getTime(),
-                        y: this.countryTimelineStat ? this.countryTimelineStat[date].total_cases : "0",
+                        y: this.countryTimelineStat ? +this.countryTimelineStat[date].total_cases : 0,
                     });
                     stats.totalDeaths.push({
                         x: new Date(date).getTime(),
-                        y: this.countryTimelineStat ? this.countryTimelineStat[date].total_deaths : "0",
+                        y: this.countryTimelineStat ? +this.countryTimelineStat[date].total_deaths : 0,
                     });
                     stats.totalRecoveries.push({
                         x: new Date(date).getTime(),
-                        y: this.countryTimelineStat ? this.countryTimelineStat[date].total_recoveries : "0",
+                        y: this.countryTimelineStat ? +this.countryTimelineStat[date].total_recoveries : 0,
                     });
                     return stats;
                 },
@@ -86,20 +86,20 @@ class CountryStore {
             );
     }
 
-    @computed get countryFullTimelineStat() {
+    @computed get countryFullTimelineStat(): { [name: string]: Array<stat> } {
         return Object.keys(this.countryTimelineStat || {}).reduce<{ [name: string]: Array<stat> }>(
             (stats, date: string) => {
                 stats.totalCases.push({
                     x: new Date(date).getTime(),
-                    y: this.countryTimelineStat ? this.countryTimelineStat[date].total_cases : "0",
+                    y: this.countryTimelineStat ? +this.countryTimelineStat[date].total_cases : 0,
                 });
                 stats.totalDeaths.push({
                     x: new Date(date).getTime(),
-                    y: this.countryTimelineStat ? this.countryTimelineStat[date].total_deaths : "0",
+                    y: this.countryTimelineStat ? +this.countryTimelineStat[date].total_deaths : 0,
                 });
                 stats.totalRecoveries.push({
                     x: new Date(date).getTime(),
-                    y: this.countryTimelineStat ? this.countryTimelineStat[date].total_recoveries : "0",
+                    y: this.countryTimelineStat ? +this.countryTimelineStat[date].total_recoveries : 0,
                 });
                 return stats;
             },
@@ -107,7 +107,7 @@ class CountryStore {
         );
     }
 
-    @computed get countryTotalCases() {
+    @computed get countryTotalCases(): ([string, string] | [])[] {
         return Object.values(this.allCountryStat || {}).map((country) => {
             if (country.code) {
                 return [country.code.toLowerCase(), country.total_cases];
