@@ -1,10 +1,19 @@
+import React from 'react';
+
 import CountryPage from 'pages/CountryPage';
 import Information from 'pages/Information';
 import Statistic from 'pages/Statistic';
 import Main from 'pages/Main';
 import Page404 from 'pages/Error404';
 
-const routes = [
+interface Route {
+  name?:string,
+  url:string,
+  component: React.ReactNode,
+  exact?: boolean
+}
+
+const routes:Route[] = [
   {
     name: 'home',
     url: '/',
@@ -24,22 +33,23 @@ const routes = [
     exact: true,
   },
   {
-    name: 'country statistic',
+    name: 'countryPage',
     url: '/country/:id',
     component: CountryPage,
   },
   {
+    name: 'page404',
     url: '**',
     component: Page404,
   },
 ];
 
-const routesMap = routes.reduce((prevRoutes, currentRoute) => ({
+const routesMap:{[name:string]:string} = routes.reduce((prevRoutes, currentRoute) => ({
   ...prevRoutes,
-  [currentRoute.name]: currentRoute.url,
+  [`${currentRoute.name}`]: currentRoute.url,
 }), {});
 
 export default routes;
 export {
-  routesMap,
+  routesMap
 };

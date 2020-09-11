@@ -2,7 +2,7 @@ import React from 'react';
 import { Alert } from 'antd';
 import { Link } from 'react-router-dom';
 
-const Error404 = () => (
+const Error404: React.FC = () => (
   <>
     <Alert
       message="Ошибка 404, страницы не существует"
