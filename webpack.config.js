@@ -21,18 +21,21 @@ const getCSSLoader = (withModules = false) => [
         },
     },
     {
-        loader: 'sass-loader',
-        options: {
-            sassOptions: {
-                includePath: [srcPath]
-            }
-        }
-    },
-    {
         loader: 'postcss-loader',
         options: {
             postcssOptions: {
                 plugins: () => [autoprefixer()]
+            }
+        }
+    },
+    {
+        loader: 'resolve-url-loader',
+    },
+    {
+        loader: 'sass-loader',
+        options: {
+            sassOptions: {
+                includePath: [srcPath, path.resolve(srcPath, 'shared.scss')]
             }
         }
     },
@@ -62,7 +65,10 @@ module.exports = {
             },
             {
                 test: /\.svg$/,
-                loader: 'svg-inline-loader'
+                loader: 'svg-url-loader',
+                options: {
+                    limit: 10000
+                }
             }
         ]
     },

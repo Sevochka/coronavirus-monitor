@@ -18,7 +18,7 @@ const App: React.FC<Props> = ({ globalTitle, localTitle }: Props) => {
     return (
         <Router>
             <Navbar />
-            <div className="app-container">
+            <div styleName="app-container">
                 <Switch>{routesComponents}</Switch>
             </div>
         </Router>
