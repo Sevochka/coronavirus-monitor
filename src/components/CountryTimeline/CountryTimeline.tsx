@@ -10,7 +10,7 @@ import TimelineDiagram from 'components/TimelineDiagram';
 import RadialDiagram from 'components/RadialDiagram';
 import './CountryTimeline.scss';
 import WithLoading from 'hocs/WithLoading';
-import {stat} from "../../store/CountryStore";
+import {stat} from "store/CountryStore";
 
 const COLORS = ['blue', 'red', 'green'];
 const ITEMS = [{title: 'Выявлено заболевших', color: 'blue'}, {
@@ -47,7 +47,7 @@ const CountryTimeline: React.FC<Props> = inject('store')(
             store.loadCountryTimelineStat(id);
         }, [id, store]);
 
-        const onMonthChange = (date: any) => {
+        const onMonthChange = (date: moment.Moment | null) => {
             store.setCurrentMonth(date ? date.month() : 0);
         };
 
