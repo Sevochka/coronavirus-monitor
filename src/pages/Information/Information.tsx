@@ -9,7 +9,7 @@ import Medication from 'components/Medication/Medication';
 
 const { Panel } = Collapse;
 
-const Information = () => (
+const Information: React.FC = () => (
   <Collapse accordion>
     <Panel header="Профилактика" key="1">
       <Prevention />
