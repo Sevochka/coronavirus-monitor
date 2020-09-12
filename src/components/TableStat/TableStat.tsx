@@ -23,8 +23,14 @@ const TableStat: React.FC = inject('store')(
             <>
                 <WithLoadingTable
                     isLoading={!store.allCountryStat}
+                    scroll={{
+                        x: "50vw"
+                        }
+                    }
+                    size="middle"
                     className="table"
                     columns={columns}
+                    bordered={true}
                     dataSource={store.allCountryStat ? store.tableData : []}
                     onRow={(record: ICountryMainStat) => ({
                         onClick: () => {
@@ -32,7 +38,6 @@ const TableStat: React.FC = inject('store')(
                         },
                     })}
                     pagination={{pageSize: 10, position: ['bottomCenter'], showSizeChanger: false}}
-                    size="small"
                 />
             </>
         );

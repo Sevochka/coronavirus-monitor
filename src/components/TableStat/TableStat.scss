@@ -1,7 +1,17 @@
 .table {
   margin: 0 auto;
-  
+  border-radius: 10px;
+  & tr th:first-child {
+    border-radius: 10px 0 0 0;
+  }
   &:hover {
     cursor: pointer;
   }
 }
+.ant-table{
+  border-radius: 20px;
+  & td {
+    max-width: 20px !important;
+  }
+}
+
