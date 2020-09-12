@@ -19,33 +19,28 @@ const TableStat: React.FC<Props> = inject('store')(
   observer(({ store }: Props) => {
     const history = useHistory();
 
-const TableStat: React.FC = inject('store')(
-    observer(({store}: Props) => {
-        const history = useHistory();
-
-        return (
-            <>
-                <WithLoadingTable
-                    isLoading={!store.allCountryStat}
-                    scroll={{
-                        x: "50vw"
-                        }
-                    }
-                    size="middle"
-                    className="table"
-                    columns={columns}
-                    bordered={true}
-                    dataSource={store.allCountryStat ? store.tableData : []}
-                    onRow={(record: ICountryMainStat) => ({
-                        onClick: () => {
-                            history.push(`/country/${record.code}`);
-                        },
-                    })}
-                    pagination={{pageSize: 10, position: ['bottomCenter'], showSizeChanger: false}}
-                />
-            </>
-        );
-    }),
+    return (
+      <>
+        <WithLoadingTable
+          isLoading={!!(store && !store.allCountryStat)}
+          scroll={{
+            x: '50vw',
+          }}
+          size="middle"
+          className="table"
+          columns={columns}
+          bordered
+          dataSource={store && (store.allCountryStat ? store.tableData : [])}
+          onRow={(record: ICountryMainStat) => ({
+            onClick: () => {
+              history.push(`/country/${record.code}`);
+            },
+          })}
+          pagination={{ pageSize: 10, position: ['bottomCenter'], showSizeChanger: false }}
+        />
+      </>
+    );
+  }),
 );
 
 export default TableStat;
