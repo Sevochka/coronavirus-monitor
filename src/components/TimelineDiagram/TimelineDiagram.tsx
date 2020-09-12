@@ -4,14 +4,20 @@ import Highcharts from "highcharts/highstock";
 
 type Props = {
     data: Array<[number, number]>,
-    color: string
+    color: string,
+    title: string,
 }
 
-const TimelineDiagram: React.FC<Props> = ({data, color}: Props) => {
+const TimelineDiagram: React.FC<Props> = ({data, color, title}: Props) => {
     console.log(data)
     const options = {
             chart: {
-                alignTicks: false
+                alignTicks: false,
+                backgroundColor: 'rgba(0,0,0,0)',
+            },
+
+            scrollbar: {
+                enabled: false
             },
 
             rangeSelector: {
@@ -19,14 +25,14 @@ const TimelineDiagram: React.FC<Props> = ({data, color}: Props) => {
             },
 
             title: {
-                text: 'AAPL Stock Volume'
+                text: title
             },
 
             colors: [color],
 
             series: [{
                 type: 'column',
-                name: 'AAPL Stock Volume',
+                name: title,
                 data: data,
                 dataGrouping: {
                     units: [[

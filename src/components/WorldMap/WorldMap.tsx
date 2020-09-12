@@ -18,9 +18,32 @@ const WorldMap: React.FC<Props> = inject('store')(
             title: {
                 text: '',
             },
+            colors: ['rgba(19,64,117,0.05)', 'rgba(19,64,117,0.2)', 'rgba(19,64,117,0.4)',
+                'rgba(19,64,117,0.5)', 'rgba(19,64,117,0.6)', 'rgba(19,64,117,0.8)'],
             colorAxis: {
-                minColor: '#00ff00',
-                maxColor: '#ff0000',
+                dataClasses: [{
+                    to: 100000
+                }, {
+                    from: 100000,
+                    to: 500000
+                }, {
+                    from: 500000,
+                    to: 1000000
+                }, {
+                    from: 1000000,
+                    to: 2000000
+                }, {
+                    from: 2000000,
+                    to: 5000000
+                }, {
+                    from: 5000000,
+                }]
+            },
+            legend: {
+                layout: 'horizontal',
+                borderWidth: 0,
+                floating: true,
+                verticalAlign: 'top',
             },
             mapNavigation: {
                 enabled: true,

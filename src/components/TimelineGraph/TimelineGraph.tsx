@@ -8,11 +8,30 @@ type Props = {
     store: CountryStore;
 }
 
-const COLORS = ['blue', 'red', 'green'];
-
 const TimelineGraph: React.FC<Props> = inject('store')(
     observer(({store}: Props) => {
         const options = {
+            chart: {
+                backgroundColor: 'rgba(0,0,0,0)',
+            },
+            plotOptions: {
+                series: {
+                    compare: 'percent',
+                    showInNavigator: true
+                }
+            },
+            scrollbar: {
+                barBackgroundColor: 'lightgray',
+                barBorderRadius: 7,
+                barBorderWidth: 0,
+                buttonBackgroundColor: 'lightgray',
+                buttonBorderWidth: 0,
+                buttonBorderRadius: 7,
+                trackBackgroundColor: 'none',
+                trackBorderWidth: 1,
+                trackBorderRadius: 8,
+                trackBorderColor: '#CCC'
+            },
             series: [
                 {
                     name: 'Выявлено заболевших',

@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ForkTsCheckerPlugin = require('fork-ts-checker-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const autoprefixer = require('autoprefixer')
 
 const buildPath = path.resolve(__dirname, 'dist');
 const srcPath = path.resolve(__dirname, 'src');
@@ -24,12 +25,9 @@ const getCSSLoader = (withModules = false) => [
         loader: 'postcss-loader',
         options: {
             postcssOptions: {
-                plugins: () => [autoprefixer()]
+                plugins: [autoprefixer]
             }
         }
-    },
-    {
-        loader: 'resolve-url-loader',
     },
     {
         loader: 'sass-loader',
@@ -69,6 +67,10 @@ module.exports = {
                 options: {
                     limit: 10000
                 }
+            },
+            {
+                test: /\.(png|jpg)$/,
+                loader: 'url-loader'
             }
         ]
     },

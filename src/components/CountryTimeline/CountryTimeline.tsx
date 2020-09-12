@@ -1,17 +1,15 @@
 import React, {useEffect} from 'react';
-import {DatePicker} from 'antd';
-import PropTypes from 'prop-types';
 import {useParams} from 'react-router-dom';
-import {DiscreteColorLegend} from 'react-vis';
-import '../../../node_modules/react-vis/dist/style.css';
 import {observer, inject} from 'mobx-react';
+import '../../../node_modules/react-vis/dist/style.css';
+
+import WithLoading from 'hocs/WithLoading';
+import RadialDiagram from 'components/RadialDiagram';
 import TimelineGraph from 'components/TimelineGraph';
 import TimelineDiagram from 'components/TimelineDiagram';
-import RadialDiagram from 'components/RadialDiagram';
-import './CountryTimeline.scss';
-import WithLoading from 'hocs/WithLoading';
 
-const COLORS = ['blue', 'red', 'green'];
+import './CountryTimeline.scss';
+
 const ITEMS = [{title: 'Выявлено заболевших', color: 'blue'}, {
     title: 'Человек умерло',
     color: 'red'
@@ -20,12 +18,13 @@ const ITEMS = [{title: 'Выявлено заболевших', color: 'blue'}, 
 const WithLoadingTimelineGraph = WithLoading(TimelineGraph);
 
 type HocProps = {
-    countryMonthStat: { [name: string]: Array<[number,number]> }
+    countryMonthStat: { [name: string]: Array<[number, number]> }
 }
 const WithLoadingDiagrams = WithLoading(({countryMonthStat}: HocProps) => (
     <div className="timeline-diagrams">
         {Object.values(countryMonthStat).map((stat, index) => (
-            <TimelineDiagram data={stat} color={COLORS[index]} key={COLORS[index]}/>
+            <TimelineDiagram data={stat} color={ITEMS[index].color} title={ITEMS[index].title}
+                             key={ITEMS[index].title}/>
         ))}
     </div>
 ));
@@ -46,10 +45,6 @@ const CountryTimeline: React.FC<Props> = inject('store')(
             store.loadCountryTimelineStat(id);
         }, [id, store]);
 
-        const onMonthChange = (date: moment.Moment | null) => {
-            store.setCurrentMonth(date ? date.month() : 0);
-        };
-
         return (
             <>
                 <div className="timeline-stat">
@@ -57,7 +52,7 @@ const CountryTimeline: React.FC<Props> = inject('store')(
                         <WithLoadingTimelineGraph isLoading={!store.countryTimelineStat}/>
                     </div>
                     <div>
-                        <RadialDiagram info={info}/>
+                        <RadialDiagram info={info} items={ITEMS}/>
                     </div>
                 </div>
                 <WithLoadingDiagrams
