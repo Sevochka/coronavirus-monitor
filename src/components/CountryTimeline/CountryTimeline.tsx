@@ -60,15 +60,6 @@ const CountryTimeline: React.FC<Props> = inject('store')(
                         <RadialDiagram info={info}/>
                     </div>
                 </div>
-                <div className="timeline-panel">
-                    <DatePicker onChange={onMonthChange} picker="month" className="timeline-panel__date"/>
-                    <DiscreteColorLegend
-                        className="timeline-panel__legend"
-                        width={500}
-                        items={ITEMS}
-                        orientation="horizontal"
-                    />
-                </div>
                 <WithLoadingDiagrams
                     isLoading={!store.countryTimelineStat}
                     countryMonthStat={store.countryTimelineStat ? store.countryFullTimelineStat : {}}
