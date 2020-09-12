@@ -1,4 +1,4 @@
-@import 'shared.scss';
+@import 'src/shared';
 
 .app-container {
     background: $content-background-color;
@@ -6,5 +6,5 @@
     border-radius: 10px;
     margin: $large auto 0;
     padding: $large;
-    width: $content-width;
+    width: $content-width !important;
 }

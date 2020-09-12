@@ -86,7 +86,8 @@ module.exports = {
         contentBase: buildPath,
         host: 'localhost',
         port: 3000,
-        hot: true
+        hot: true,
+        historyApiFallback: true
     },
     resolve: {
         extensions: ['.jsx', '.js', '.tsx', '.ts'],
