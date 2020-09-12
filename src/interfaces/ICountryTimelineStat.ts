@@ -1,5 +1,5 @@
-import {ICountryDayStat} from "./ICountryDayStat";
+import { ICountryDayStat } from './ICountryDayStat';
 
 export interface ICountryTimelineStat {
-    [propType: string]: ICountryDayStat
+  [propType: string]: ICountryDayStat
 }

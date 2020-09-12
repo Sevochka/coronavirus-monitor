@@ -1,42 +1,42 @@
-import React, {useEffect} from 'react';
-import {useHistory} from 'react-router-dom';
-import {Table} from 'antd';
-import {inject, observer} from 'mobx-react';
+import React from 'react';
+import { Table } from 'antd';
+import { useHistory } from 'react-router-dom';
+import { inject, observer } from 'mobx-react';
 
 import columns from './columns';
 import WithLoading from 'hocs/WithLoading';
-import {ICountryMainStat} from "interfaces/ICountryMainStat";
+import CountryStore from 'store/CountryStore';
+import { ICountryMainStat } from 'interfaces/ICountryMainStat';
 
 import './TableStat.scss';
 
 const WithLoadingTable = WithLoading(Table);
 
 type Props = {
-    [propName: string]: any
-}
+  store?: CountryStore,
+};
+const TableStat: React.FC<Props> = inject('store')(
+  observer(({ store }: Props) => {
+    const history = useHistory();
 
-const TableStat: React.FC = inject('store')(
-    observer(({store}: Props) => {
-        const history = useHistory();
-
-        return (
-            <>
-                <WithLoadingTable
-                    isLoading={!store.allCountryStat}
-                    className="table"
-                    columns={columns}
-                    dataSource={store.allCountryStat ? store.tableData : []}
-                    onRow={(record: ICountryMainStat) => ({
-                        onClick: () => {
-                            history.push(`/country/${record.code}`);
-                        },
-                    })}
-                    pagination={{pageSize: 10, position: ['bottomCenter'], showSizeChanger: false}}
-                    size="small"
-                />
-            </>
-        );
-    }),
+    return (
+      <>
+        <WithLoadingTable
+          isLoading={!!(store && !store.allCountryStat)}
+          className="table"
+          columns={columns}
+          dataSource={store && (store.allCountryStat ? store.tableData : [])}
+          onRow={(record: ICountryMainStat) => ({
+            onClick: () => {
+              history.push(`/country/${record.code}`);
+            },
+          })}
+          pagination={{ pageSize: 10, position: ['bottomCenter'], showSizeChanger: false }}
+          size="small"
+        />
+      </>
+    );
+  }),
 );
 
 export default TableStat;

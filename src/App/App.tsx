@@ -5,24 +5,19 @@ import Navbar from 'components/Navbar';
 import routes from 'routes';
 import './App.module.scss';
 
-type Props = {
-    localTitle: string;
-    globalTitle: string;
-}
+const App: React.FC = () => {
+  const routesComponents = routes.map((route) => (
+    <Route path={route.url} component={route.component} exact={route.exact} key={route.url} />
+  ));
 
-const App: React.FC<Props> = ({ globalTitle, localTitle }: Props) => {
-    const routesComponents = routes.map((route) => (
-        <Route path={route.url} component={route.component} exact={route.exact} key={route.url} />
-    ));
-
-    return (
-        <Router>
-            <Navbar />
-            <div styleName="app-container">
-                <Switch>{routesComponents}</Switch>
-            </div>
-        </Router>
-    );
+  return (
+    <Router>
+      <Navbar />
+      <div styleName="app-container">
+        <Switch>{routesComponents}</Switch>
+      </div>
+    </Router>
+  );
 };
 
 export default hot(App);

@@ -1,6 +1,6 @@
 export interface ICountryDayStat {
-    date: string,
-    cases: string,
-    deaths: string,
-    recovered: string
+  date: string,
+  cases: string,
+  deaths: string,
+  recovered: string
 }

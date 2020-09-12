@@ -1,26 +1,26 @@
 import React from 'react';
-import {inject, observer} from 'mobx-react';
+import { inject, observer } from 'mobx-react';
+import CountryStore from '../../store/CountryStore';
 import WithLoading from 'hocs/WithLoading';
 import CardMainStat from 'components/MainStatistic';
 import WorldMap from 'components/WorldMap';
-import CountryStore from "../../store/CountryStore";
 
 const WithLoadingCardMainStat = WithLoading(CardMainStat);
 
 const WithLoadingWorldMap = WithLoading(WorldMap);
 
 type Props = {
-    store: CountryStore;
-}
+  store: CountryStore;
+};
 const Main: React.FC<Props> = inject('store')(
-    observer(({store}: Props) => (
+  observer(({ store }: Props) => (
 
-        <>
-            <WithLoadingCardMainStat isLoading={!store.globalStat} info={store.globalStat}/>
+    <>
+      <WithLoadingCardMainStat isLoading={!store.globalStat} info={store.globalStat} />
 
-            <WithLoadingWorldMap isLoading={!store.allCountryStat}/>
-        </>
-    )),
+      <WithLoadingWorldMap isLoading={!store.allCountryStat} />
+    </>
+  )),
 );
 
 export default Main;

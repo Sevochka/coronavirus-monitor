@@ -4,8 +4,8 @@
     "dev": "SET NODE_ENV=development & webpack-dev-server --mode=development",
     "build": "SET NODE_ENV=production & webpack --mode=production",
     "ts-check": "tsc --skipLibCheck --noEmit --project tsconfig.json",
-    "lint": "eslint src/**/*.{js,jsx}",
-    "lint:fix": "eslint src/**/*.{js,jsx} --fix",
+    "lint": "eslint src/**/*.{js,jsx,ts,tsx}",
+    "lint:fix": "eslint src/**/*.{js,jsx,ts,tsx} --fix",
     "stylelint": "stylelint src/**/*.scss",
     "stylelint:fix": "stylelint src/**/*.scss --fix"
   },
@@ -29,19 +29,21 @@
     "@types/react-vis": "^1.11.3",
     "@types/terser-webpack-plugin": "^4.1.0",
     "@types/webpack-env": "^1.15.2",
+    "@typescript-eslint/eslint-plugin": "^4.0.1",
     "autoprefixer": "^9.8.6",
     "babel-loader": "^8.1.0",
     "babel-plugin-react-css-modules": "^5.2.6",
     "babel-preset-mobx": "^2.0.0",
     "css-loader": "^3.6.0",
     "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-airbnb-typescript": "^10.0.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-babel": "^5.3.1",
     "eslint-plugin-import": "^2.22.0",
-    "eslint-plugin-jsx-a11y": "^6.3.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-react": "^7.20.0",
-    "eslint-plugin-react-hooks": "^4.0.0",
+    "eslint-plugin-react": "^7.20.3",
+    "eslint-plugin-react-hooks": "^4.0.8",
     "file-loader": "^6.1.0",
     "fork-ts-checker-webpack-plugin": "^5.1.0",
     "html-webpack-plugin": "^4.4.1",
@@ -53,7 +55,6 @@
     "postcss-nested": "^4.2.3",
     "postcss-scss": "^2.1.1",
     "prettier": "^2.1.1",
-    "react-hot-loader": "^4.12.21",
     "resolve-url-loader": "^3.1.1",
     "sass-loader": "^10.0.2",
     "style-loader": "^1.2.1",
@@ -76,6 +77,7 @@
     "mobx-react": "^6.3.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-hot-loader": "^4.12.21",
     "react-router-dom": "^5.2.0",
     "react-vis": "^1.11.7",
     "svg-url-loader": "^6.0.0"
@@ -90,7 +92,7 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{js,jsx}": [
+    "src/**/*.{js,jsx,ts,tsx}": [
       "eslint . --max-warnings=0"
     ],
     "src/**/*.scss": [
