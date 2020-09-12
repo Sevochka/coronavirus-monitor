@@ -9,7 +9,6 @@ type Props = {
 }
 
 const TimelineDiagram: React.FC<Props> = ({data, color, title}: Props) => {
-    console.log(data)
     const options = {
             chart: {
                 alignTicks: false,

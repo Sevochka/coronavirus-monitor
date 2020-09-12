@@ -1,14 +1,14 @@
-const mainUrl = 'https://api.thevirustracker.com/free-api?';
+const mainUrl = 'https://whispering-bastion-66552.herokuapp.com/api/';
 
-const makeRequest = (url, options = {}, baseUrl = mainUrl) =>
-  fetch(baseUrl + url, options).then((response) => {
-    if (response.status !== 200) {
-      return response.text().then((text) => {
-        throw new Error(text);
-      });
-    }
+const makeRequest2 = (url, options = {}, baseUrl = mainUrl) =>
+    fetch(baseUrl + url, options).then((response) => {
+        if (response.status !== 200) {
+            return response.text().then((text) => {
+                throw new Error(text);
+            });
+        }
 
-    return response.json();
-  });
+        return response.json();
+    });
 
-export default makeRequest;
+export default makeRequest2;

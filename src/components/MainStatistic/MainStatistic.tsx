@@ -11,12 +11,12 @@ type Props = {
 const MainStatistic: React.FC<Props> = ({info}: Props) => {
     const numberWithCommas = (x: string): string => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     const {
-        total_cases: totalCases,
-        total_deaths: totalDeaths,
-        total_recovered: totalRecovered,
-        total_new_cases_today: totalNewCasesToday,
-        total_new_deaths_today: totalNewDeathsToday,
-        total_serious_cases: totalSeriousCases,
+        totalCases,
+        totalDeaths,
+        totalRecovered,
+        totalNewCasesToday,
+        totalNewDeathsToday,
+        totalSeriousCases
     } = info;
 
     return (

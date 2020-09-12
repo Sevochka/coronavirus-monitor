@@ -1,24 +1,21 @@
 import makeRequest from 'api/helpers/makeRequest';
+import makeRequest2 from "api/helpers/makeRequest";
 
 const loadGlobalStat = async () => {
-    const response = await makeRequest('global=stats');
-    return response.results[0];
+    return await makeRequest('global-stats');
 };
 
 const loadAllCountryStat = async () => {
-    const response = await makeRequest('countryTotals=ALL');
-    return response.countryitems[0];
+    return await makeRequest('country-totals');
 };
 
 const loadCountryTotalStat = async (countryCode) => {
-    const response = await makeRequest(`countryTotal=${countryCode}`);
-    console.log(response.countrydata[0])
-    return response.countrydata[0];
+    return await makeRequest(`country-totals/${countryCode}`);
 };
 
 const loadCountryTimelineStat = async (id) => {
-    const response = await makeRequest(`countryTimeline=${id}`);
-    return response.timelineitems[0];
+    const response = await makeRequest(`country-timeline/${id}`);
+    return response.timeline;
 };
 
 export {loadGlobalStat, loadAllCountryStat, loadCountryTotalStat, loadCountryTimelineStat};

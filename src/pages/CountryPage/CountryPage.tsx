@@ -29,6 +29,7 @@ const CountryPage: React.FC<Props> = inject('store')(
                         <MainStatistic info={store.countryTotalStat}/>
                         <CountryTimeline info={store.countryTotalStat}/>
                     </>
+
                 ) : null}
             </>
         );

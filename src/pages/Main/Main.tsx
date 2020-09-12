@@ -14,6 +14,7 @@ type Props = {
 }
 const Main: React.FC<Props> = inject('store')(
     observer(({store}: Props) => (
+
         <>
             <WithLoadingCardMainStat isLoading={!store.globalStat} info={store.globalStat}/>
 

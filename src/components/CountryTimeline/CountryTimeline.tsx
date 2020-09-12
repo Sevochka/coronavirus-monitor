@@ -18,11 +18,11 @@ const ITEMS = [{title: 'Выявлено заболевших', color: 'blue'}, 
 const WithLoadingTimelineGraph = WithLoading(TimelineGraph);
 
 type HocProps = {
-    countryMonthStat: { [name: string]: Array<[number, number]> }
+    countryFullTimelineStat: { [name: string]: Array<[number, number]> }
 }
-const WithLoadingDiagrams = WithLoading(({countryMonthStat}: HocProps) => (
+const WithLoadingDiagrams = WithLoading(({countryFullTimelineStat}: HocProps) => (
     <div className="timeline-diagrams">
-        {Object.values(countryMonthStat).map((stat, index) => (
+        {Object.values(countryFullTimelineStat).map((stat, index) => (
             <TimelineDiagram data={stat} color={ITEMS[index].color} title={ITEMS[index].title}
                              key={ITEMS[index].title}/>
         ))}
@@ -57,7 +57,7 @@ const CountryTimeline: React.FC<Props> = inject('store')(
                 </div>
                 <WithLoadingDiagrams
                     isLoading={!store.countryTimelineStat}
-                    countryMonthStat={store.countryTimelineStat ? store.countryFullTimelineStat : {}}
+                    countryFullTimelineStat ={store.countryTimelineStat ? store.countryFullTimelineStat : {}}
                 />
                 <br/>
             </>

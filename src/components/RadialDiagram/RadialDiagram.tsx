@@ -40,19 +40,19 @@ const RadialDiagram = ({info, items}: Props) => {
                 data: [
                     {
                         name: items[0].title,
-                        y: info.total_cases,
+                        y: info.totalCases,
                         sliced: true,
                         color: items[0].color
                     },
                     {
                         name: items[1].title,
-                        y: info.total_deaths,
+                        y: info.totalDeaths,
                         sliced: true,
                         color: items[1].color
                     },
                     {
                         name: items[2].title,
-                        y: info.total_recovered,
+                        y: info.totalRecovered,
                         sliced: true,
                         color: items[2].color
                     }]

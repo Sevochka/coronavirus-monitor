@@ -5,6 +5,7 @@ import {IMainStat} from "../interfaces/IMainStat";
 import {ICountryMainStat} from "../interfaces/ICountryMainStat";
 import {ICountryTotalStat} from "../interfaces/ICountryTotalStat";
 import {ICountryTimelineStat} from "../interfaces/ICountryTimelineStat";
+import {ICountryDayStat} from "../interfaces/ICountryDayStat";
 
 export type stat = {
     x: number,
@@ -18,13 +19,7 @@ class CountryStore {
 
     @observable countryTotalStat: ICountryTotalStat | null = null;
 
-    @observable countryTimelineStat: ICountryTimelineStat | null = null;
-
-    @observable currentMonth: number = 7;
-
-    @action setCurrentMonth(newMonth: number): void {
-        this.currentMonth = newMonth;
-    }
+    @observable countryTimelineStat: Array<ICountryDayStat> | null = null;
 
     @action loadGlobalStat = (): void => {
         api.loadGlobalStat()
@@ -59,50 +54,25 @@ class CountryStore {
     };
 
     @computed get tableData(): Array<ICountryMainStat> {
-        return Object.values(this.allCountryStat || {}).map((el) => ({...el, key: el.ourid}));
-    }
-
-
-    @computed get countryMonthStat(): { [name: string]: Array<stat> } {
-        return Object.keys(this.countryTimelineStat || {})
-            .filter((date) => !this.currentMonth || this.currentMonth === new Date(date).getMonth())
-            .reduce<{ [name: string]: Array<stat> }>(
-                (stats, date: string) => {
-                    stats.totalCases.push({
-                        x: new Date(date).getTime(),
-                        y: this.countryTimelineStat ? +this.countryTimelineStat[date].total_cases : 0,
-                    });
-                    stats.totalDeaths.push({
-                        x: new Date(date).getTime(),
-                        y: this.countryTimelineStat ? +this.countryTimelineStat[date].total_deaths : 0,
-                    });
-                    stats.totalRecoveries.push({
-                        x: new Date(date).getTime(),
-                        y: this.countryTimelineStat ? +this.countryTimelineStat[date].total_recoveries : 0,
-                    });
-                    return stats;
-                },
-                {totalCases: [], totalDeaths: [], totalRecoveries: []},
-            );
+        return (this.allCountryStat || []).map((el) => ({...el, key: el.code}));
     }
 
     @computed get countryFullTimelineStat(): { [name: string]: Array<[number, number]> } {
-        return Object.keys(this.countryTimelineStat || {}).reduce<{ [name: string]: Array<[number, number]> }>(
-            (stats, date: string) => {
-                if (date !== "stat") {
+        return (this.countryTimelineStat || []).reduce<{ [name: string]: Array<[number, number]> }>(
+            (stats: { [name: string]: Array<[number, number]> }, el: ICountryDayStat) => {
                     stats.totalCases.push([
-                        new Date(date).getTime(),
-                        this.countryTimelineStat ? +this.countryTimelineStat[date].total_cases : 0,
+                        new Date(el.date).getTime(),
+                        this.countryTimelineStat ? + el.cases : 0,
                     ]);
                     stats.totalDeaths.push([
-                        new Date(date).getTime(),
-                        this.countryTimelineStat ? +this.countryTimelineStat[date].total_deaths : 0,
+                        new Date(el.date).getTime(),
+                        this.countryTimelineStat ? +el.deaths : 0,
                     ]);
                     stats.totalRecoveries.push([
-                        new Date(date).getTime(),
-                        this.countryTimelineStat ? +this.countryTimelineStat[date].total_recoveries : 0,
+                        new Date(el.date).getTime(),
+                        this.countryTimelineStat ? +el.recovered : 0,
                     ]);
-                }
+
                 return stats;
             },
             {totalCases: [], totalDeaths: [], totalRecoveries: []},
@@ -110,9 +80,10 @@ class CountryStore {
     }
 
     @computed get countryTotalCases(): ([string, string] | [])[] {
-        return Object.values(this.allCountryStat || {}).map((country) => {
+
+        return (this.allCountryStat || []).map((country) => {
             if (country.code) {
-                return [country.code.toLowerCase(), country.total_cases];
+                return [country.code.toLowerCase(), country.totalCases];
             }
             return [];
         });
