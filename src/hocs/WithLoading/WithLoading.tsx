@@ -1,11 +1,13 @@
 import React from 'react';
 
+
 type HocProps = {
   isLoading: boolean,
-  [propName: string]: unknown,
+  [propName: string]: any,
 };
 
-const WithLoading = (Component: React.FC<unknown>) =>
+
+const WithLoading = (Component: React.FC<any>) =>
   // eslint-disable-next-line react/prop-types,implicit-arrow-linebreak
   function WihLoadingComponent({ isLoading, ...props }: HocProps): JSX.Element {
     // eslint-disable-next-line react/jsx-props-no-spreading
