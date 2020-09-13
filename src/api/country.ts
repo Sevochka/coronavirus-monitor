@@ -1,14 +1,54 @@
-/* eslint-disable @typescript-eslint/require-await */
-import makeRequest from 'api/helpers/makeRequest';
+import axios from 'axios';
 
-const loadGlobalStat = async (): Promise<any> => makeRequest('global-stats');
+import { IMainStat } from 'interfaces/IMainStat';
+import { ICountryMainStat } from 'interfaces/ICountryMainStat';
+import { ICountryTimelineStat } from "interfaces/ICountryTimelineStat";
+import { ICountryTotalStat } from "interfaces/ICountryTotalStat";
 
-const loadAllCountryStat = async (): Promise<any> => makeRequest('country-totals');
+const mainUrl = 'https://whispering-bastion-66552.herokuapp.com/api/';
 
-const loadCountryTotalStat = async (countryCode: string): Promise<any> =>
-  makeRequest(`country-totals/${countryCode}`);
+const loadGlobalStat = () => {
+  axios
+    .get<IMainStat>(`${mainUrl}global-stats`)
+    .then((response) => {
+      return response;
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};
 
-const loadCountryTimelineStat = async (id: string): Promise<any> =>
-  makeRequest(`country-timeline/${id}`);
+const loadAllCountryStat = () => {
+  axios
+    .get<ICountryMainStat[]>(`${mainUrl}country-totals`)
+    .then((response) => {
+      return response;
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};
+
+const loadCountryTotalStat = (countryCode: string) => {
+  axios
+    .get<ICountryTotalStat>(`${mainUrl}country-totals/${countryCode}`)
+    .then((response) => {
+      return response;
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};
+
+const loadCountryTimelineStat = (id: string) => {
+  axios
+    .get<ICountryTimelineStat>(`${mainUrl}country-timeline/${id}`)
+    .then((response) => {
+      return response;
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};
 
 export { loadGlobalStat, loadAllCountryStat, loadCountryTotalStat, loadCountryTimelineStat };
