@@ -4,19 +4,23 @@ import { IMainStat } from 'interfaces/IMainStat';
 import { ICountryMainStat } from 'interfaces/ICountryMainStat';
 import { ICountryTotalStat } from 'interfaces/ICountryTotalStat';
 import { ICountryDayStat } from 'interfaces/ICountryDayStat';
-import {ICountryTimelineStat} from 'interfaces/ICountryTimelineStat';
 
 import * as api from 'api/country';
 
 class CountryStore {
+  @observable
   globalStat: IMainStat | null = null;
 
+  @observable
   allCountryStat: ICountryMainStat[] | null = null;
 
+  @observable
   countryTotalStat: ICountryTotalStat | null = null;
 
+  @observable
   countryTimelineStat: ICountryDayStat[] | null = null;
 
+  @action
   loadGlobalStat = (): void => {
     api
       .loadGlobalStat()
@@ -26,6 +30,7 @@ class CountryStore {
       .catch((err: Error) => err);
   };
 
+  @action
   loadAllCountryStat = (): void => {
     api
       .loadAllCountryStat()
@@ -35,6 +40,7 @@ class CountryStore {
       .catch((err: Error) => err);
   };
 
+  @action
   loadCountryTotalStat = (countryCode: string): void => {
     api
       .loadCountryTotalStat(countryCode)
@@ -44,6 +50,7 @@ class CountryStore {
       .catch((err: Error) => err);
   };
 
+  @action
   loadCountryTimelineStat = (countryCode: string): void => {
     api
       .loadCountryTimelineStat(countryCode)
