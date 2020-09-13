@@ -1,24 +1,26 @@
 import { action, computed, observable } from 'mobx';
 
-import { IMainStat } from '../interfaces/IMainStat';
-import { ICountryMainStat } from '../interfaces/ICountryMainStat';
-import { ICountryTotalStat } from '../interfaces/ICountryTotalStat';
-import { ICountryDayStat } from '../interfaces/ICountryDayStat';
+import { IMainStat } from 'interfaces/IMainStat';
+import { ICountryMainStat } from 'interfaces/ICountryMainStat';
+import { ICountryTotalStat } from 'interfaces/ICountryTotalStat';
+import { ICountryDayStat } from 'interfaces/ICountryDayStat';
+import {ICountryTimelineStat} from 'interfaces/ICountryTimelineStat';
+
 import * as api from 'api/country';
 
 class CountryStore {
   globalStat: IMainStat | null = null;
 
-  allCountryStat: Array<ICountryMainStat> | null = null;
+  allCountryStat: ICountryMainStat[] | null = null;
 
   countryTotalStat: ICountryTotalStat | null = null;
 
-  countryTimelineStat: Array<ICountryDayStat> | null = null;
+  countryTimelineStat: ICountryDayStat[] | null = null;
 
   loadGlobalStat = (): void => {
     api
       .loadGlobalStat()
-      .then((res: IMainStat) => {
+      .then((res) => {
         this.globalStat = res;
       })
       .catch((err: Error) => err);
