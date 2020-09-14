@@ -4,7 +4,6 @@ import { IMainStat } from 'interfaces/IMainStat';
 import { ICountryDayStat } from 'interfaces/ICountryDayStat';
 import { ICountryMainStat } from 'interfaces/ICountryMainStat';
 import { ICountryTotalStat } from 'interfaces/ICountryTotalStat';
-import { ICountryDayStat } from 'interfaces/ICountryDayStat';
 
 import * as api from 'api/country';
 
