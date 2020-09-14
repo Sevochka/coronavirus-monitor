@@ -5,19 +5,28 @@ import WithLoading from 'hocs/WithLoading';
 import WorldMap from 'components/WorldMap';
 import CountryStore from 'store/CountryStore';
 import CardMainStat from 'components/MainStatistic';
+import CountryComparison from 'components/CountryComparison';
 
 const WithLoadingCardMainStat = WithLoading(CardMainStat);
 
 const WithLoadingWorldMap = WithLoading(WorldMap);
 
+const WithLoadingCountryComparison = WithLoading(CountryComparison);
+
 type Props = {
-  store: CountryStore;
+  store: CountryStore,
 };
+
 const Main: React.FC<Props> = inject('store')(
   observer(({ store }: Props) => (
-
     <>
-      <WithLoadingCardMainStat isLoading={!store.globalStat} info={store.globalStat} />
+      <WithLoadingCardMainStat
+        isLoading={!store.globalStat}
+        info={store.globalStat}
+        setPropertyName={store.setPropertyName}
+      />
+
+      <WithLoadingCountryComparison isLoading={!store.allCountryStat} />
 
       <WithLoadingWorldMap isLoading={!store.allCountryStat} />
     </>

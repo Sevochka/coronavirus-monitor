@@ -1,4 +1,5 @@
 export interface ICountryMainStat {
+  [k: string]: any
   code: string
   key: string
   title: string

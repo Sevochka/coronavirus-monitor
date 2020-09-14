@@ -27,7 +27,7 @@ const CountryPage: React.FC<Props> = inject('store')(
         <h4>{id}</h4>
         {store.countryTotalStat ? (
           <>
-            <MainStatistic info={store.countryTotalStat} />
+            <MainStatistic info={store.countryTotalStat} setPropertyName={store.setPropertyName} />
             <CountryTimeline info={store.countryTotalStat} store={store} />
           </>
         ) : null}
