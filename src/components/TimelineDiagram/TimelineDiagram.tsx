@@ -1,6 +1,6 @@
 import React from 'react';
-import HighchartsReact from 'highcharts-react-official';
 import Highcharts from 'highcharts/highstock';
+import HighchartsReact from 'highcharts-react-official';
 
 type Props = {
   data: Array<[number, number]>,

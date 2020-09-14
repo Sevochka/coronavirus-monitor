@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
-import CountryStore from '../../store/CountryStore';
+
+import CountryStore from 'store/CountryStore';
 import MainStatistic from 'components/MainStatistic';
 import CountryTimeline from 'components/CountryTimeline';
 

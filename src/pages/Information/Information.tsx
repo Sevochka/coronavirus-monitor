@@ -1,11 +1,12 @@
 import React from 'react';
 import { Collapse } from 'antd';
 
-import './Information.scss';
-import Prevention from 'components/Prevention/Prevention';
-import Symptoms from 'components/Symptoms/Symptoms';
 import Diagnostics from 'components/Diagnostics';
+import Symptoms from 'components/Symptoms/Symptoms';
 import Medication from 'components/Medication/Medication';
+import Prevention from 'components/Prevention/Prevention';
+
+import './Information.scss';
 
 const { Panel } = Collapse;
 

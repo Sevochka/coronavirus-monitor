@@ -3,12 +3,12 @@ import {useParams} from 'react-router-dom';
 import {observer, inject} from 'mobx-react';
 import '../../../node_modules/react-vis/dist/style.css';
 
-import {ICountryTotalStat} from '../../interfaces/ICountryTotalStat';
 import WithLoading from 'hocs/WithLoading';
 import CountryStore from 'store/CountryStore';
 import RadialDiagram from 'components/RadialDiagram';
 import TimelineGraph from 'components/TimelineGraph';
 import TimelineDiagram from 'components/TimelineDiagram';
+import {ICountryTotalStat} from 'interfaces/ICountryTotalStat';
 
 import './CountryTimeline.scss';
 

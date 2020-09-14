@@ -1,6 +1,6 @@
 import React from 'react';
-import HighchartsReact from 'highcharts-react-official';
 import Highcharts from 'highcharts';
+import HighchartsReact from 'highcharts-react-official';
 import { ICountryTotalStat } from 'interfaces/ICountryTotalStat';
 
 type Props = {
@@ -35,7 +35,7 @@ const RadialDiagram: React.FC<Props> = ({ info, items }: Props) => {
     },
     series: [
       {
-        name: 'Кол-во',
+        name: 'Number',
         colorByPoint: true,
         data: [
           {

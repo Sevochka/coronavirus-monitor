@@ -33,7 +33,7 @@ const TableStat: React.FC<Props> = inject('store')(
           dataSource={store && (store.allCountryStat ? store.tableData : [])}
           onRow={(record: ICountryMainStat) => ({
             onClick: () => {
-              history.push(`/country/${record.code}`);
+              history.push(`/country/${record.code}/`);
             },
           })}
           pagination={{ pageSize: 10, position: ['bottomCenter'], showSizeChanger: false }}

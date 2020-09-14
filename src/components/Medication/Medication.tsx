@@ -16,8 +16,8 @@ const Medication: React.FC = () => (
         <p>
           Stay at home and follow a healthy lifestyle. It is recommended to eat properly,
           observe proper sleep patterns, maintain physical activity, and use
-          phone or Internet for communication with friends and family. During difficult periods, children
-          they need special love and attention from adults. Try as much as possible
+          phone or Internet for communication with friends and family. During difficult periods,
+          children they need special love and attention from adults. Try as much as possible
           stick to the same daily routine.
         </p>
         <p>

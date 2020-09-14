@@ -1,10 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
+import { routesMap } from 'routes';
+import InfoSvg from 'assets/info.svg';
 import VirusSvg from 'assets/virus.svg';
 import StatSvg from 'assets/statistics.svg';
-import InfoSvg from 'assets/info.svg';
-import { routesMap } from 'routes';
 
 import './Navbar.scss';
 

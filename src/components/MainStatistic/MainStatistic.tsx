@@ -22,8 +22,7 @@ const MainStatistic: React.FC<Props> = ({ info }: Props) => {
 
   return (
     <article className="main-stat">
-      <h2 className="main-stat__header">Статистика за все время</h2>
-
+      <h2 className="main-stat__header">All-time statistics</h2>
       <div className="main-stat__wrapper">
         <section className="main-stat__card">
           <div className="main-stat__part stat-part">

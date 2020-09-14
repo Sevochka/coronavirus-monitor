@@ -1,8 +1,9 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
-import HighchartsReact from 'highcharts-react-official';
 import Highcharts from 'highcharts/highstock';
-import CountryStore from '../../store/CountryStore';
+import HighchartsReact from 'highcharts-react-official';
+
+import CountryStore from 'store/CountryStore';
 
 type Props = {
   store: CountryStore;

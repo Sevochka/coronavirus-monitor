@@ -1,9 +1,10 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
-import CountryStore from '../../store/CountryStore';
+
 import WithLoading from 'hocs/WithLoading';
-import CardMainStat from 'components/MainStatistic';
 import WorldMap from 'components/WorldMap';
+import CountryStore from 'store/CountryStore';
+import CardMainStat from 'components/MainStatistic';
 
 const WithLoadingCardMainStat = WithLoading(CardMainStat);
 
