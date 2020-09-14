@@ -3,7 +3,6 @@ import axios, { AxiosResponse } from 'axios';
 import {ICountryDayStat} from '../interfaces/ICountryDayStat';
 import { IMainStat } from 'interfaces/IMainStat';
 import { ICountryMainStat } from 'interfaces/ICountryMainStat';
-import { ICountryTimelineStat } from 'interfaces/ICountryTimelineStat';
 import { ICountryTotalStat } from 'interfaces/ICountryTotalStat';
 
 const mainUrl = 'https://whispering-bastion-66552.herokuapp.com/api/';

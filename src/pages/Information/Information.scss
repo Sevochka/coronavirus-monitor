@@ -13,11 +13,14 @@
 
 .hr-circle {
   background-position: 50%;
+  border-image: url('../../assets/horizontalRule.svg');
   border-style: solid;
   border-width: 0 0 5px;
   box-sizing: border-box;
-  color: orange;
+  color: #ffa500;
   height: 0;
   margin: 10px 0;
   padding: 0;
 }
+
+

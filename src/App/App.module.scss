@@ -1,10 +1,10 @@
 @import 'src/shared';
 
 .app-container {
-    background: $content-background-color;
-    border: 2px solid $content-border-color;
-    border-radius: 10px;
-    margin: $large auto 0;
-    padding: $large;
-    width: $content-width !important;
+  background: $content-background-color;
+  border: 2px solid $content-border-color;
+  border-radius: 10px;
+  margin: $large auto 0;
+  padding: $large;
+  width: $content-width !important;
 }

@@ -21,6 +21,8 @@ const ITEMS = [
   { title: 'Человек выздоровело', color: 'green' },
 ];
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const WithLoadingTimelineGraph = WithLoading(TimelineGraph);
 
 type HocProps = {
