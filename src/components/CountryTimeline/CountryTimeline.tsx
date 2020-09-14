@@ -13,12 +13,12 @@ import TimelineDiagram from 'components/TimelineDiagram';
 import './CountryTimeline.scss';
 
 const ITEMS = [
-  {title: 'Выявлено заболевших', color: 'blue'},
+  {title: 'Total cases', color: 'blue'},
   {
-    title: 'Человек умерло',
+    title: 'Total deaths',
     color: 'red',
   },
-  {title: 'Человек выздоровело', color: 'green'},
+  {title: 'Total recovered', color: 'green'},
 ];
 
 const WithLoadingTimelineGraph = WithLoading(TimelineGraph);

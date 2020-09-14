@@ -15,24 +15,6 @@ const TimelineGraph: React.FC<Props> = inject('store')(
         backgroundColor: 'rgba(0,0,0,0)',
         height: 400
       },
-      responsive: {
-        rules: [{
-          condition: {
-            maxWidth: 500
-          },
-          chartOptions: {
-            chart: {
-              height: 300
-            },
-            subtitle: {
-              text: null
-            },
-            navigator: {
-              enabled: false
-            }
-          }
-        }]
-      },
       plotOptions: {
         series: {
           compare: 'percent',
@@ -53,17 +35,17 @@ const TimelineGraph: React.FC<Props> = inject('store')(
       },
       series: [
         {
-          name: 'Выявлено заболевших',
+          name: 'Total cases',
           data: store.countryFullTimelineStat.totalCases,
           color: 'blue',
         },
         {
-          name: 'Человек умерло',
+          name: 'Total deaths',
           data: store.countryFullTimelineStat.totalDeaths,
           color: 'red',
         },
         {
-          name: 'Человек выздоровело',
+          name: 'Total recoveries',
           data: store.countryFullTimelineStat.totalRecoveries,
           color: 'green',
         },

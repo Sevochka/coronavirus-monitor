@@ -1,40 +1,40 @@
 import React from 'react';
-import { Collapse } from 'antd';
+import {Collapse} from 'antd';
 
-const { Panel } = Collapse;
+const {Panel} = Collapse;
 
-const Medication:React.FC = () => (
+const Medication: React.FC = () => (
   <>
     <Collapse accordion>
-      <Panel header="Самостоятельное лечение" key="1">
+      <Panel header="Independent treatment" key="1">
         <p>
-          Если вы чувствуете, что заболели, отдыхайте, ‎пейте много жидкости и хорошо питайтесь.
-          ‎Оставайтесь в отдельной от других членов ‎семьи комнате и по возможности пользуйтесь
-          ‎отдельным туалетом. Поверхности, к ‎которым вы часто прикасаетесь, следует ‎регулярно
-          мыть и дезинфицировать. ‎
+          If you feel ill, rest, drink plenty of fluids, and eat well.
+          Stay in a separate room from other family members and use it whenever possible
+          ‎separate toilet. Surfaces that you touch frequently should be used regularly
+          to clean and disinfect.
         </p>
         <p>
-          Находясь дома, придерживайтесь здорового ‎образа жизни. Рекомендуется правильно ‎питаться,
-          соблюдать правильный режим сна, ‎ сохранять двигательную активность и ‎использовать
-          телефон или сеть Интернет для ‎общения с друзьями и близкими. В трудные ‎периоды дети
-          нуждаются в особой любви и ‎внимании со стороны взрослых. Старайтесь ‎по возможности
-          придерживаться одного и ‎того же распорядка дня. ‎
+          Stay at home and follow a healthy lifestyle. It is recommended to eat properly,
+          observe proper sleep patterns, maintain physical activity, and use
+          phone or Internet for communication with friends and family. During difficult periods, children
+          they need special love and attention from adults. Try as much as possible
+          stick to the same daily routine.
         </p>
         <p>
-          В условиях кризиса грусть, стресс, ‎растерянность – нормальные эмоции. ‎Помочь в такой
-          ситуации может ‎доверительное общение с близкими и ‎друзьями. Если вы чувствуете, что не
-          ‎справляетесь с ситуацией, обратитесь за ‎помощью к медицинскому или социальному
-          ‎работнику. ‎
+          In a crisis, sadness, stress, and confusion are normal emotions. Help with this
+          trusting communication with family and friends can help. If you feel that you don&apos;t
+          if you are coping with the situation, seek medical or social assistance
+          ‎worker. ‎
         </p>
       </Panel>
-      <Panel header="Медицинское обследование" key="2">
+      <Panel header="Medical examination" key="2">
         <p>
-          Если у вас легкие симптомы и нет ‎сопутствующих заболеваний, ‎самоизолируйтесь дома и
-          свяжитесь с врачом ‎или позвоните по горячей линии COVID-19.
+          If you have mild symptoms and no comorbidities, self-isolate at home and
+          contact your doctor or call the COVID-19 hotline.
         </p>
         <p>
-          В случае повышения температуры, появления ‎кашля и одышки обратитесь за медицинской
-          ‎помощью. Вызовите врача по телефону.‎
+          If you have a fever, cough, or shortness of breath, seek medical attention.
+          help. Call a doctor on the phone.
         </p>
       </Panel>
     </Collapse>

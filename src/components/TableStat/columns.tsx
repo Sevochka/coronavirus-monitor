@@ -4,7 +4,7 @@ import { ICountryMainStat } from 'interfaces/ICountryMainStat';
 
 const columns = [
   {
-    title: 'Страна',
+    title: 'Country',
     dataIndex: 'title',
     width: '16%',
     sorter: {
@@ -13,7 +13,7 @@ const columns = [
     },
   },
   {
-    title: 'Всего заболевших',
+    title: 'Total cases',
     dataIndex: 'totalCases',
     width: '14%',
     sorter: {
@@ -23,7 +23,7 @@ const columns = [
     render: (text: string): JSX.Element => <span style={{ color: 'blue' }}>{text}</span>,
   },
   {
-    title: 'Выявлено заболевших за сутки',
+    title: 'New cases today',
     dataIndex: 'totalNewCasesToday',
     width: '14%',
     sorter: {
@@ -34,7 +34,7 @@ const columns = [
     render: (text: string): JSX.Element => <b style={{ color: 'blue' }}>{text}</b>,
   },
   {
-    title: 'Всего смертей',
+    title: 'Total deaths',
     dataIndex: 'totalDeaths',
     width: '14%',
     sorter: {
@@ -45,7 +45,7 @@ const columns = [
     render: (text: string): JSX.Element => <span style={{ color: 'red' }}>{text}</span>,
   },
   {
-    title: 'Человека умерло за сутки',
+    title: 'New deaths today',
     dataIndex: 'totalNewDeathsToday',
     width: '14%',
     sorter: {
@@ -56,7 +56,7 @@ const columns = [
     render: (text: string): JSX.Element => <b style={{ color: 'red' }}>{text}</b>,
   },
   {
-    title: 'Всего выздоровевших',
+    title: 'Total recovered',
     dataIndex: 'totalRecovered',
     width: '14%',
     sorter: {
@@ -67,7 +67,7 @@ const columns = [
     render: (text: string): JSX.Element => <span style={{ color: 'green' }}>{text}</span>,
   },
   {
-    title: 'В тяжелом состоянии',
+    title: 'Total serious cases',
     dataIndex: 'totalSeriousCases',
     width: '14%',
     sorter: {

@@ -3,38 +3,41 @@ import React from 'react';
 const Prevention: React.FC = () => (
   <>
     <p>
-      Чтобы защитить себя и окружающих, пользуйтесь проверенной информацией о болезни и принимайте
-      необходимые меры профилактики. Следуйте рекомендациям местных органов здравоохранения.
+      To protect yourself and others, use verified information about the disease and take
+      necessary preventive measures. Follow the recommendations of your local health authorities.
     </p>
     <hr className="hr-circle" />
     <p>
-      <h4 className="p-header">Для предупреждения распространения COVID-19:</h4>
+      <h4 className="p-header">To prevent the spread of COVID-19:</h4>
       <ul>
         <li>
-          Соблюдайте правила гигиены рук. Часто мойте руки водой с мылом или обрабатывайте их
-          спиртосодержащим антисептиком для рук.
+          Follow the rules of hand hygiene. Wash your hands frequently with soap and water
+          or treat them alcohol-containing hand sanitizer.
         </li>
-        <li>Держитесь на безопасном расстоянии от чихающих или кашляющих людей.</li>
-        <li>Носите маску, когда находитесь в окружении других людей.</li>
-        <li>Не прикасайтесь руками к глазам, рту или носу.</li>
-        <li>При кашле или чихании прикрывайте рот и нос локтевым сгибом или платком.</li>
-        <li>Если вы чувствуете недомогание, оставайтесь дома.</li>
+        <li>Keep a safe distance from sneezing or coughing people.</li>
+        <li>Wear a mask when you are surrounded by other people.</li>
+        <li>Do not touch your eyes, mouth, or nose with your hands.</li>
         <li>
-          В случае повышения температуры, появления кашля и одышки обратитесь за медицинской
-          помощью.
+          When coughing or sneezing, cover your mouth and nose with an elbow bend
+          or handkerchief.
+        </li>
+        <li>If you feel unwell, stay at home.</li>
+        <li>
+          If you have a fever, cough, or shortness of breath, seek medical attention.
+          help.
         </li>
       </ul>
     </p>
     <p>
-      Чем раньше вы обратитесь за помощью, тем быстрее вас направят к нужному врачу. Так вы защитите
-      себя и предотвратите распространение вирусов и других инфекций.
+      The sooner you seek help, the faster you will be referred to the right doctor.
+      So you will protect protect yourself and prevent the spread of viruses and other infections.
     </p>
     <p>
-      <h4 className="p-header">Маски</h4>
-      Надев маску, вы поможете предотвратить передачу вируса от себя другим людям. Одних только
-      масок недостаточно для защиты от вируса COVID-19. Помимо использования масок также следует
-      соблюдать безопасную дистанцию и правила гигиены рук. Следуйте рекомендациям местных органов
-      здравоохранения.
+      <h4 className="p-header">Masks</h4>
+      By wearing a mask, you can help prevent transmission of the virus from yourself to other
+      people. Alone masks are not enough to protect against the COVID-19 virus.
+      In addition to using masks, you should also keep a safe distance and hand hygiene
+      rules. Follow the recommendations of local authorities healths.
     </p>
   </>
 );

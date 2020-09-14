@@ -11,16 +11,16 @@ const { Panel } = Collapse;
 
 const Information: React.FC = () => (
   <Collapse accordion>
-    <Panel header="Профилактика" key="1">
+    <Panel header="Prevention" key="1">
       <Prevention />
     </Panel>
-    <Panel header="Симптомы" key="2">
+    <Panel header="Symptoms" key="2">
       <Symptoms />
     </Panel>
-    <Panel header="Диагностика" key="3">
+    <Panel header="Diagnostics" key="3">
       <Diagnostics />
     </Panel>
-    <Panel header="Лечение" key="4">
+    <Panel header="Medication" key="4">
       <Medication />
     </Panel>
   </Collapse>

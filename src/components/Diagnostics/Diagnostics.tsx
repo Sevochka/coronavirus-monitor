@@ -3,9 +3,9 @@ import React from 'react';
 const Diagnostics:React.FC = () => (
   <>
     <p>
-      Если чувствуете себя плохо, оставайтесь дома. Если у вас повышенная температура, кашель и
-      затруднение дыхания, обратитесь к врачу. Следуйте рекомендациям местных органов
-      здравоохранения.
+      If you feel unwell, stay at home. If you have a fever, cough, and
+      breathing difficulties, consult a doctor. Follow the recommendations of local authorities
+      healths.
     </p>
   </>
 );
