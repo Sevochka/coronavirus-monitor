@@ -1,9 +1,9 @@
-import axios, { AxiosResponse } from 'axios';
+import axios, {AxiosResponse} from 'axios';
 
-import { IMainStat } from 'interfaces/IMainStat';
+import {IMainStat} from 'interfaces/IMainStat';
 import {ICountryDayStat} from 'interfaces/ICountryDayStat';
-import { ICountryMainStat } from 'interfaces/ICountryMainStat';
-import { ICountryTotalStat } from 'interfaces/ICountryTotalStat';
+import {ICountryMainStat} from 'interfaces/ICountryMainStat';
+import {ICountryTotalStat} from 'interfaces/ICountryTotalStat';
 
 const mainUrl = 'https://whispering-bastion-66552.herokuapp.com/api/';
 
@@ -39,4 +39,4 @@ const loadCountryTimelineStat = (id: string): Promise<ICountryDayStat[]> => {
     });
 };
 
-export { loadGlobalStat, loadAllCountryStat, loadCountryTotalStat, loadCountryTimelineStat };
+export {loadGlobalStat, loadAllCountryStat, loadCountryTotalStat, loadCountryTimelineStat};

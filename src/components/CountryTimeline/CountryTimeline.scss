@@ -1,14 +1,5 @@
 @import 'src/shared';
 
-.timeline-panel {
-  display: flex;
-  justify-content: center;
-
-  &__legend {
-    margin: 0 0 0 $medium;
-  }
-}
-
 .timeline-diagrams {
   display: flex;
   flex-wrap: wrap;
@@ -17,5 +8,20 @@
 
 .timeline-stat {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
-}
+
+  &__graph {
+    min-width: 300px;
+    width: 800px;
+    max-width: 800px;
+  }
+
+  &__radial{
+    min-width: 300px;
+    width: 800px;
+    max-width: 800px;
+  }
+ }
+
+

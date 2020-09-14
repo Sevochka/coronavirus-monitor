@@ -3,7 +3,7 @@ import { hot } from 'react-hot-loader/root';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from 'components/Navbar';
 import routes from 'routes';
-import './App.module.scss';
+import './App.scss';
 
 const App: React.FC = () => {
   const routesComponents = routes.map((route) => (
@@ -13,7 +13,7 @@ const App: React.FC = () => {
   return (
     <Router>
       <Navbar />
-      <div styleName="app-container">
+      <div className="app-container">
         <Switch>{routesComponents}</Switch>
       </div>
     </Router>

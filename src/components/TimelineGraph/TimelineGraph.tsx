@@ -13,6 +13,25 @@ const TimelineGraph: React.FC<Props> = inject('store')(
     const options = {
       chart: {
         backgroundColor: 'rgba(0,0,0,0)',
+        height: 400
+      },
+      responsive: {
+        rules: [{
+          condition: {
+            maxWidth: 500
+          },
+          chartOptions: {
+            chart: {
+              height: 300
+            },
+            subtitle: {
+              text: null
+            },
+            navigator: {
+              enabled: false
+            }
+          }
+        }]
       },
       plotOptions: {
         series: {
@@ -55,6 +74,7 @@ const TimelineGraph: React.FC<Props> = inject('store')(
         <HighchartsReact
           highcharts={Highcharts}
           constructorType="stockChart"
+          containerProps={{ style: { height: '100%' } }}
           options={options}
         />
       </>
