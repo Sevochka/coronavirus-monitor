@@ -6,7 +6,7 @@ import './MainStatistic.scss';
 
 type Props = {
   info: IMainStat,
-  setPropertyName: (propertyName: string) => void;
+  setPropertyName?: (propertyName: string) => void;
 };
 
 const MainStatistic: React.FC<Props> = ({ info, setPropertyName }: Props) => {
@@ -22,7 +22,7 @@ const MainStatistic: React.FC<Props> = ({ info, setPropertyName }: Props) => {
   } = info;
 
   const handleStatPartClicked = (property:string) => {
-    setPropertyName(property);
+    if (setPropertyName) setPropertyName(property);
   };
 
   return (
@@ -31,24 +31,40 @@ const MainStatistic: React.FC<Props> = ({ info, setPropertyName }: Props) => {
       <div className="main-stat__wrapper">
         <section className="main-stat__card">
           <div className="main-stat__part stat-part">
-            <button
-              type="button"
-              className="stat-part__number number-infected btn info"
-              onClick={() => handleStatPartClicked('totalCases')}
-            >
-              {numberWithCommas(totalCases)}
-            </button>
+            { setPropertyName? (
+              <button
+                type="button"
+                className="stat-part__number btn info"
+                onClick={() => handleStatPartClicked('totalCases')}
+              >
+                {numberWithCommas(totalCases)}
+              </button>
+            ): (
+              <span
+                className="stat-part__number number-infected"
+              >
+                {numberWithCommas(totalCases)}
+              </span>
+            )}
             <span className="stat-part__title">Total cases</span>
           </div>
           <div className="main-stat__part stat-part">
-            <span className="stat-part__number number-infected">
-              <button
-                type="button"
-                className="stat-part__number number-infected btn info"
-                onClick={() => handleStatPartClicked('totalNewCasesToday')}
-              >
-                {numberWithCommas(totalNewCasesToday)}
-              </button>
+            <span className="stat-part__number">
+              { setPropertyName? (
+                <button
+                  type="button"
+                  className="stat-part__number btn info"
+                  onClick={() => handleStatPartClicked('totalNewCasesToday')}
+                >
+                  {numberWithCommas(totalNewCasesToday)}
+                </button>
+              ): (
+                <span
+                  className="stat-part__number number-infected"
+                >
+                  {numberWithCommas(totalNewCasesToday)}
+                </span>
+              )}
             </span>
             <span className="stat-part__title">New cases today</span>
           </div>
@@ -57,25 +73,43 @@ const MainStatistic: React.FC<Props> = ({ info, setPropertyName }: Props) => {
         <section className="main-stat__card">
           <div className="main-stat__part stat-part">
             <span className="stat-part__number number-death">
-              <button
-                type="button"
-                className="stat-part__number number-infected btn danger"
-                onClick={() => handleStatPartClicked('totalDeaths')}
-              >
-                {numberWithCommas(totalDeaths)}
-              </button>
+              { setPropertyName? (
+                <button
+                  type="button"
+                  className="stat-part__number btn danger"
+                  onClick={() => handleStatPartClicked('totalDeaths')}
+                >
+                  {numberWithCommas(totalDeaths)}
+                </button>
+              ): (
+                <span
+                  className="stat-part__number number-death"
+                >
+                  {numberWithCommas(totalDeaths)}
+                </span>
+              )}
             </span>
             <span className="stat-part__title">Total deaths</span>
           </div>
           <div className="main-stat__part stat-part">
             <span className="stat-part__number number-death">
-              <button
-                type="button"
-                className="stat-part__number number-infected btn danger"
-                onClick={() => handleStatPartClicked('totalNewDeathsToday')}
-              >
-                {numberWithCommas(totalNewDeathsToday)}
-              </button>
+              {
+                setPropertyName? (
+                  <button
+                    type="button"
+                    className="stat-part__number btn danger"
+                    onClick={() => handleStatPartClicked('totalNewDeathsToday')}
+                  >
+                    {numberWithCommas(totalNewDeathsToday)}
+                  </button>
+                ): (
+                  <span
+                    className="stat-part__number number-death"
+                  >
+                    {numberWithCommas(totalNewDeathsToday)}
+                  </span>
+                )
+}
             </span>
             <span className="stat-part__title">New deaths today</span>
           </div>
@@ -84,25 +118,43 @@ const MainStatistic: React.FC<Props> = ({ info, setPropertyName }: Props) => {
         <section className="main-stat__card">
           <div className="main-stat__part stat-part">
             <span className="stat-part__number number-recovered">
-              <button
-                type="button"
-                className="stat-part__number number-infected btn success"
-                onClick={() => handleStatPartClicked('totalRecovered')}
-              >
-                {numberWithCommas(totalRecovered)}
-              </button>
+              {
+                setPropertyName? (
+                  <button
+                    type="button"
+                    className="stat-part__number btn success"
+                    onClick={() => handleStatPartClicked('totalRecovered')}
+                  >
+                    {numberWithCommas(totalRecovered)}
+                  </button>
+                ): (
+                  <span
+                    className="stat-part__number number-recovered"
+                  >
+                    {numberWithCommas(totalRecovered)}
+                  </span>
+                )
+}
             </span>
             <span className="stat-part__title">Total recovered</span>
           </div>
           <div className="main-stat__part stat-part">
             <span className="stat-part__number number-serious">
-              <button
-                type="button"
-                className="stat-part__number number-infected btn success"
-                onClick={() => handleStatPartClicked('totalSeriousCases')}
-              >
-                {numberWithCommas(totalSeriousCases)}
-              </button>
+              {setPropertyName ? (
+                <button
+                  type="button"
+                  className="stat-part__number btn success"
+                  onClick={() => handleStatPartClicked('totalSeriousCases')}
+                >
+                  {numberWithCommas(totalSeriousCases)}
+                </button>
+              ): (
+                <span
+                  className="stat-part__number number-serious"
+                >
+                  {numberWithCommas(totalSeriousCases)}
+                </span>
+              )}
             </span>
             <span className="stat-part__title">Total serious cases</span>
           </div>
