@@ -54,6 +54,7 @@ const CountryComparison: React.FC<Props> = inject('store')(
     const options = {
       chart: {
         type: 'column',
+        backgroundColor: 'rgba(0,0,0,0)',
       },
       title: {
         text: `Top <strong>${amount}</strong> countries by ${splitCamelCaseToString(
