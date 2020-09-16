@@ -4,6 +4,20 @@ import { ICountryMainStat } from 'interfaces/ICountryMainStat';
 
 const columns = [
   {
+    title: 'Flag',
+    dataIndex: 'code',
+    width: '5%',
+    render: (text: string): JSX.Element => (
+      <span>
+        <img
+          alt="Flag"
+          className="img-rounded"
+          src={`https://www.countryflags.io/${text}/shiny/32.png`}
+        />
+      </span>
+    ),
+  },
+  {
     title: 'Country',
     dataIndex: 'title',
     width: '16%',
