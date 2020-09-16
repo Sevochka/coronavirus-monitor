@@ -18,7 +18,7 @@ const Navbar: React.FC = () => (
       activeClassName="nav-menu-item-selected"
     >
       <img src={VirusSvg} alt="Virus icon" className="nav-menu__icon" />
-      Global statistics
+      <span>Global statistics</span>
     </NavLink>
     <NavLink
       exact
@@ -28,7 +28,7 @@ const Navbar: React.FC = () => (
       activeClassName="nav-menu-item-selected"
     >
       <img src={StatSvg} alt="Stat icon" className="nav-menu__icon" />
-      Country statistics
+      <span>Country statistics</span>
     </NavLink>
     <NavLink
       exact
@@ -38,7 +38,7 @@ const Navbar: React.FC = () => (
       activeClassName="nav-menu-item-selected"
     >
       <img src={InfoSvg} alt="Information icon" className="nav-menu__icon" />
-      Information
+      <span>Information</span>
     </NavLink>
   </nav>
 );

@@ -16,7 +16,6 @@ const MainStatCard: React.FC<Props> = (
     stats, titles, properties,
     handleStatPartClicked
   }: Props) => {
-  console.log(isCountryPage);
   const numberWithCommas = (x: string): string =>
     x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
@@ -64,7 +63,6 @@ const MainStatCard: React.FC<Props> = (
         <span className="stat-part__title">{titles[1]}</span>
       </div>
     </section>
-
   );
 };
 

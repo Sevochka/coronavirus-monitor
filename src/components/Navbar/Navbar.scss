@@ -13,6 +13,7 @@ $defcolor: #fff;
   font-weight: $normal;
   justify-content: center;
   line-height: 50px;
+  min-height: 50px;
 
   &__item {
     align-items: center;
@@ -33,5 +34,14 @@ $defcolor: #fff;
 
   .nav-menu-item-selected {
     background: darken($bg, 30%);
+  }
+  @media screen and (max-width: 600px) {
+    &__item {
+      display: block;
+    }
+
+    &__item span {
+      display: none;
+    }
   }
 }
