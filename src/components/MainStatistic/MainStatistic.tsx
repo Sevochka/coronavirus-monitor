@@ -42,6 +42,7 @@ const MainStatistic: React.FC<Props> = inject('store')(
             stats={[totalCases, totalNewCasesToday]}
             titles={['Total cases', 'Total new cases today']}
             handleStatPartClicked={handleStatPartClicked}
+            properties={['totalCases', 'totalNewCasesToday']}
           />
           <MainStatCard
             isCountryPage={isCountryPage}
@@ -49,6 +50,7 @@ const MainStatistic: React.FC<Props> = inject('store')(
             stats={[totalDeaths, totalNewDeathsToday]}
             titles={['Total deaths', 'Total new deaths today']}
             handleStatPartClicked={handleStatPartClicked}
+            properties={['totalDeaths', 'totalNewDeathsToday']}
           />
           <MainStatCard
             isCountryPage={isCountryPage}
@@ -56,6 +58,7 @@ const MainStatistic: React.FC<Props> = inject('store')(
             stats={[totalRecovered, totalSeriousCases]}
             titles={['Total recovered', 'Total new serious cases']}
             handleStatPartClicked={handleStatPartClicked}
+            properties={['totalRecovered', 'totalSeriousCases']}
           />
         </div>
       </article>

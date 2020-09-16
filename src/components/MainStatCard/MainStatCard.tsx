@@ -4,7 +4,8 @@ type Props = {
   isCountryPage: boolean,
   colorClasses: string[],
   stats: string[],
-  titles: string[]
+  titles: string[],
+  properties:string[],
   handleStatPartClicked: (propertyName: string) => void;
 };
 
@@ -12,7 +13,7 @@ const MainStatCard: React.FC<Props> = (
   {
     isCountryPage,
     colorClasses,
-    stats, titles,
+    stats, titles, properties,
     handleStatPartClicked
   }: Props) => {
   console.log(isCountryPage);
@@ -29,7 +30,7 @@ const MainStatCard: React.FC<Props> = (
           <button
             type="button"
             className={coloredBtnClassName}
-            onClick={() => handleStatPartClicked('totalCases')}
+            onClick={() => handleStatPartClicked(properties[0])}
           >
             {numberWithCommas(stats[0])}
           </button>
@@ -48,7 +49,7 @@ const MainStatCard: React.FC<Props> = (
             <button
               type="button"
               className={coloredBtnClassName}
-              onClick={() => handleStatPartClicked('totalNewCasesToday')}
+              onClick={() => handleStatPartClicked(properties[1])}
             >
               {numberWithCommas(stats[1])}
             </button>
