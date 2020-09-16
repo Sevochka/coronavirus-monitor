@@ -23,7 +23,7 @@ const Main: React.FC<Props> = inject('store')(
       <WithLoadingCardMainStat
         isLoading={!store.globalStat}
         info={store.globalStat}
-        setPropertyName={store.setPropertyName}
+        isCountryPage={false}
       />
 
       <WithLoadingCountryComparison isLoading={!store.allCountryStat} />

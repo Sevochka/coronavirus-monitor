@@ -38,7 +38,7 @@ const Navbar: React.FC = () => (
       activeClassName="nav-menu-item-selected"
     >
       <img src={InfoSvg} alt="Information icon" className="nav-menu__icon" />
-      Info
+      Information
     </NavLink>
   </nav>
 );

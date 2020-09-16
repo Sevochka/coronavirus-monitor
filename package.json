@@ -71,7 +71,7 @@
   "dependencies": {
     "antd": "^4.6.1",
     "axios": "^0.20.0",
-    "eslint": "^7.8.1",
+    "eslint": "^7.9.0",
     "highcharts": "^8.2.0",
     "highcharts-react-official": "^3.0.0",
     "mobx": "^5.15.6",

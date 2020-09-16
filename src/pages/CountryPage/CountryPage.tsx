@@ -6,6 +6,8 @@ import CountryStore from 'store/CountryStore';
 import MainStatistic from 'components/MainStatistic';
 import CountryTimeline from 'components/CountryTimeline';
 
+import './CountryPage.scss';
+
 type Props = {
   store: CountryStore,
 };
@@ -24,10 +26,10 @@ const CountryPage: React.FC<Props> = inject('store')(
 
     return (
       <>
-        <h4>{id}</h4>
+        <h2 className="country-name">{store.currentCountryName}</h2>
         {store.countryTotalStat ? (
           <>
-            <MainStatistic info={store.countryTotalStat} />
+            <MainStatistic info={store.countryTotalStat} isCountryPage />
             <CountryTimeline info={store.countryTotalStat} store={store} />
           </>
         ) : null}

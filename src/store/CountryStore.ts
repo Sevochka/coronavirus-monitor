@@ -1,9 +1,9 @@
-import { action, computed, observable } from 'mobx';
+import {action, computed, observable} from 'mobx';
 
-import { IMainStat } from 'interfaces/IMainStat';
-import { ICountryDayStat } from 'interfaces/ICountryDayStat';
-import { ICountryMainStat } from 'interfaces/ICountryMainStat';
-import { ICountryTotalStat } from 'interfaces/ICountryTotalStat';
+import {IMainStat} from 'interfaces/IMainStat';
+import {ICountryDayStat} from 'interfaces/ICountryDayStat';
+import {ICountryMainStat} from 'interfaces/ICountryMainStat';
+import {ICountryTotalStat} from 'interfaces/ICountryTotalStat';
 
 import * as api from 'api/country';
 
@@ -15,16 +15,22 @@ class CountryStore {
   @observable countryTotalStat: ICountryTotalStat | null = null;
 
   @observable countryTimelineStat: ICountryDayStat[] | null = null;
-  
+
   @observable selectedPropertyName = 'totalCases';
 
   @observable amount = 5;
 
-  @action setPropertyName = (propName:string) :void => {
+  @observable currentCountryName: string | null = null;
+
+  @action setCurrentCountryName = (countryName:string):void =>{
+    this.currentCountryName = countryName;
+  };
+
+  @action setPropertyName = (propName: string): void => {
     this.selectedPropertyName = propName;
   };
 
-  @action setAmount = (amount:number) :void => {
+  @action setAmount = (amount: number): void => {
     this.amount = amount;
   };
 
@@ -65,13 +71,13 @@ class CountryStore {
   };
 
   @computed get tableData(): Array<ICountryMainStat> {
-    return (this.allCountryStat || []).map((element) => ({ ...element, key: element.code }));
+    return (this.allCountryStat || []).map((element) => ({...element, key: element.code}));
   }
 
   @action countriesWithMostCases(propertyToBeSortedBy: string): Array<ICountryMainStat> {
     return (this.allCountryStat || []).sort((countryElementFirst, countryElementSecond) => {
       return (+countryElementSecond[propertyToBeSortedBy] -
-          +countryElementFirst[propertyToBeSortedBy]);
+                +countryElementFirst[propertyToBeSortedBy]);
     }).slice(0, this.amount);
   }
 
@@ -93,7 +99,7 @@ class CountryStore {
 
         return stats;
       },
-      { totalCases: [], totalDeaths: [], totalRecoveries: [] },
+      {totalCases: [], totalDeaths: [], totalRecoveries: []},
     );
   }
 

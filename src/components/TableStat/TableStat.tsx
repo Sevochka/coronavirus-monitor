@@ -33,6 +33,7 @@ const TableStat: React.FC<Props> = inject('store')(
           dataSource={store && (store.allCountryStat ? store.tableData : [])}
           onRow={(record: ICountryMainStat) => ({
             onClick: () => {
+              store?.setCurrentCountryName(record.title);
               history.push(`/country/${record.code}/`);
             },
           })}
