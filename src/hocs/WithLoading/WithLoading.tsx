@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Spin } from 'antd';
 
 type HocProps = {
   isLoading: boolean,
@@ -12,7 +12,12 @@ const WithLoading = (Component: React.FC<any>) =>
   function WihLoadingComponent({ isLoading, ...props }: HocProps): JSX.Element {
     // eslint-disable-next-line react/jsx-props-no-spreading
     if (!isLoading) return <Component {...props} />;
-    return <p>Загрузка...</p>;
+    return (
+      <>
+        <Spin size="large" />
+        <br />
+      </>
+    );
   };
 
 export default WithLoading;
