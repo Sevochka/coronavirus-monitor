@@ -7,7 +7,7 @@ const Prevention: React.FC = () => (
       necessary preventive measures. Follow the recommendations of your local health authorities.
     </p>
     <hr className="hr-circle" />
-    <p>
+    <div>
       <h4 className="p-header">To prevent the spread of COVID-19:</h4>
       <ul>
         <li>
@@ -27,18 +27,18 @@ const Prevention: React.FC = () => (
           help.
         </li>
       </ul>
-    </p>
+    </div>
     <p>
       The sooner you seek help, the faster you will be referred to the right doctor.
       So you will protect protect yourself and prevent the spread of viruses and other infections.
     </p>
-    <p>
+    <div>
       <h4 className="p-header">Masks</h4>
       By wearing a mask, you can help prevent transmission of the virus from yourself to other
       people. Alone masks are not enough to protect against the COVID-19 virus.
       In addition to using masks, you should also keep a safe distance and hand hygiene
       rules. Follow the recommendations of local authorities healths.
-    </p>
+    </div>
   </>
 );
 

@@ -75,7 +75,7 @@ class CountryStore {
   }
 
   @action countriesWithMostCases(propertyToBeSortedBy: string): Array<ICountryMainStat> {
-    return (this.allCountryStat || []).sort((countryElementFirst, countryElementSecond) => {
+    return (this.allCountryStat || []).slice().sort((countryElementFirst, countryElementSecond) => {
       return (+countryElementSecond[propertyToBeSortedBy] -
                 +countryElementFirst[propertyToBeSortedBy]);
     }).slice(0, this.amount);
