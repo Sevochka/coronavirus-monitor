@@ -1,12 +1,12 @@
 @import 'src/shared';
 
-$bg: #f39595;
+$bg: #0085ad;
 $defcolor: #fff;
 
 .nav-menu {
   align-items: center;
   background: $bg;
-  border-bottom: 5px solid darken($bg, 30%);
+  border-bottom: 5px solid darken($bg, 10%);
 
   display: flex;
   font-size: $medium-font;
@@ -33,7 +33,7 @@ $defcolor: #fff;
   }
 
   .nav-menu-item-selected {
-    background: darken($bg, 30%);
+    background: darken($bg, 10%);
   }
   @media screen and (max-width: 600px) {
     &__item {
