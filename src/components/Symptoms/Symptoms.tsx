@@ -8,16 +8,16 @@ const Symptoms: React.FC = () => (
       hospitalization is required.
     </p>
     <hr className="hr-circle" />
-    <p>
+    <div>
       <h4 className="p-header">Frequently observed symptoms:</h4>
       <ul>
         <li>Fervescence</li>
         <li>Dry cough</li>
         <li>Fatigability</li>
       </ul>
-    </p>
+    </div>
 
-    <p>
+    <div>
       <h4 className="p-header">Some infected people may also have:</h4>
       <ul>
         <li>A variety of pain</li>
@@ -28,7 +28,7 @@ const Symptoms: React.FC = () => (
         <li>Loss of sense of smell and taste</li>
         <li>Skin rash or depigmentation of the nails on the hands and feet</li>
       </ul>
-    </p>
+    </div>
   </>
 );
 
