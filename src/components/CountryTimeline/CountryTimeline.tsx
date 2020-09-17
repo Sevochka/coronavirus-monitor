@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
 import {useParams} from 'react-router-dom';
 import {observer, inject} from 'mobx-react';
-import '../../../node_modules/react-vis/dist/style.css';
 
 import WithLoading from 'hocs/WithLoading';
 import CountryStore from 'store/CountryStore';
