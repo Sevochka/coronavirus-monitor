@@ -1,7 +1,9 @@
 {
   "name": "coronavirus-monitor",
   "scripts": {
-    "start": "set NODE_ENV=development & webpack-dev-server --mode=development",
+    "start": "node server.js",
+    "heroku-postbuild": "webpack -p",
+    "dev": "set NODE_ENV=development & webpack-dev-server --mode=development",
     "build": "set NODE_ENV=production & webpack --mode=production",
     "ts-check": "tsc --skipLibCheck --noEmit --project tsconfig.json",
     "lint": "eslint src/**/*.{js,jsx,ts,tsx}",
@@ -67,6 +69,7 @@
     "antd": "^4.6.1",
     "axios": "^0.20.0",
     "eslint": "^7.9.0",
+    "express": "^4.17.1",
     "highcharts": "^8.2.0",
     "highcharts-react-official": "^3.0.0",
     "mobx": "^5.15.6",
