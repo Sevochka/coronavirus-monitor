@@ -7,7 +7,7 @@ import './App.scss';
 
 const App: React.FC = () => {
   const routesComponents = routes.map((route) => (
-    <Route path={route.url} component={route.component} exact={route.exact} key={route.url} />
+    <Route {...route} key={route.path} />
   ));
 
   return (

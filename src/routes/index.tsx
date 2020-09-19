@@ -8,7 +8,7 @@ import Information from 'pages/Information';
 
 interface Route {
   name: string;
-  url: string;
+  path: string;
   component: React.FC<any>;
   exact?: boolean;
 }
@@ -16,30 +16,30 @@ interface Route {
 const routes: Route[] = [
   {
     name: 'home',
-    url: '/',
+    path: '/',
     component: Main,
     exact: true,
   },
   {
     name: 'statistic',
-    url: '/stat',
+    path: '/stat',
     component: Statistic,
     exact: true,
   },
   {
     name: 'information',
-    url: '/info',
+    path: '/info',
     component: Information,
     exact: true,
   },
   {
     name: 'countryPage',
-    url: '/country/:id',
+    path: '/country/:id',
     component: CountryPage,
   },
   {
     name: 'page404',
-    url: '**',
+    path: '**',
     component: Page404,
   },
 ];
@@ -47,7 +47,7 @@ const routes: Route[] = [
 const routesMap: { [name: string]: string } = routes.reduce(
   (prevRoutes, currentRoute) => ({
     ...prevRoutes,
-    [`${currentRoute.name}`]: currentRoute.url,
+    [`${currentRoute.name}`]: currentRoute.path,
   }),
   {},
 );
