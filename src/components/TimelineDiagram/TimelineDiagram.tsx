@@ -46,15 +46,11 @@ const TimelineDiagram: React.FC<Props> = ({ data, color, title }: Props) => {
     ],
   };
   return (
-    <>
-      <>
-        <HighchartsReact
-          highcharts={Highcharts}
-          constructorType="stockChart"
-          options={options}
-        />
-      </>
-    </>
+    <HighchartsReact
+      highcharts={Highcharts}
+      constructorType="stockChart"
+      options={options}
+    />
   );
 };
 

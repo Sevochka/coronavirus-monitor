@@ -3,7 +3,7 @@ import {inject, observer} from 'mobx-react';
 
 import CountryStore from 'store/CountryStore';
 import {IMainStat} from 'interfaces/IMainStat';
-import MainStatCard from 'components/MainStatCard/MainStatCard';
+import MainStatCard from 'components/MainStatCard';
 
 import './MainStatistic.scss';
 

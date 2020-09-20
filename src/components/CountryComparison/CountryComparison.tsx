@@ -1,9 +1,11 @@
 import React from 'react';
-import HighchartsReact from 'highcharts-react-official';
 import Highcharts from 'highcharts';
-import { inject, observer } from 'mobx-react';
 import { InputNumber, Slider } from 'antd';
-import CountryStore from '../../store/CountryStore';
+import { inject, observer } from 'mobx-react';
+import HighchartsReact from 'highcharts-react-official';
+
+import CountryStore from 'store/CountryStore';
+
 import './CountryComparison.scss';
 
 type Props = {
@@ -29,7 +31,7 @@ const CountryComparison: React.FC<Props> = inject('store')(
       return {
         name: country.title,
         code: country.code,
-        y: +country[store.selectedPropertyName],
+        y: Number(country[store.selectedPropertyName]),
         color: COLORS[i],
       };
     });
