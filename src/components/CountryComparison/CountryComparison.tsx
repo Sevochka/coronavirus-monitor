@@ -5,6 +5,7 @@ import { inject, observer } from 'mobx-react';
 import HighchartsReact from 'highcharts-react-official';
 
 import CountryStore from 'store/CountryStore';
+import splitCamelCaseToString from 'utils/splitCamelCaseToString';
 
 import './CountryComparison.scss';
 
@@ -37,15 +38,6 @@ const CountryComparison: React.FC<Props> = inject('store')(
     });
 
     const { amount } = store;
-
-    const splitCamelCaseToString = (s: string) => {
-      return s
-        .split(/(?=[A-Z])/)
-        .map((p) => {
-          return p.charAt(0).toUpperCase() + p.slice(1);
-        })
-        .join(' ');
-    };
 
     const onAmountChange = (value: string | number | undefined) => {
       if (value) {
