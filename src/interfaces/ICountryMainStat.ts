@@ -1,14 +1,15 @@
 export interface ICountryMainStat {
   [k: string]: any
-  code: string
-  key: string
-  title: string
-  totalActiveCases: string
-  totalCases: string
-  totalDeaths: string
-  totalNewCasesToday: string
-  totalNewDeathsToday: string
-  totalRecovered: string
-  totalSeriousCases: string
-  totalUnresolved: string
+  ID: string,
+  Country: string,
+  CountryCode: string,
+  Slug: string,
+  NewConfirmed: number,
+  TotalConfirmed: number,
+  NewDeaths: number,
+  TotalDeaths: number,
+  NewRecovered: number,
+  TotalRecovered: number,
+  Date: string,
+  Premium: any
 }

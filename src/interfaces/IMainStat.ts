@@ -1,8 +1,9 @@
 export interface IMainStat {
-  totalCases: string,
-  totalDeaths: string,
-  totalRecovered: string,
-  totalNewCasesToday: string,
-  totalNewDeathsToday: string,
-  totalSeriousCases: string
+  NewConfirmed: number,
+  TotalConfirmed: number,
+  NewDeaths: number,
+  TotalDeaths: number,
+  NewRecovered: number,
+  TotalRecovered: number,
+  Date: string
 }

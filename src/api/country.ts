@@ -4,13 +4,14 @@ import {IMainStat} from 'interfaces/IMainStat';
 import {ICountryDayStat} from 'interfaces/ICountryDayStat';
 import {ICountryMainStat} from 'interfaces/ICountryMainStat';
 import {ICountryTotalStat} from 'interfaces/ICountryTotalStat';
+import { IResponseSummary } from 'interfaces/IResponseSummary';
 
-const mainUrl = 'https://whispering-bastion-66552.herokuapp.com/api/';
+const mainUrl = 'https://api.covid19api.com/';
 
-const loadGlobalStat = (): Promise<IMainStat> => {
+const loadGlobalStat = (): Promise<IResponseSummary> => {
   return axios
-    .get<IMainStat>(`${mainUrl}global-stats`)
-    .then((response: AxiosResponse<IMainStat>) => {
+    .get<IResponseSummary>(`${mainUrl}summary`)
+    .then((response: AxiosResponse<IResponseSummary>) => {
       return response.data;
     });
 };

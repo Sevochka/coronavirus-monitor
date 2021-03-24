@@ -27,10 +27,10 @@ const CountryPage: React.FC<Props> = inject('store')(
     return (
       <>
         <h2 className="country-name">{store.currentCountryName}</h2>
-        {store.countryTotalStat ? (
+        {store.globalStat ? (
           <>
-            <MainStatistic info={store.countryTotalStat} isCountryPage />
-            <CountryTimeline info={store.countryTotalStat} store={store} />
+            <MainStatistic info={store.globalStat} isCountryPage />
+            {/* <CountryTimeline info={store.countryTotalStat} store={store} /> */}
           </>
         ) : null}
       </>
