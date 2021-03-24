@@ -1,0 +1,27 @@
+@import 'src/shared';
+
+.timeline-diagrams {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.timeline-stat {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+
+  &__graph {
+    max-width: 800px;
+    min-width: 300px;
+    width: 800px;
+  }
+
+  &__radial {
+    max-width: 800px;
+    min-width: 300px;
+    width: 800px;
+  }
+}
+
+

@@ -1,0 +1,29 @@
+{
+  "presets": [
+    "@babel/preset-env",
+    "@babel/preset-react",
+    "@babel/preset-typescript",
+    "babel-preset-mobx"
+  ],
+  "plugins": [
+
+    "react-hot-loader/babel",
+    [
+      "react-css-modules",
+      {
+        "filetypes": {
+          ".scss": {
+            "syntax": "postcss-scss",
+            "plugins": [
+              "postcss-nested"
+            ]
+          }
+        },
+        "generateScopedName": "[local]__[hash:base64:5]",
+        "webpackHotModuleReloading": true,
+        "autoResolveMultipleImports": true
+      }
+    ],
+    "@babel/plugin-proposal-optional-chaining"
+  ]
+}

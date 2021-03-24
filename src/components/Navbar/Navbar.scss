@@ -1,0 +1,47 @@
+@import 'src/shared';
+
+$bg: #0085ad;
+$defcolor: #fff;
+
+.nav-menu {
+  align-items: center;
+  background: $bg;
+  border-bottom: 5px solid darken($bg, 10%);
+
+  display: flex;
+  font-size: $medium-font;
+  font-weight: $normal;
+  justify-content: center;
+  line-height: 50px;
+  min-height: 50px;
+
+  &__item {
+    align-items: center;
+    color: $defcolor;
+    display: flex;
+    padding: 0 10px;
+
+    &:hover {
+      color: darken($defcolor, 20%);
+      opacity: 0.9;
+    }
+  }
+
+  &__icon {
+    margin-right: $tiny;
+    width: 30px;
+  }
+
+  .nav-menu-item-selected {
+    background: darken($bg, 10%);
+  }
+  @media screen and (max-width: 600px) {
+    &__item {
+      display: block;
+    }
+
+    &__item span {
+      display: none;
+    }
+  }
+}

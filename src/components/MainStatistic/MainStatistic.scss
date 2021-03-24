@@ -1,0 +1,113 @@
+@import 'src/shared';
+
+.main-stat {
+  &__header {
+    font-size: $large-font;
+    text-align: center;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    justify-items: center;
+  }
+
+  .stat-part {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    font-weight: $bold;
+
+    margin-bottom: 5px;
+    padding: 0 5px;
+
+    &__number {
+      font-size: $x-large-font;
+    }
+
+    &__title {
+      font-size: $tiny-font;
+    }
+
+    .number-infected {
+      color: $blue;
+    }
+
+    .number-death {
+      color: $red;
+    }
+
+    .number-recovered {
+      color: $green;
+    }
+
+    .number-serious {
+      color: $gray;
+    }
+  }
+}
+
+.btn {
+  background-color: inherit;
+  border: 0;
+  border-radius: 5px;
+  color: #000;
+  cursor: pointer;
+  font-weight: 700;
+  padding: 10px 20px;
+}
+
+/* Green */
+.success {
+  border-color: #4caf50;
+  color: #008000;
+}
+
+.success:hover {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+/* Blue */
+.info {
+  border-color: #2196f3;
+  color: #1e90ff;
+}
+
+.info:hover {
+  background: #2196f3;
+  color: #fff;
+}
+
+/* Orange */
+.warning {
+  border-color: #ff9800;
+  color: #ffa500;
+}
+
+.warning:hover {
+  background: #ff9800;
+  color: #fff;
+}
+
+/* Red */
+.danger {
+  border-color: #f44336;
+  color: #f00;
+}
+
+.danger:hover {
+  background: #f44336;
+  color: #fff;
+}
+
+/* Gray */
+.default {
+  border-color: #e7e7e7;
+  color: #000;
+}
+
+.default:hover {
+  background: #e7e7e7;
+}
