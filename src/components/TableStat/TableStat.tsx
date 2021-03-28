@@ -34,7 +34,7 @@ const TableStat: React.FC<Props> = inject('store')(
           onRow={(record: ICountryMainStat) => ({
             onClick: () => {
               store?.setCurrentCountryName(record.title);
-              history.push(`/country/${record.code}/`);
+              history.push(`/country/${record.CountryCode}/`);
             },
           })}
           pagination={{ pageSize: 10, position: ['bottomCenter'], showSizeChanger: false }}

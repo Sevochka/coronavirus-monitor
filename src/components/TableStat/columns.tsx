@@ -5,88 +5,90 @@ import { ICountryMainStat } from 'interfaces/ICountryMainStat';
 const columns = [
   {
     title: 'Flag',
-    dataIndex: 'code',
+    dataIndex: 'CountryCode',
     width: '5%',
-    render: (text: string): JSX.Element => (
+    render: (CountryCode: string): JSX.Element => (
       <span>
         <img
           alt="Flag"
           className="img-rounded"
-          src={`https://www.countryflags.io/${text}/shiny/32.png`}
+          src={`https://www.countryflags.io/${CountryCode}/shiny/32.png`}
         />
       </span>
     ),
   },
   {
     title: 'Country',
-    dataIndex: 'title',
+    dataIndex: 'Country',
     width: '16%',
     sorter: {
-      compare: (a: ICountryMainStat, b: ICountryMainStat): number => (a.title < b.title ? -1 : 1),
+      compare:
+        (a: ICountryMainStat, b: ICountryMainStat): number => (a.Country < b.Country ? -1 : 1),
       multiple: 3,
     },
   },
   {
     title: 'Total cases',
-    dataIndex: 'totalCases',
+    dataIndex: 'TotalConfirmed',
     width: '14%',
     sorter: {
-      compare: (a: ICountryMainStat, b: ICountryMainStat): number => +a.totalCases - +b.totalCases,
+      compare:
+        (a: ICountryMainStat, b: ICountryMainStat): number => +a.TotalConfirmed - +b.TotalConfirmed,
       multiple: 3,
     },
     render: (text: string): JSX.Element => <span style={{ color: 'blue' }}>{text}</span>,
   },
   {
     title: 'New cases today',
-    dataIndex: 'totalNewCasesToday',
+    dataIndex: 'NewConfirmed',
     width: '14%',
     sorter: {
       compare: (a: ICountryMainStat, b: ICountryMainStat): number =>
-        +a.totalNewCasesToday - +b.totalNewCasesToday,
+        +a.NewConfirmed - +b.NewConfirmed,
       multiple: 1,
     },
     render: (text: string): JSX.Element => <b style={{ color: 'blue' }}>{text}</b>,
   },
   {
     title: 'Total deaths',
-    dataIndex: 'totalDeaths',
+    dataIndex: 'TotalDeaths',
     width: '14%',
     sorter: {
       compare: (a: ICountryMainStat, b: ICountryMainStat): number =>
-        +a.totalDeaths - +b.totalDeaths,
+        +a.TotalDeaths - +b.TotalDeaths,
       multiple: 2,
     },
     render: (text: string): JSX.Element => <span style={{ color: 'red' }}>{text}</span>,
   },
   {
     title: 'New deaths today',
-    dataIndex: 'totalNewDeathsToday',
+    dataIndex: 'NewDeaths',
     width: '14%',
     sorter: {
       compare: (a: ICountryMainStat, b: ICountryMainStat): number =>
-        +a.totalNewDeathsToday - +b.totalNewDeathsToday,
+        +a.NewDeaths - +b.NewDeaths,
       multiple: 1,
     },
     render: (text: string): JSX.Element => <b style={{ color: 'red' }}>{text}</b>,
   },
   {
     title: 'Total recovered',
-    dataIndex: 'totalRecovered',
+    dataIndex: 'TotalRecovered',
     width: '14%',
     sorter: {
       compare: (a: ICountryMainStat, b: ICountryMainStat): number =>
-        +a.totalRecovered - +b.totalRecovered,
+        +a.TotalRecovered - +b.TotalRecovered,
       multiple: 2,
     },
     render: (text: string): JSX.Element => <span style={{ color: 'green' }}>{text}</span>,
   },
   {
-    title: 'Total serious cases',
-    dataIndex: 'totalSeriousCases',
+    title: 'New Total recovered',
+    dataIndex: 'NewRecovered',
     width: '14%',
     sorter: {
       compare: (a: ICountryMainStat, b: ICountryMainStat): number =>
-        +a.totalSeriousCases - +b.totalSeriousCases,
+        +a.NewRecovered - +b.NewRecovered,
       multiple: 1,
     },
     render: (text: string): JSX.Element => <b>{text}</b>,

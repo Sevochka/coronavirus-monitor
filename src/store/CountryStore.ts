@@ -63,7 +63,7 @@ class CountryStore {
   };
 
   @computed get tableData(): Array<ICountryMainStat> {
-    return (this.allCountryStat || []).map((element) => ({...element, key: element.code}));
+    return (this.allCountryStat || []).map((element) => ({...element, key: element.CountryCode}));
   }
 
   @action countriesWithMostCases(propertyToBeSortedBy: string): Array<ICountryMainStat> {
