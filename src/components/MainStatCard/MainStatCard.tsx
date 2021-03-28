@@ -3,7 +3,7 @@ import * as React from 'react';
 type Props = {
   isCountryPage: boolean,
   colorClasses: string[],
-  stats: string[],
+  stats: number[],
   titles: string[],
   properties:string[],
   handleStatPartClicked: (propertyName: string) => void;
@@ -16,7 +16,7 @@ const MainStatCard: React.FC<Props> = (
     stats, titles, properties,
     handleStatPartClicked
   }: Props) => {
-  const numberWithCommas = (x: string): string =>
+  const numberWithCommas = (x: number): string =>
     x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
   const coloredSpanClassName = `stat-part__number ${colorClasses[0]}`;

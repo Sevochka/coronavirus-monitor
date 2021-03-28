@@ -18,12 +18,12 @@ const MainStatistic: React.FC<Props> = inject('store')(
   observer(({info, isCountryPage, store}: Props) => {
 
     const {
-      totalCases,
-      totalDeaths,
-      totalRecovered,
-      totalNewCasesToday,
-      totalNewDeathsToday,
-      totalSeriousCases,
+      NewConfirmed: totalNewCasesToday,
+      TotalConfirmed: totalCases,
+      NewDeaths: totalNewDeathsToday,
+      TotalDeaths: totalDeaths,
+      TotalRecovered: totalRecovered,
+      NewRecovered: totalNewRecovered
     } = info;
 
     const handleStatPartClicked = (property: string) => {
@@ -42,7 +42,7 @@ const MainStatistic: React.FC<Props> = inject('store')(
             stats={[totalCases, totalNewCasesToday]}
             titles={['Total cases', 'Total new cases today']}
             handleStatPartClicked={handleStatPartClicked}
-            properties={['totalCases', 'totalNewCasesToday']}
+            properties={['TotalConfirmed', 'NewConfirmed']}
           />
           <MainStatCard
             isCountryPage={isCountryPage}
@@ -50,15 +50,15 @@ const MainStatistic: React.FC<Props> = inject('store')(
             stats={[totalDeaths, totalNewDeathsToday]}
             titles={['Total deaths', 'Total new deaths today']}
             handleStatPartClicked={handleStatPartClicked}
-            properties={['totalDeaths', 'totalNewDeathsToday']}
+            properties={['TotalDeaths', 'NewDeaths']}
           />
           <MainStatCard
             isCountryPage={isCountryPage}
             colorClasses={['number-recovered', 'success']}
-            stats={[totalRecovered, totalSeriousCases]}
-            titles={['Total recovered', 'Total new serious cases']}
+            stats={[totalRecovered, totalNewRecovered]}
+            titles={['Total recovered', 'Total new recovered']}
             handleStatPartClicked={handleStatPartClicked}
-            properties={['totalRecovered', 'totalSeriousCases']}
+            properties={['TotalRecovered', 'NewRecovered']}
           />
         </div>
       </article>

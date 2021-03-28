@@ -30,8 +30,8 @@ const CountryComparison: React.FC<Props> = inject('store')(
   observer(({ store }: Props) => {
     const data = store.countriesWithMostCases(store.selectedPropertyName).map((country, i) => {
       return {
-        name: country.title,
-        code: country.code,
+        name: country.Country,
+        code: country.CountryCode,
         y: Number(country[store.selectedPropertyName]),
         color: COLORS[i],
       };

@@ -16,7 +16,7 @@ class CountryStore {
 
   @observable countryTimelineStat: ICountryDayStat[] | null = null;
 
-  @observable selectedPropertyName = 'totalCases';
+  @observable selectedPropertyName = 'TotalConfirmed';
 
   @observable amount = 5;
 
@@ -34,20 +34,12 @@ class CountryStore {
     this.amount = amount;
   };
 
-  @action loadGlobalStat = (): void => {
+  @action loadSummaryStat = (): void => {
     api
       .loadGlobalStat()
       .then((res) => {
-        this.globalStat = res;
-      })
-      .catch((error: Error) => error);
-  };
-
-  @action loadAllCountryStat = (): void => {
-    api
-      .loadAllCountryStat()
-      .then((res) => {
-        this.allCountryStat = res;
+        this.globalStat = res.Global;
+        this.allCountryStat = res.Countries;
       })
       .catch((error: Error) => error);
   };
@@ -103,12 +95,9 @@ class CountryStore {
     );
   }
 
-  @computed get countryTotalCases(): ([string, string] | [])[] {
+  @computed get countryTotalCases(): ([string, number] | [])[] {
     return (this.allCountryStat || []).map((country) => {
-      if (country.code) {
-        return [country.code.toLowerCase(), country.totalCases];
-      }
-      return [];
+      return country.CountryCode ? [country.CountryCode.toLowerCase(), country.TotalConfirmed] : [];
     });
   }
 }

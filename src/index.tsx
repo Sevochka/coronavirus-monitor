@@ -10,8 +10,7 @@ import './index.scss';
 
 const countryStore = new CountryStore();
 
-countryStore.loadGlobalStat();
-countryStore.loadAllCountryStat();
+countryStore.loadSummaryStat();
 
 render(
   <Provider store={countryStore}>
