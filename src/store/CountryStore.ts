@@ -95,13 +95,9 @@ class CountryStore {
     );
   }
 
-  @computed get countryTotalCases(): ([string, string] | [])[] {
+  @computed get countryTotalCases(): ([string, number] | [])[] {
     return (this.allCountryStat || []).map((country) => {
-      if (country.code) {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-        return [country.code.toLowerCase(), country.totalCases];
-      }
-      return [];
+      return country.CountryCode ? [country.CountryCode.toLowerCase(), country.TotalConfirmed] : [];
     });
   }
 }

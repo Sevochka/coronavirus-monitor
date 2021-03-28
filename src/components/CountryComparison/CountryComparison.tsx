@@ -37,7 +37,6 @@ const CountryComparison: React.FC<Props> = inject('store')(
       };
     });
 
-    console.log(data);
     const { amount } = store;
 
     const onAmountChange = (value: string | number | undefined) => {
