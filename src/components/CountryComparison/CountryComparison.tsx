@@ -86,14 +86,15 @@ const CountryComparison: React.FC<Props> = inject('store')(
             data.forEach((country) => {
               if (country.name === value) {
                 output = country.code;
+                console.log(output);
               }
             });
 
             return `<span class="flex-col">
                         <img className='img-rounded'
-                            src="https://www.countryflags.io/${output}/shiny/64.png"
+                            src="https://flagcdn.com/60x45/${output.toLowerCase()}.png"
                             style="width: 40px"
-                            >
+                             alt='output'>
                     </span>`;
           },
         },

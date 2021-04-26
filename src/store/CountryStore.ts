@@ -12,9 +12,9 @@ class CountryStore {
 
   @observable allCountryStat: ICountryMainStat[] | null = null;
 
-  @observable countryTotalStat: ICountryTotalStat | null = null;
+  @observable countryTimelineStat: ICountryMainStat[] | null = null;
 
-  @observable countryTimelineStat: ICountryDayStat[] | null = null;
+  @observable countryTotalStat: ICountryMainStat | null = null;
 
   @observable selectedPropertyName = 'TotalConfirmed';
 
@@ -44,20 +44,21 @@ class CountryStore {
       .catch((error: Error) => error);
   };
 
-  @action loadCountryTotalStat = (countryCode: string): void => {
-    api
-      .loadCountryTotalStat(countryCode)
-      .then((res) => {
-        this.countryTotalStat = res;
-      })
-      .catch((error: Error) => error);
-  };
+  // @action loadCountryTotalStat = (countryCode: string): void => {
+  //   api
+  //     .loadCountryTotalStat(countryCode)
+  //     .then((res) => {
+  //       this.countryTotalStat = res;
+  //     })
+  //     .catch((error: Error) => error);
+  // };
 
   @action loadCountryTimelineStat = (countryCode: string): void => {
     api
       .loadCountryTimelineStat(countryCode)
       .then((res) => {
         this.countryTimelineStat = res;
+        this.countryTotalStat = res[res.length - 1];
       })
       .catch((error: Error) => error);
   };
@@ -73,33 +74,34 @@ class CountryStore {
     }).slice(0, this.amount);
   }
 
-  @computed get countryFullTimelineStat(): { [name: string]: Array<[number, number]> } {
-    return (this.countryTimelineStat || []).reduce<{ [name: string]: Array<[number, number]> }>(
-      (stats: { [name: string]: Array<[number, number]> }, element: ICountryDayStat) => {
-        stats.totalCases.push([
-          new Date(element.date).getTime(),
-          this.countryTimelineStat ? +element.cases : 0,
-        ]);
-        stats.totalDeaths.push([
-          new Date(element.date).getTime(),
-          this.countryTimelineStat ? +element.deaths : 0,
-        ]);
-        stats.totalRecoveries.push([
-          new Date(element.date).getTime(),
-          this.countryTimelineStat ? +element.recovered : 0,
-        ]);
-
-        return stats;
-      },
-      {totalCases: [], totalDeaths: [], totalRecoveries: []},
-    );
-  }
+  // @computed get countryFullTimelineStat(): { [name: string]: Array<[number, number]> } {
+  //   return (this.countryTimelineStat || []).reduce<{ [name: string]: Array<[number, number]> }>(
+  //     (stats: { [name: string]: Array<[number, number]> }, element: ICountryDayStat) => {
+  //       stats.totalCases.push([
+  //         new Date(element.date).getTime(),
+  //         this.countryTimelineStat ? +element.cases : 0,
+  //       ]);
+  //       stats.totalDeaths.push([
+  //         new Date(element.date).getTime(),
+  //         this.countryTimelineStat ? +element.deaths : 0,
+  //       ]);
+  //       stats.totalRecoveries.push([
+  //         new Date(element.date).getTime(),
+  //         this.countryTimelineStat ? +element.recovered : 0,
+  //       ]);
+  //
+  //       return stats;
+  //     },
+  //     {totalCases: [], totalDeaths: [], totalRecoveries: []},
+  //   );
+  // }
 
   @computed get countryTotalCases(): ([string, number] | [])[] {
     return (this.allCountryStat || []).map((country) => {
       return country.CountryCode ? [country.CountryCode.toLowerCase(), country.TotalConfirmed] : [];
     });
   }
+
 }
 
 export default CountryStore;

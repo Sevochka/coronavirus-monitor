@@ -26,16 +26,16 @@ const loadAllCountryStat = (): Promise<ICountryMainStat[]> => {
 
 const loadCountryTotalStat = (countryCode: string): Promise<ICountryTotalStat> => {
   return axios
-    .get(`${mainUrl}country-totals/${countryCode}`)
+    .get(`${mainUrl}total/country/${countryCode}`)
     .then((response: AxiosResponse<ICountryTotalStat>) => {
       return response.data;
     });
 };
 
-const loadCountryTimelineStat = (id: string): Promise<ICountryDayStat[]> => {
+const loadCountryTimelineStat = (id: string): Promise<ICountryMainStat[]> => {
   return axios
-    .get(`${mainUrl}country-timeline/${id}`)
-    .then((response: AxiosResponse<ICountryDayStat[]>) => {
+    .get(`${mainUrl}live/country/${id}`)
+    .then((response: AxiosResponse<ICountryMainStat[]>) => {
       return response.data;
     });
 };

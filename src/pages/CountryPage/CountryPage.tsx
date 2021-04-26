@@ -7,6 +7,7 @@ import MainStatistic from 'components/MainStatistic';
 import CountryTimeline from 'components/CountryTimeline';
 
 import './CountryPage.scss';
+import { ICountryMainStat } from 'interfaces/ICountryMainStat';
 
 type Props = {
   store: CountryStore,
@@ -21,12 +22,15 @@ const CountryPage: React.FC<Props> = inject('store')(
     const { id } = useParams<Params>();
 
     useEffect(() => {
-      store.loadCountryTotalStat(id);
+      store.loadCountryTimelineStat(id);
     }, [id, store]);
 
+    if (store.countryTotalStat == null) {
+      return <></>;
+    }
     return (
       <>
-        <h2 className="country-name">{store.currentCountryName}</h2>
+        <h2 className="country-name">{store.countryTotalStat.Country}</h2>
         {store.globalStat ? (
           <>
             <MainStatistic info={store.globalStat} isCountryPage />
@@ -35,7 +39,7 @@ const CountryPage: React.FC<Props> = inject('store')(
         ) : null}
       </>
     );
-  }),
+  })
 );
 
 export default CountryPage;

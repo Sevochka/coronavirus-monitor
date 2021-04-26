@@ -69,11 +69,11 @@ const CountryTimeline: React.FC<Props> = inject('store')(
             <RadialDiagram info={info} items={ITEMS} />
           </div>
         </div>
-        <WithLoadingDiagrams
-          isLoading={!!(store && !store.countryTimelineStat)}
-          countryFullTimelineStat={store &&
-                        (store.countryTimelineStat ? store.countryFullTimelineStat : {})}
-        />
+        {/* <WithLoadingDiagrams */}
+        {/*  isLoading={!!(store && !store.countryTimelineStat)} */}
+        {/*  countryFullTimelineStat={store && */}
+        {/*                (store.countryTimelineStat ? store.countryFullTimelineStat : {})} */}
+        {/* /> */}
         <br />
       </div>
     );
