@@ -12,7 +12,8 @@ const columns = [
         <img
           alt="Flag"
           className="img-rounded"
-          src={`https://www.countryflags.io/${CountryCode}/shiny/32.png`}
+          style={{width: 30}}
+          src={`https://flagcdn.com/60x45/${CountryCode.toLowerCase()}.png`}
         />
       </span>
     ),
