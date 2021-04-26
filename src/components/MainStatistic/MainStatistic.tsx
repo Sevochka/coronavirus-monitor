@@ -6,17 +6,17 @@ import {IMainStat} from 'interfaces/IMainStat';
 import MainStatCard from 'components/MainStatCard';
 
 import './MainStatistic.scss';
+import { ICountryMainStat } from 'interfaces/ICountryMainStat';
 
 
 type Props = {
-  info: IMainStat,
+  info: IMainStat | ICountryMainStat,
   isCountryPage: boolean,
   store?: CountryStore
 };
 
 const MainStatistic: React.FC<Props> = inject('store')(
   observer(({info, isCountryPage, store}: Props) => {
-
     const {
       NewConfirmed: totalNewCasesToday,
       TotalConfirmed: totalCases,
@@ -25,6 +25,7 @@ const MainStatistic: React.FC<Props> = inject('store')(
       TotalRecovered: totalRecovered,
       NewRecovered: totalNewRecovered
     } = info;
+
 
     const handleStatPartClicked = (property: string) => {
       if (store) {

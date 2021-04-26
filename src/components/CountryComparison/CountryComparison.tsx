@@ -86,12 +86,11 @@ const CountryComparison: React.FC<Props> = inject('store')(
             data.forEach((country) => {
               if (country.name === value) {
                 output = country.code;
-                console.log(output);
               }
             });
 
             return `<span class="flex-col">
-                        <img className='img-rounded'
+                        <img class='img-rounded'
                             src="https://flagcdn.com/60x45/${output.toLowerCase()}.png"
                             style="width: 40px"
                              alt='output'>
@@ -139,7 +138,7 @@ const CountryComparison: React.FC<Props> = inject('store')(
             min={1}
             max={10}
             onChange={onAmountChange}
-            value={typeof amount === 'number' ? amount : 0}
+            value={amount}
           />
 
           <InputNumber min={1} max={10} value={amount} onChange={onAmountChange} />

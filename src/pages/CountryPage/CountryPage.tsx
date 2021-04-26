@@ -4,10 +4,9 @@ import { inject, observer } from 'mobx-react';
 
 import CountryStore from 'store/CountryStore';
 import MainStatistic from 'components/MainStatistic';
-import CountryTimeline from 'components/CountryTimeline';
 
 import './CountryPage.scss';
-import { ICountryMainStat } from 'interfaces/ICountryMainStat';
+import WithLoading from 'hocs/WithLoading';
 
 type Props = {
   store: CountryStore,
@@ -17,26 +16,29 @@ type Params = {
   id: string,
 };
 
+const WithLoadingMainStat= WithLoading(MainStatistic);
+
 const CountryPage: React.FC<Props> = inject('store')(
   observer(({ store }: Props) => {
     const { id } = useParams<Params>();
 
     useEffect(() => {
+      store.setCountryTotalStat(id);
       store.loadCountryTimelineStat(id);
-    }, [id, store]);
+    }, [id, store, store.allCountryStat]);
 
-    if (store.countryTotalStat == null) {
-      return <></>;
-    }
     return (
       <>
-        <h2 className="country-name">{store.countryTotalStat.Country}</h2>
-        {store.globalStat ? (
-          <>
-            <MainStatistic info={store.globalStat} isCountryPage />
-            {/* <CountryTimeline info={store.countryTotalStat} store={store} /> */}
-          </>
-        ) : null}
+        <h2 className="country-name">{store.countryTotalStat?.Country}</h2>
+
+        <>
+          <WithLoadingMainStat
+            isLoading={!store.countryTotalStat}
+            info={store.countryTotalStat}
+            isCountryPage={false}
+          />
+          {/* <CountryTimeline info={store.countryTotalStat} store={store} /> */}
+        </>
       </>
     );
   })

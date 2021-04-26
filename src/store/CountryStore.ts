@@ -1,9 +1,7 @@
 import {action, computed, observable} from 'mobx';
 
 import {IMainStat} from 'interfaces/IMainStat';
-import {ICountryDayStat} from 'interfaces/ICountryDayStat';
 import {ICountryMainStat} from 'interfaces/ICountryMainStat';
-import {ICountryTotalStat} from 'interfaces/ICountryTotalStat';
 
 import * as api from 'api/country';
 
@@ -21,6 +19,11 @@ class CountryStore {
   @observable amount = 5;
 
   @observable currentCountryName: string | null = null;
+
+
+  @action setCountryTotalStat = (countryCode: string):void =>{
+    this.countryTotalStat = this.getCountryByCode(countryCode);
+  };
 
   @action setCurrentCountryName = (countryName:string):void =>{
     this.currentCountryName = countryName;
@@ -58,7 +61,6 @@ class CountryStore {
       .loadCountryTimelineStat(countryCode)
       .then((res) => {
         this.countryTimelineStat = res;
-        this.countryTotalStat = res[res.length - 1];
       })
       .catch((error: Error) => error);
   };
@@ -100,6 +102,13 @@ class CountryStore {
     return (this.allCountryStat || []).map((country) => {
       return country.CountryCode ? [country.CountryCode.toLowerCase(), country.TotalConfirmed] : [];
     });
+  }
+
+  @action getCountryByCode(code: string): ICountryMainStat | null{
+    const countryCode = code.toUpperCase();
+    const country = this.allCountryStat?.find((el) => el.CountryCode === countryCode);
+    if (country) return country;
+    return null;
   }
 
 }

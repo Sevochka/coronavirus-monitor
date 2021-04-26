@@ -1,7 +1,4 @@
 import axios, {AxiosResponse} from 'axios';
-
-import {IMainStat} from 'interfaces/IMainStat';
-import {ICountryDayStat} from 'interfaces/ICountryDayStat';
 import {ICountryMainStat} from 'interfaces/ICountryMainStat';
 import {ICountryTotalStat} from 'interfaces/ICountryTotalStat';
 import { IResponseSummary } from 'interfaces/IResponseSummary';
