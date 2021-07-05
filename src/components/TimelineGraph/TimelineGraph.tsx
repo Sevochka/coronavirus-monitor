@@ -4,13 +4,17 @@ import Highcharts from 'highcharts/highstock';
 import HighchartsReact from 'highcharts-react-official';
 
 import CountryStore from 'store/CountryStore';
+import { ICountryFullTimelineStat } from 'interfaces/ICountryFulllTimelineStat';
 
 type Props = {
   store: CountryStore;
 };
 
+// @ts-ignore
 const TimelineGraph: React.FC<Props> = inject('store')(
+  // @ts-ignore
   observer(({ store }: Props) => {
+    if (!store.countryTotalStat) return;
     const options = {
       chart: {
         backgroundColor: 'rgba(0,0,0,0)',
@@ -37,17 +41,17 @@ const TimelineGraph: React.FC<Props> = inject('store')(
       series: [
         {
           name: 'Total cases',
-          data: store.countryFullTimelineStat.totalCases,
+          data: store.countryFullTimelineStat?.totalCases,
           color: 'blue',
         },
         {
           name: 'Total deaths',
-          data: store.countryFullTimelineStat.totalDeaths,
+          data: store.countryFullTimelineStat?.totalDeaths,
           color: 'red',
         },
         {
           name: 'Total recoveries',
-          data: store.countryFullTimelineStat.totalRecoveries,
+          data: store.countryFullTimelineStat?.totalRecoveries,
           color: 'green',
         },
       ],

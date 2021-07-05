@@ -4,6 +4,7 @@ import {IMainStat} from 'interfaces/IMainStat';
 import {ICountryMainStat} from 'interfaces/ICountryMainStat';
 
 import * as api from 'api/country';
+import { ICountryFullTimelineStat } from 'interfaces/ICountryFulllTimelineStat';
 
 class CountryStore {
   @observable globalStat: IMainStat | null = null;
@@ -19,6 +20,8 @@ class CountryStore {
   @observable amount = 5;
 
   @observable currentCountryName: string | null = null;
+
+  @observable countryFullTimelineStat: ICountryFullTimelineStat | null = null;
 
 
   @action setCountryTotalStat = (countryCode: string):void =>{
@@ -61,8 +64,12 @@ class CountryStore {
       .loadCountryTimelineStat(countryCode)
       .then((res) => {
         this.countryTimelineStat = res;
+        this.loadCountryFullTimelineStat();
       })
       .catch((error: Error) => error);
+  };
+  @action loadCountryFullTimelineStat = (): void => {
+    this.countryFullTimelineStat = this._countryFullTimelineStat;
   };
 
   @computed get tableData(): Array<ICountryMainStat> {
@@ -76,27 +83,27 @@ class CountryStore {
     }).slice(0, this.amount);
   }
 
-  // @computed get countryFullTimelineStat(): { [name: string]: Array<[number, number]> } {
-  //   return (this.countryTimelineStat || []).reduce<{ [name: string]: Array<[number, number]> }>(
-  //     (stats: { [name: string]: Array<[number, number]> }, element: ICountryDayStat) => {
-  //       stats.totalCases.push([
-  //         new Date(element.date).getTime(),
-  //         this.countryTimelineStat ? +element.cases : 0,
-  //       ]);
-  //       stats.totalDeaths.push([
-  //         new Date(element.date).getTime(),
-  //         this.countryTimelineStat ? +element.deaths : 0,
-  //       ]);
-  //       stats.totalRecoveries.push([
-  //         new Date(element.date).getTime(),
-  //         this.countryTimelineStat ? +element.recovered : 0,
-  //       ]);
-  //
-  //       return stats;
-  //     },
-  //     {totalCases: [], totalDeaths: [], totalRecoveries: []},
-  //   );
-  // }
+  @computed get _countryFullTimelineStat(): ICountryFullTimelineStat {
+    return (this.countryTimelineStat || []).reduce<ICountryFullTimelineStat>(
+      (stats: ICountryFullTimelineStat, element: ICountryMainStat) => {
+        stats.totalCases.push([
+          new Date(element.Date).getTime(),
+          this.countryTimelineStat ? Math.ceil(+element.Confirmed) : 0,
+        ]);
+        stats.totalDeaths.push([
+          new Date(element.Date).getTime(),
+          this.countryTimelineStat ?  Math.ceil(+element.Deaths.toFixed()) : 0,
+        ]);
+        stats.totalRecoveries.push([
+          new Date(element.Date).getTime(),
+          this.countryTimelineStat ?  Math.ceil(+element.Recovered.toFixed()) : 0,
+        ]);
+
+        return stats;
+      },
+      {totalCases: [], totalDeaths: [], totalRecoveries: []},
+    );
+  }
 
   @computed get countryTotalCases(): ([string, number] | [])[] {
     return (this.allCountryStat || []).map((country) => {

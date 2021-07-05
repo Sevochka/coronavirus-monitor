@@ -5,7 +5,7 @@ import { inject, observer } from 'mobx-react';
 import HighchartsReact from 'highcharts-react-official';
 
 import CountryStore from 'store/CountryStore';
-import splitCamelCaseToString from 'utils/splitCamelCaseToString';
+import { splitCamelCaseToString } from 'utils/splitCamelCaseToString';
 
 import './CountryComparison.scss';
 

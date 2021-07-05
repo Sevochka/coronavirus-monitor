@@ -10,6 +10,7 @@ import TimelineDiagram from 'components/TimelineDiagram';
 import {ICountryTotalStat} from 'interfaces/ICountryTotalStat';
 
 import './CountryTimeline.scss';
+import { ICountryMainStat } from 'interfaces/ICountryMainStat';
 
 const ITEMS = [
   {title: 'Total cases', color: 'blue'},
@@ -42,7 +43,7 @@ const WithLoadingDiagrams = WithLoading(({countryFullTimelineStat}: HocProps) =>
 
 type Props = {
   store?: CountryStore,
-  info: ICountryTotalStat,
+  info: ICountryMainStat,
 };
 
 type Params = {
@@ -53,20 +54,14 @@ const CountryTimeline: React.FC<Props> = inject('store')(
   observer(({store, info}: Props) => {
     const {id} = useParams<Params>();
 
-    useEffect(() => {
-      if (store) {
-        store.loadCountryTimelineStat(id);
-      }
-    }, [id, store]);
-
     return (
       <div className="timeline">
         <div className="timeline-stat">
           <div className="timeline-stat__graph">
-            <WithLoadingTimelineGraph isLoading={!!(store && !store.countryTimelineStat)} />
+            <WithLoadingTimelineGraph isLoading={!!(store && !store.countryFullTimelineStat)} />
           </div>
           <div className="timeline-stat__radial">
-            <RadialDiagram info={info} items={ITEMS} />
+            {/* <RadialDiagram info={info} items={ITEMS} /> */}
           </div>
         </div>
         {/* <WithLoadingDiagrams */}

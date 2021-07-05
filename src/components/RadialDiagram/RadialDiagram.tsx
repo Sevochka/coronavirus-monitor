@@ -2,9 +2,10 @@ import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import { ICountryTotalStat } from 'interfaces/ICountryTotalStat';
+import { ICountryMainStat } from 'interfaces/ICountryMainStat';
 
 type Props = {
-  info: ICountryTotalStat,
+  info: ICountryMainStat,
   items: Array<{
     title: string,
     color: string,

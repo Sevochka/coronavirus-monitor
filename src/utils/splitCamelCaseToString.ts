@@ -7,4 +7,4 @@ const splitCamelCaseToString = (s: string) => {
     .join(' ');
 };
 
-export default splitCamelCaseToString;
+export { splitCamelCaseToString };
