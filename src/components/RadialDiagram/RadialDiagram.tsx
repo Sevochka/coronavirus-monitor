@@ -41,19 +41,19 @@ const RadialDiagram: React.FC<Props> = ({ info, items }: Props) => {
         data: [
           {
             name: items[0].title,
-            y: info.totalCases,
+            y: info.TotalConfirmed,
             sliced: true,
             color: items[0].color,
           },
           {
             name: items[1].title,
-            y: info.totalDeaths,
+            y: info.TotalDeaths,
             sliced: true,
             color: items[1].color,
           },
           {
             name: items[2].title,
-            y: info.totalRecovered,
+            y: info.TotalRecovered,
             sliced: true,
             color: items[2].color,
           },
